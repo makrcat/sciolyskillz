@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -41,11 +41,10 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          path: 'anatomy',
+          routeBasePath: 'anatomy', 
+          sidebarPath: require.resolve('./sidebars.js'),
+          editUrl: 'https://github.com/your-repo/edit/main/anatomy/',
         },
         blog: {
           showReadingTime: true,
@@ -79,17 +78,20 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
+        /*
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Dashboard',
         },
-        {to: '/topics', label: 'Topics', position: 'left'},
-        {to: '/problems', label: 'Problem Bank', position: 'left'},
-        {to: '/blog', label: 'Blog', position: 'right'}, // it's just like a doc I guess
-        
-        {to: '/src/pages/about', label: 'About', position: 'right'},
+        */
+        { to: '/dashboard', label: 'Dashboard', position: 'left'},
+        { to: '/topics', label: 'Topics', position: 'left' },
+        { to: '/problems', label: 'Problem Bank', position: 'left' },
+        { to: '/blog', label: 'Blog', position: 'right' }, // it's just like a doc I guess
+
+        { to: '/src/pages/about', label: 'About', position: 'right' },
         {
           href: 'https://nuhuh',
           label: 'GitHub',
@@ -105,7 +107,7 @@ const config: Config = {
           items: [
             {
               label: 'Tutorial',
-              to: '/docs/intro',
+              to: '/no',
             },
           ],
         },

@@ -154,11 +154,11 @@ const categories = [
 
 function TopicCard({ topicName, topicLink, description }) {
     return (
-        <div className="relative bg-slate-50 border-solid border-slate-300 rounded-lg shadow-md p-6 hover:shadow-xl transition cursor-pointer h-52">
+        <div className="relative bg-slate-50 border border-solid border-slate-300 rounded-lg shadow-md p-6 hover:shadow-xl transition cursor-pointer h-52">
             <h3 className="text-xl font-semibold mb-2">{topicName}</h3>
             <p className="text-gray-700 text-sm mb-10">{description}</p>
             <a
-                href={"/topics/"+topicLink}
+                href={topicLink+"/intro"}
                 className="absolute bottom-4 right-4 text-blue-600 font-medium hover:text-blue-800 hover:underline"
             >
                 Let's go &rarr;
