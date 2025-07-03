@@ -85,11 +85,11 @@ const config: Config = {
           position: 'left',
           label: 'Dashboard',
         },
-        {to: '/eventTable', label: 'Topics', position: 'left'},
-        {to: '/eventTable', label: 'Problems', position: 'left'},
-        {to: '/blog', label: 'Blog', position: 'right'},
+        {to: '/src/pages/topics', label: 'Topics', position: 'left'},
+        {to: '/src/pages/problems', label: 'Problem Bank', position: 'left'},
+        {to: '/blog', label: 'Blog', position: 'right'}, // it's just like a doc I guess
         
-        {to: '/eventTable', label: 'About', position: 'right'},
+        {to: '/src/pages/about', label: 'About', position: 'right'},
         {
           href: 'https://nuhuh',
           label: 'GitHub',
