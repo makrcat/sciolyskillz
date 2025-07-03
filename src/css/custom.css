@@ -15,6 +15,11 @@ a {
   /* it doenst work */
 }
 
+.accent {
+  color: #0d9488;
+  font-weight: 600;
+}
+
 
 /* You can override the default Infima variables here. */
 :root {
