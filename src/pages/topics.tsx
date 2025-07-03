@@ -14,22 +14,27 @@ const categories = [
         events: [
             {
                 name: 'Anatomy and Physiology',
-                desc: 'Learn about the structures & functions of various body systems.'
+                desc: 'Learn about the structures & functions of various body systems.',
+                page: 'anatomy',
             },
             {
                 name: 'Designer Genes',
-                desc: 'classic, evolutionary, and molecular genetics.'
+                desc: 'classic, evolutionary, and molecular genetics.',
+                page: 'anatomy',
             },
             {
-                name: 'Disease Detectives', desc: 'Investigate outbreaks and learn how organizations track epidemics.'
+                name: 'Disease Detectives', desc: 'Investigate outbreaks and learn how organizations track epidemics.',
+                page: 'anatomy',
             },
             {
                 name: 'Entomology',
-                desc: 'bug'
+                desc: 'bug',
+                page: 'anatomy',
             },
             {
                 name: 'Water Quality',
-                desc: 'mmmmm'
+                desc: 'mmmmm',
+                page: 'anatomy',
             },
         ],
     },
@@ -39,18 +44,22 @@ const categories = [
             {
                 name: 'Astronomy',
                 desc: 'too much math',
+                page: 'anatomy',
             },
             {
                 name: 'Dynamic Planet',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Remote Sensing',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Rocks and Minerals',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
         ],
     },
@@ -61,26 +70,32 @@ const categories = [
             {
                 name: 'Chemistry Lab',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Circuit Lab',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Forensics',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Hovercraft',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Machines',
-                desc: 'mmmmm'
+                desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Materials Science',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
         ],
     },
@@ -90,18 +105,22 @@ const categories = [
             {
                 name: 'Boomilever',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Electric Vehicle',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Helicopter',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Robot Tour',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
         ],
     },
@@ -111,18 +130,22 @@ const categories = [
             {
                 name: 'Bungee Drop',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Codebusters',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Engineering CAD',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
             {
                 name: 'Experimental Design',
                 desc: 'mmmmm',
+                page: 'anatomy',
             },
         ],
     },
@@ -131,11 +154,11 @@ const categories = [
 
 function TopicCard({ topicName, topicLink, description }) {
     return (
-        <div className="relative bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition cursor-pointer h-52">
+        <div className="relative bg-slate-50 border-solid border-slate-300 rounded-lg shadow-md p-6 hover:shadow-xl transition cursor-pointer h-52">
             <h3 className="text-xl font-semibold mb-2">{topicName}</h3>
             <p className="text-gray-700 text-sm mb-10">{description}</p>
             <a
-                href={topicLink}
+                href={"/topics/"+topicLink}
                 className="absolute bottom-4 right-4 text-blue-600 font-medium hover:text-blue-800 hover:underline"
             >
                 Let's go &rarr;
@@ -157,7 +180,7 @@ function TopicsGrid() {
                             <TopicCard
                                 key={event.name}
                                 topicName={event.name}
-                                topicLink="#"
+                                topicLink={event.page}
                                 description={event.desc}
                             />
                         ))}
