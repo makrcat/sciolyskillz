@@ -4,6 +4,14 @@
  * work well for content-centric websites.
  */
 
+@tailwind components;
+@tailwind utilities;
+
+a {
+  @apply no-underline;
+}
+
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;

@@ -85,8 +85,8 @@ const config: Config = {
           position: 'left',
           label: 'Dashboard',
         },
-        {to: '/src/pages/topics', label: 'Topics', position: 'left'},
-        {to: '/src/pages/problems', label: 'Problem Bank', position: 'left'},
+        {to: '/topics', label: 'Topics', position: 'left'},
+        {to: '/problems', label: 'Problem Bank', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'right'}, // it's just like a doc I guess
         
         {to: '/src/pages/about', label: 'About', position: 'right'},
