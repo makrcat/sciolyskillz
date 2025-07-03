@@ -11,6 +11,10 @@ a {
   @apply no-underline;
 }
 
+.no-infima * {
+  /* it doenst work */
+}
+
 
 /* You can override the default Infima variables here. */
 :root {

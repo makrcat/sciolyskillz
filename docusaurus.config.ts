@@ -44,6 +44,7 @@ const config: Config = {
           path: 'anatomy',
           routeBasePath: 'anatomy', 
           sidebarPath: require.resolve('./sidebars.js'),
+          include: ['**/*.mdx'],
           editUrl: 'https://github.com/your-repo/edit/main/anatomy/',
         },
         blog: {
