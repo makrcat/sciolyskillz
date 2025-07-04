@@ -69,7 +69,7 @@ const categories = [
         events: [
             {
                 name: 'Chemistry Lab',
-                desc: 'All about chemical reactions: This event specifically focuses on stoichiometry and equilibrium, and involves calculations and lab skills.',
+                desc: 'Chemistry & lab skills, focused on stochiometry & equilibrium.',
                 page: 'anatomy',
             },
             {
