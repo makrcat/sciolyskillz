@@ -87,12 +87,12 @@ const config: Config = {
           label: 'Dashboard',
         },
         */
-        { to: '/dashboard', label: 'Dashboard', position: 'left'},
+        { to: '#', label: 'Dashboard', position: 'left'},
         { to: '/topics', label: 'Topics', position: 'left' },
-        { to: '/problems', label: 'Problem Bank', position: 'left' },
+        { to: '#', label: 'Problem Bank', position: 'left' },
         { to: '/blog', label: 'Blog', position: 'right' }, // it's just like a doc I guess
 
-        { to: '/src/pages/about', label: 'About', position: 'right' },
+        { to: '#', label: 'About', position: 'right' },
         {
           href: 'https://nuhuh',
           label: 'GitHub',
@@ -103,15 +103,6 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/no',
-            },
-          ],
-        },
         {
           title: 'Community',
           items: [
