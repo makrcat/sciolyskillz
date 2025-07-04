@@ -8,6 +8,12 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  aspect-ratio: 10 / 3.5; 
+
+  background-image: url('/img/homepagebanner.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 996px) {
