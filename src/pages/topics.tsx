@@ -19,7 +19,7 @@ const categories = [
             },
             {
                 name: 'Designer Genes',
-                desc: 'classic, evolutionary, and molecular genetics.',
+                desc: 'An event based on using genetics, biotech, and data analysis to identify and treat diseases.',
                 page: 'anatomy',
             },
             {
@@ -28,12 +28,12 @@ const categories = [
             },
             {
                 name: 'Entomology',
-                desc: 'bug',
+                desc: 'Identifying bugs of all sizes from North America.',
                 page: 'anatomy',
             },
             {
                 name: 'Water Quality',
-                desc: 'mmmmm',
+                desc: 'The inner workings of freshwater aquatic environments and the impact of human activities on water systems. ',
                 page: 'anatomy',
             },
         ],
@@ -43,22 +43,22 @@ const categories = [
         events: [
             {
                 name: 'Astronomy',
-                desc: 'too much math',
+                desc: 'Stellar evolution, space physics, and exoplanets.',
                 page: 'anatomy',
             },
             {
                 name: 'Dynamic Planet',
-                desc: 'mmmmm',
+                desc: 'Dynamic Planet focuses on the Earth\'s cryosphere (frozen water), specially, the role of glaciers in the environment. ',
                 page: 'anatomy',
             },
             {
                 name: 'Remote Sensing',
-                desc: 'mmmmm',
+                desc: 'Participants use satellite imagery to analyze data related to climate change & Earth systems.',
                 page: 'anatomy',
             },
             {
                 name: 'Rocks and Minerals',
-                desc: 'mmmmm',
+                desc: 'Participants identify and classify rocks & minerals and tie them to geologic processes.',
                 page: 'anatomy',
             },
         ],
@@ -69,32 +69,32 @@ const categories = [
         events: [
             {
                 name: 'Chemistry Lab',
-                desc: 'mmmmm',
+                desc: 'All about chemical reactions: This event specifically focuses on stoichiometry and equilibrium, and involves calculations and lab skills.',
                 page: 'anatomy',
             },
             {
                 name: 'Circuit Lab',
-                desc: 'mmmmm',
+                desc: 'Focuses on various components and properties of direct current (DC) circuits, and related physics.',
                 page: 'anatomy',
             },
             {
                 name: 'Forensics',
-                desc: 'mmmmm',
+                desc: 'Becoming a detective: Use concepts of chemistry to solve a fictional crime.',
                 page: 'anatomy',
             },
             {
                 name: 'Hovercraft',
-                desc: 'mmmmm',
+                desc: 'Participants construct a hovercraft with a downward propelling fan.',
                 page: 'anatomy',
             },
             {
                 name: 'Machines',
-                desc: 'mmmmm',
+                desc: 'ok I\'m not that sure',
                 page: 'anatomy',
             },
             {
                 name: 'Materials Science',
-                desc: 'mmmmm',
+                desc: 'really painful.',
                 page: 'anatomy',
             },
         ],
@@ -170,7 +170,9 @@ function TopicCard({ topicName, topicLink, description }) {
 function TopicsGrid() {
     return (
         <div className="p-8 max-w-screen-xl mx-auto">
-            <h1 className="text-3xl font-bold mb-6 text-center">2026 C Events</h1>
+            <h1 className="text-3xl font-bold mb-6 text-center">
+                2026 C Events
+            </h1>
 
             {categories.map((category) => (
                 <div key={category.title} className="mb-10">
@@ -199,7 +201,7 @@ function Topics() {
         <header className={clsx('hero hero--primary', styles.heroBanner)}>
             <div className="container">
                 <Heading as="h1" className="hero__title">
-                    Topics of 2026
+                    Events for 2026
                 </Heading>
             </div>
         </header>
