@@ -73,10 +73,10 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'sciolyskillz',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'my site logo',
+        src: 'img/logo.png',
       },
       items: [
         /*
@@ -87,7 +87,7 @@ const config: Config = {
           label: 'Dashboard',
         },
         */
-        { to: '#', label: 'Dashboard', position: 'left'},
+        { to: '/dashboard', label: 'Dashboard', position: 'left'},
         { to: '/topics', label: 'Topics', position: 'left' },
         { to: '#', label: 'Problem Bank', position: 'left' },
         { to: '/blog', label: 'Blog', position: 'right' }, // it's just like a doc I guess

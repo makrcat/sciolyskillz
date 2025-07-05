@@ -16,8 +16,37 @@ a {
 }
 
 .accent {
-  color: #0d9488;
-  font-weight: 600;
+  position: relative;
+  /*font-weight: 700;*/
+  z-index: 1;
+  padding: 4px;
+}
+
+.accent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid pink;
+  background-color: rgb(254, 191, 201, 0.5);
+  /*transform: rotate(0deg);*/
+  z-index: -1;
+  border-radius: 4px; /* optional: makes it look more sketchy */
+}
+
+.img-margin-right {
+  margin-right: 15px;
+}
+
+.doc-image {
+  padding: 4px;
+}
+
+img {
+  border-radius: 4px;
+  border: 2px solid rgb(166, 171, 176)
 }
 
 
