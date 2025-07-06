@@ -22,7 +22,7 @@ export default function CatFactCard() {
 
         {fact}
 
-        {Array(Math.max(0, 6 - Math.ceil(fact.length / 20)))
+        {Array(Math.max(0, 8 - Math.ceil(fact.length / 20)))
           .fill(0)
           .map((_, i) => (
             <br key={i} />

@@ -2,23 +2,23 @@
   background-color: #fdf6ec;
   border: 2px solid #ffd6a5;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 8px 12px;
   font-family: "Georgia", serif;
   height: 100%;
   position: relative;
 }
 
 .catfact-card h3 {
-  margin-top: 0;
+  margin: 0;
   color: #ff914d;
 }
 
 .fact-text {
-  margin: 0.5rem 0;
+  margin: 4px 0 0 0;
   font-size: 0.95rem;
 
 
-  height: 50%;
+  height: 60%;
   font-family: Arial;
   border: 2px solid #ffd6a5;
   background-color: #fbeedb;

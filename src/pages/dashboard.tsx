@@ -18,11 +18,11 @@ export default function Dashboard() {
 
       <div className="flex flex-row">
         <Sidebar />
-        <div className="m-4">
+        <div className="my-4 mx-8">
           <center><h1>Hi! You're logged in.</h1></center>
           <LeftOff></LeftOff>
 
-          <div className="grid grid-cols-5 [grid-template-rows:repeat(3,clamp(200px,20vh,300px))] gap-4 max-w-6xl mx-auto mt-4 ">
+          <div className="grid grid-cols-5 [grid-template-rows:repeat(3,clamp(200px,20vh,300px))] gap-4 max-w-6xl mt-4">
 
 
             {/* Day: 1 col x 1 row */}

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function TopicsPanel() {
   return (
-    <div className="flex flex-col h-full items-start gap-4 p-4 bg-blue-50 rounded-lg shadow-sm">
+    <div className="flex flex-col h-full items-start gap-4 p-4 bg-blue-50 rounded-lg shadow-sm" style={{"border":"1px solid #86A8F8"}}>
       <h2 className="text-xl font-semibold">Topics</h2>
       
       <div className="flex flex-col w-full gap-2">

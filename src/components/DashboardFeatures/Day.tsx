@@ -17,15 +17,14 @@ export  default function  Day() {
   const holiday = "national OW my ears day";
 
   return (
-    <div className="bg-yellow-100 border-l-4 border-yellow-400 text-yellow-900 p-4 rounded-lg shadow-sm h-full">
-      <p className="text-base font-medium">
-        <span className="font-bold">Today is</span>
-        <h2>
-          {formattedDate}
+    <div className="bg-yellow-100 border-l-4 text-yellow-900 p-4 rounded-lg shadow-sm h-full" style={{"border":"1px solid goldenrod"}}>
+      <p className="text-base font-normal">
+        <h3 className="p-0 m-0 font-normal">Today is</h3>
+        <h1 className="p-0 m-0 font-normal">
+          {formattedDate} 
+          </h1>
+          —
           <br />
-           —
-          
-          </h2>
           it is{" "}
         <span className="italic">{holiday}</span>
       </p>
