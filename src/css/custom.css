@@ -7,6 +7,10 @@
 @tailwind components;
 @tailwind utilities;
 
+h1 {
+  font-size: 40px;
+}
+
 a {
   @apply no-underline;
 }
@@ -17,7 +21,6 @@ a {
 
 .accent {
   position: relative;
-  /*font-weight: 700;*/
   z-index: 1;
   padding: 4px;
 }
@@ -39,6 +42,32 @@ a {
 .img-margin-right {
   margin-right: 15px;
 }
+
+.doc-flex {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  align-items: flex-start;
+}
+
+.doc-flex img {
+  flex-shrink: 0;   
+  flex-grow: 0; 
+  height: auto; 
+  max-width: 100%; 
+}
+
+@media (max-width: 1200px) {
+  .doc-flex {
+    flex-direction: column;
+  }
+
+  .doc-flex div {
+    margin-top: 10px;
+  }
+}
+
+
 
 .doc-image {
   padding: 4px;

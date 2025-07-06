@@ -18,7 +18,7 @@ export default function Dashboard() {
 
       <div className="flex flex-row">
         <Sidebar />
-        <div className="my-4 mx-8">
+        <div className="bg-[url(/img/dashboardbanner.png)] bg-top bg-contain bg-no-repeat p-8 pt-16">
           <center><h1>Hi! You're logged in.</h1></center>
           <LeftOff></LeftOff>
 
