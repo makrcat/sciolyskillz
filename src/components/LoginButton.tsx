@@ -19,7 +19,7 @@ export default function GoogLoginButton() {
       {user ? (
         <div className="flex items-center gap-2 ml-2">
           <span>{user.displayName}</span>
-          <img src={user.photoURL} alt="Profile" width="30" />
+          <img src={user.photoURL} className="profile-img" width="30" />
           
         </div>
       ) : (

@@ -15,7 +15,7 @@ a {
   @apply no-underline;
 }
 
-.login-button {
+.login-button, .profile-img {
   background-color: rgb(232, 247, 247);
   border: 2px solid rgb(131, 199, 199);
   font-family: Helvetica, sans-serif;
@@ -66,6 +66,36 @@ a {
   height: auto; 
   max-width: 100%; 
 }
+
+.checkyo-box {
+  border: 1px solid rgba(56, 178, 172); 
+  border-radius: 0.5rem; 
+  padding: 1rem; 
+  background-color: #f0fdfa; 
+  color: #0f766e; 
+  margin-bottom: 1.25rem; 
+}
+
+/* convert */
+.checkyo-answer {
+  text-align: left;
+  border:  1px solid rgba(56, 178, 172); 
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  padding-left: 2.5rem;
+  margin-left: 1rem;
+  width: 100%;
+  background-color: #f0fdfa; /* same for both states */
+  color: #0d9488; /* text-teal-600 */
+  transition: all 0.15s ease;
+}
+
+.checkyo-answer.selected-answer {
+  color: #115e59; /* text-teal-800 */
+  border-color: #115e59;
+  background-color: #c4eee4; 
+}
+
 
 @media (max-width: 1200px) {
   .doc-flex {
