@@ -15,6 +15,16 @@ a {
   @apply no-underline;
 }
 
+.login-button {
+  background-color: rgb(232, 247, 247);
+  border: 2px solid rgb(131, 199, 199);
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+  color: rgb(45, 66, 66);
+
+}
+  
+
 .no-infima * {
   /* it doenst work */
 }
