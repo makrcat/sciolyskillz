@@ -16,7 +16,8 @@ function Choice({ label, text, selected, onClick }) {
           width: 16,
           height: 16,
           borderRadius: "50%",
-          border: "2px solid oklch(60% 0.118 184.704)",
+          border: selected?"2px solid oklch(60% 0.118 184.704)": 
+          "2px solid oklch(70.4% 0.04 256.788)",
           backgroundColor: "white",
         }}
       ></div>

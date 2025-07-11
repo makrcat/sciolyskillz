@@ -69,6 +69,7 @@ a {
 
 .checkyo-box {
   border: 2px solid #cbd5e1; /* slate-300 */
+  background-color: oklch(98.4% 0.003 247.858);
   border-radius: 0.5rem;      /* rounded-lg */
   padding: 1rem;              /* p-4 */
   color: #334155;             /* slate-700 */
@@ -80,13 +81,14 @@ a {
 /* convert */
 .checkyo-answer {
   text-align: left;
-  background-color: oklch(95.597% 0.00598 240.368);
+  border: 2px solid oklch(86.9% 0.022 252.894);
+  background: white;
   border-radius: 0.5rem;    
   padding: 0.5rem;
   padding-left: 2.5rem;
   margin-left: 1rem;
   width: 100%;
-  border: 2px solid transparent;
+  /*border: 2px solid transparent;*/
 
   transition: all 0.15s ease;
 }
