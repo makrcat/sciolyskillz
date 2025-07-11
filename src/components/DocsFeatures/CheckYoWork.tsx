@@ -16,15 +16,29 @@ function Choice({ label, text, selected, onClick }) {
           width: 16,
           height: 16,
           borderRadius: "50%",
-          border: "2px solid darkgray",
-          backgroundColor: selected ? "teal" : "white",
+          border: "2px solid rgba(56, 178, 172)",
+          backgroundColor: "white",
+        }}
+      ></div>
+
+      <div
+        style={{
+          position: "absolute",
+          left: 34,
+          top: "50%",
+          transform: "translateY(-50%)",
+          width: 8,
+          height: 8,
+          borderRadius: "50%",
+          border: selected ? "2px solid rgba(56, 178, 172)" : "none",
+          backgroundColor: selected ? "rgba(56, 178, 172)" : "white",
         }}
       ></div>
 
       {/* Choices */}
       <div
-  className={`checkyo-answer ${selected ? "selected-answer" : ""}`}
->
+        className={`checkyo-answer ${selected ? "selected-answer" : ""}`}
+      >
 
         <strong>{label}.</strong> {text}
       </div>
@@ -39,7 +53,8 @@ export default function CheckYoWork({
   choiceB,
   choiceC,
   choiceD,
-  answer, // 0 1 2 3
+  answer,/* 0 1 2 3 */
+  explanation
 }) {
   const [selected, setSelected] = useState(null);
   const [showResult, setShowResult] = useState(false);
@@ -68,7 +83,7 @@ export default function CheckYoWork({
           selected={selected === idx}
           onClick={() => {
             setSelected(idx);
-            setShowResult(false); 
+            setShowResult(false);
           }}
         />
       ))}
@@ -81,8 +96,12 @@ export default function CheckYoWork({
       </button>
 
       {showResult && selected !== null && (
-        <p className="mt-2 font-semibold">
-          {selected === answer ? "Correct! explanation" : "x Try again!"}
+        <p className="font-semibold mb-0 mt-2">
+          {
+            selected == answer
+              ? <>Correct! {explanation}</>
+              : "x Try again!"
+          }
         </p>
       )}
     </div>
