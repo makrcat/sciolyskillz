@@ -68,32 +68,29 @@ a {
 }
 
 .checkyo-box {
-  border: 1px solid rgba(56, 178, 172); 
-  border-radius: 0.5rem; 
-  padding: 1rem; 
-  background-color: #f0fdfa; 
-  color: #0f766e; 
-  margin-bottom: 1.25rem; 
+  border: 2px solid #cbd5e1; /* slate-300 */
+  border-radius: 0.5rem;      /* rounded-lg */
+  padding: 1rem;              /* p-4 */
+  color: #334155;             /* slate-700 */
+  margin-bottom: 1.25rem;     /* mb-5 */
 }
+
+
 
 /* convert */
 .checkyo-answer {
   text-align: left;
-  border:  1px solid rgba(56, 178, 172); 
-  border-radius: 0.5rem;
+  background-color: oklch(95.597% 0.00598 240.368);
+  border-radius: 0.5rem;    
   padding: 0.5rem;
   padding-left: 2.5rem;
   margin-left: 1rem;
   width: 100%;
-  background-color: #f0fdfa; /* same for both states */
-  color: #0d9488; /* text-teal-600 */
+
   transition: all 0.15s ease;
 }
 
 .checkyo-answer.selected-answer {
-  color: #115e59; /* text-teal-800 */
-
-  background-color: #c4eee4; 
 }
 
 

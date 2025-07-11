@@ -16,7 +16,7 @@ function Choice({ label, text, selected, onClick }) {
           width: 16,
           height: 16,
           borderRadius: "50%",
-          border: "2px solid rgba(56, 178, 172)",
+          border: "2px solid oklch(60% 0.118 184.704)",
           backgroundColor: "white",
         }}
       ></div>
@@ -30,8 +30,8 @@ function Choice({ label, text, selected, onClick }) {
           width: 8,
           height: 8,
           borderRadius: "50%",
-          border: selected ? "2px solid rgba(56, 178, 172)" : "none",
-          backgroundColor: selected ? "rgba(56, 178, 172)" : "white",
+          border: selected ? "2px solid oklch(60% 0.118 184.704)" : "none",
+          backgroundColor: selected ? "oklch(60% 0.118 184.704)" : "white",
         }}
       ></div>
 
@@ -90,7 +90,7 @@ export default function CheckYoWork({
 
       <button
         onClick={handleCheck}
-        className="mt-3 px-4 py-1 bg-teal-600 text-white rounded hover:bg-teal-700 transition-colors"
+        className=" mt-3 px-4 py-1 bg-teal-600 text-white rounded hover:bg-teal-700 transition-colors"
       >
         Check Answer
       </button>
