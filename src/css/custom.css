@@ -86,11 +86,14 @@ a {
   padding-left: 2.5rem;
   margin-left: 1rem;
   width: 100%;
+  border: 2px solid transparent;
 
   transition: all 0.15s ease;
 }
 
 .checkyo-answer.selected-answer {
+  border: 2px solid #83c7c7;
+  background-color: #e8f7f7;
 }
 
 
