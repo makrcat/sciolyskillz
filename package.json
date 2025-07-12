@@ -17,9 +17,12 @@
   "dependencies": {
     "@docusaurus/core": "3.8.1",
     "@docusaurus/preset-classic": "3.8.1",
+    "@hugeicons/core-free-icons": "^1.0.14",
+    "@hugeicons/react": "^1.0.5",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "firebase": "^11.10.0",
+    "hugeicons-react": "^0.3.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
