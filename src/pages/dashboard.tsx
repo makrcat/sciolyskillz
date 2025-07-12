@@ -11,6 +11,7 @@ import TopicsPanel from "../components/DashboardFeatures/TopicsPanel";
 import CatFactCard from "../components/DashboardFeatures/CatFactCard";
 import Day from "../components/DashboardFeatures/Day";
 import LeftOff from "../components/DashboardFeatures/LeftOff";
+import ButtonCard from "../components/DashboardFeatures/ButtonCard";
 
 export default function Dashboard() {
   return (
@@ -46,7 +47,9 @@ export default function Dashboard() {
             </div>
 
             {/* Additional block (optional): 1 col x 1 row */}
-            <div className="col-span-2 row-span-1 bg-gray-50 rounded-lg" />
+            <div className="col-span-1 row-span-1 bg-gray-50 rounded-lg">
+              <ButtonCard />
+            </div>
 
 
           </div>

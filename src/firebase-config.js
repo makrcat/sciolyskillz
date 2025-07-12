@@ -7,6 +7,8 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 // Your web app's Firebase configuration
 // 
 
+import {getFirestore} from "@firebase/firestore";
+
 const p1 = "AIza";
 const p2 = "SyB_";
 const p3 = "Owz";
@@ -39,6 +41,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+
+const firestore = getFirestore(app);
 
 
 export { auth, provider };
