@@ -28,6 +28,20 @@ a {
   cursor: pointer;
   background-color: rgb(208, 231, 231);
 }
+
+.logged-in-button {
+  border: 1px solid rgb(219, 222, 222);
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+  color: rgb(45, 66, 66);
+}
+
+.logged-in-button:hover {
+  cursor: pointer;
+  background-color: rgb(235, 238, 238);
+}
+
+
   
 
 .no-infima * {

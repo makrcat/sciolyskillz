@@ -1,14 +1,50 @@
-import React, { useState } from "react";
-import { signInWithPopup } from "firebase/auth";
+import React, { useState, useEffect } from "react";
+import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
+
 import { auth, provider } from "../firebase-config";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { db } from "../firebase-config";
+import { createUserDoc } from "../utils/createUserDoc";
+
+import UserDropdown from "./UserDropdown";
+
 
 export default function GoogLoginButton() {
   const [user, setUser] = useState(null);
 
+  // Load user on first render
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+
   const handleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      setUser(result.user);
+      const user = result.user;
+      // a type of firebase.User including UID and stuff
+      // 
+
+      setUser(user);
+
+      // create firestore doc if it doesn't exist
+
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        createUserDoc(user);
+      }
+
+
     } catch (error) {
       console.error("Login failed", error);
     }
@@ -18,9 +54,13 @@ export default function GoogLoginButton() {
     <div>
       {user ? (
         <div className="flex items-center gap-2 ml-2">
-          <span>{user.displayName}</span>
-          <img src={user.photoURL} className="profile-img" width="30" />
-          
+          {
+          //<span>{user.displayName}</span>
+          //<img src={user.photoURL} className="profile-img" width="30" />
+          }
+
+          <UserDropdown user={user}/>
+
         </div>
       ) : (
         <button onClick={handleLogin} type="button" className="ml-2 login-button rounded-lg px-3 py-2 text-center inline-flex items-center">
