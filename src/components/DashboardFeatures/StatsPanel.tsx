@@ -25,7 +25,7 @@ export default function StatsPanel() {
 
       {/* Progress */}
       <div className="flex-1 min-w-[200px] p-4">
-        <h3 className="text-lg font-semibold mb-3">Progress</h3>
+        <h3 className="text-lg font-semibold mb-3">Tests</h3>
         <div className="h-30 my-3 border-2 border-dashed border-slate-300 rounded-lg flex items-center justify-center text-slate-400 italic">
           [Bar Graph]
         </div>
