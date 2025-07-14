@@ -13,7 +13,8 @@ export default function Practice() {
       <div className="flex flex-row">
         <Sidebar />
         <div className="p-8 pt-8">
-          <center><h1>Practice</h1></center>
+          <h1>Practice</h1>
+          <p> This page hasn't been made yet!</p>
           
         </div>
       </div>

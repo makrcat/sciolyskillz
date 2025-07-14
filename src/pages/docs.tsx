@@ -13,7 +13,9 @@ export default function Docs() {
       <div className="flex flex-row">
         <Sidebar />
         <div className="p-8 pt-8">
-          <center><h1>Docs</h1></center>
+          <h1>Docs</h1>
+
+          <p> This page hasn't been made yet!</p>
           
         </div>
       </div>
