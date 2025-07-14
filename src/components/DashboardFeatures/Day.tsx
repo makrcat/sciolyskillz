@@ -37,7 +37,7 @@ if (names.length === 0) {
   holiday = "no silly holiday :/";
 } else {
   holiday = names[Math.floor(Math.random() * names.length)];
-  googleLink = "https://www.google.com/search?ie=UTF-8&q=" + holiday;
+  googleLink = "https://www.checkiday.com/";
 }
 
 export  default function  Day() {
@@ -64,7 +64,7 @@ export  default function  Day() {
           </h1>
           —
           <br />
-        <span className="italic">Today is {holiday}</span>
+        <span className="italic">{holiday}</span>
         <br />
 
       {googleLink && (
