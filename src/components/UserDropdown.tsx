@@ -1,48 +1,141 @@
-import React, { useState } from "react";
-import type { User } from "firebase/auth";
+import React, { useState, useRef } from "react";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../firebase-config";
 
-type UserDropdownProps = {
-  user: User;
-};
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
-export default function UserDropdown({user}: UserDropdownProps) {
-  const [open, setOpen] = useState(false);
+const storage = getStorage();
 
-  const toggleDropdown = () => setOpen(!open);
+export default function UserDropdown() {
+    const user = auth.currentUser;
+    const [displayName, setDisplayName] = useState(user?.displayName || "");
+    const [editing, setEditing] = useState(false);
+    const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
-  return (
-    <div className="relative inline-block text-left">
-      <button
-        type="button"
-        onClick={toggleDropdown}
-        className="ml-2 logged-in-button rounded-lg px-3 py-2 text-center inline-flex items-center"
-      >
-        <img
-          src={user.photoURL}
-          alt="profile"
-          className="rounded-full w-6 h-6 mr-2"
-        />
-        <span className="text-sm">{user.displayName}</span>
-        <svg
-          className="w-4 h-4 ml-1"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <path d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
 
-      {open && (
-        <div className="absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-opacity-5 z-50" style={{ border: "1px solid lightgray" }}>
-          <div className="py-1 text-sm text-gray-700">
-            <a href="#" className="block px-4 py-2 hover:bg-gray-100">Profile</a>
-            <a href="#" className="block px-4 py-2 hover:bg-gray-100">Settings</a>
-            <a href="#" className="block px-4 py-2 hover:bg-gray-100">Sign Out</a>
-          </div>
+
+    const handleDisplayNameSave = async () => {
+        if (user) {
+            await updateProfile(user, { displayName });
+            setEditing(false);
+        }
+    };
+
+    const handlePhotoClick = () => {
+        fileInputRef.current?.click();
+    };
+
+
+    const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file || !user) return;
+
+        // upload to firebase storage
+
+        try {
+            // #notsure firebase storage I think.
+            const photoRef = ref(storage, `profilePhotos/${user.uid}`);
+            await uploadBytes(photoRef, file);
+
+            const downloadURL = await getDownloadURL(photoRef);
+            await updateProfile(user, { photoURL: downloadURL });
+
+
+
+
+            await user.reload();
+            setPhotoURL(user.photoURL);
+            alert("Profile photo updated!");
+
+
+        } catch (error) {
+            console.error("Error uploading or updating profile photo:", error);
+        }
+
+        alert("You'll need to implement uploading to Firebase Storage here.");
+    };
+
+    return (
+        <div className="absolute mt-1 right-0 p-4 bg-white rounded shadow" style={{ "border": "1px solid lightgray" }}>
+            <h3 className="text-lg font-semibold mb-4">Hello :)</h3>
+
+            {/* Profile Picture */}
+            <div className="mb-4 flex flex-row gap-4 items-start">
+                <div>
+                    <img
+                        src={photoURL || "/default-avatar.png"} //note to self do that
+                        alt="Profile"
+                        className="min-h-16 min-w-16 rounded-full cursor-pointer mr-1"
+                        onClick={handlePhotoClick}
+                        style={{
+                            transition: "box-shadow 0.2s, border-color 0.2s",
+                            boxShadow: undefined,
+                        }}
+                        onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 0 0 4px #cbd5e1")}
+                        onMouseLeave={e => (e.currentTarget.style.boxShadow = "")}
+                    // todo: make this a thing i can just slap on any input element.. sorta..
+                    // screw infima wlekfjldksjgkjlbjfldjb
+                    />
+                    <input
+                        type="file"
+                        accept="image/*"
+                        ref={fileInputRef}
+                        className="hidden"
+                        onChange={handlePhotoChange}
+                    />
+
+                    {
+                        //<p className="text-xs text-gray-500 mt-1">Click to change</p>
+                    }
+                </div>
+
+                <div>
+                    <label className="text-sm font-medium text-gray-700">Display Name</label>
+                    <div className="flex gap-0.5">
+                        <input
+                            type="text"
+                            value={displayName}
+                            disabled={!editing}
+                            onChange={(e) => setDisplayName(e.target.value)}
+                            className={`border rounded px-2 py-1 text-sm ${editing ? "" : "bg-gray-100"
+                                }`}
+                        />
+                        {editing ? (
+                            <button onClick={handleDisplayNameSave} className="text-blue-600 text-sm">
+                                Save
+                            </button>
+                        ) : (
+                            <button onClick={() => setEditing(true)} className="text-gray-600 text-sm">
+                                Edit
+                            </button>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+            {/* Email (Disabled) */}
+            <div className="mb-4">
+                <label className="text-sm font-medium text-gray-700">Email</label>
+                <input
+                    type="email"
+                    value={user?.email || ""}
+                    disabled
+                    className="border bg-gray-100 rounded px-2 py-1 text-sm w-full"
+                />
+            </div>
+
+            <hr className="my-4" />
+
+            {/* Account Info */}
+            <div>
+                <p className="text-sm text-gray-600">
+                    <span className="font-medium">Account Created:</span>{" "}
+                    {user?.metadata.creationTime
+                        ? new Date(user.metadata.creationTime).toLocaleString()
+                        : "Unknown"}
+                </p>
+            </div>
         </div>
-      )}
-    </div>
-  );
+    );
 }

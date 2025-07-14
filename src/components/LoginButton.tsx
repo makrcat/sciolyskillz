@@ -6,7 +6,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { createUserDoc } from "../utils/createUserDoc";
 
-import UserDropdown from "./UserDropdown";
+import UserButton from "./UserButton";
 
 
 export default function GoogLoginButton() {
@@ -59,7 +59,7 @@ export default function GoogLoginButton() {
           //<img src={user.photoURL} className="profile-img" width="30" />
           }
 
-          <UserDropdown user={user}/>
+       <UserButton user={user}/>
 
         </div>
       ) : (
