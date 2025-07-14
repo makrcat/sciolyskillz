@@ -42,7 +42,7 @@ const config: Config = {
       {
         docs: {
           path: 'anatomy',
-          routeBasePath: 'anatomy', 
+          routeBasePath: 'anatomy',
           sidebarPath: require.resolve('./sidebars.js'),
           include: ['**/*.mdx'],
           editUrl: 'https://github.com/your-repo/edit/main/anatomy/',
@@ -87,7 +87,7 @@ const config: Config = {
           label: 'Dashboard',
         },
         */
-        { to: '/dashboard', label: 'Dashboard', position: 'left'},
+        { to: '/dashboard', label: 'Dashboard', position: 'left' },
         { to: '/topics', label: 'Topics', position: 'left' },
         { to: '#', label: 'Problem Bank', position: 'left' },
         { to: '/blog', label: 'Blog', position: 'right' }, // it's just like a doc I guess
@@ -132,10 +132,19 @@ const config: Config = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} by makrcat. Built with Docusaurus.`,
     },
+    
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
+
+    markdown: {
+      externalLinks: {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    },
+
   } satisfies Preset.ThemeConfig,
 };
 

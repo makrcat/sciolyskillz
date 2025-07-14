@@ -1,4 +1,44 @@
 import React from "react";
+import ExternalLink from '../ExternalLink';
+
+import sillyHolidaysData from "../../../static/silly-holidays-US.json";
+
+import { HugeiconsIcon } from "@hugeicons/react";
+import { LinkSquare02Icon } from "@hugeicons/core-free-icons";
+
+// credit: https://todaysholiday.herokuapp.com/holidays
+// but i hope they fix their link
+// todo: add the herokuapp link to website credits 
+
+type SillyHoliday = {
+  tags: string[];
+  _id: string;
+  name: string;
+  month: number;
+  day: number;
+};
+
+function getTodaySillyHolidayNames(holidays: SillyHoliday[]): string[] {
+  const today = new Date();
+  const todayMonth = today.getMonth() + 1; // getMonth() is 0-based
+  const todayDay = today.getDate();
+
+  return holidays
+    .filter(h => h.month === todayMonth && h.day === todayDay)
+    .map(h => h.name);
+}
+
+const names = getTodaySillyHolidayNames(sillyHolidaysData as SillyHoliday[]);
+let holiday : string;
+let googleLink : string | null = null;
+
+
+if (names.length === 0) {
+  holiday = "no silly holiday :/";
+} else {
+  holiday = names[Math.floor(Math.random() * names.length)];
+  googleLink = "https://www.google.com/search?ie=UTF-8&q=" + holiday;
+}
 
 export  default function  Day() {
   const today = new Date();
@@ -14,20 +54,31 @@ export  default function  Day() {
       ? "rd"
       : "th";
   const formattedDate = `${month} ${day}${suffix}`;
-  const holiday = "national OW my ears day";
 
   return (
-    <div className="bg-yellow-100 border-l-4 text-yellow-900 p-4 rounded-lg shadow-sm h-full" style={{"border":"1px solid goldenrod"}}>
-      <p className="text-base font-normal">
+    <div className="bg-yellow-100 border-l-4 text-yellow-900 p-4 rounded-lg shadow-sm h-full relative" style={{"border":"1px solid goldenrod"}}>
+      <div className="text-base font-normal">
         <h3 className="p-0 m-0 font-normal">Today is</h3>
         <h1 className="p-0 m-0 font-normal">
           {formattedDate} 
           </h1>
           —
           <br />
-          it is{" "}
-        <span className="italic">{holiday}</span>
-      </p>
+        <span className="italic">Today is {holiday}</span>
+        <br />
+
+      {googleLink && (
+        <span className="text-sm">
+          <span className="absolute bottom-0 right-1.5">
+            
+              <ExternalLink href={googleLink}>
+                <HugeiconsIcon icon={LinkSquare02Icon} size={20}/>
+              </ExternalLink>
+            
+          </span>
+        </span>
+      )}
+      </div>
     </div>
   );
 }
