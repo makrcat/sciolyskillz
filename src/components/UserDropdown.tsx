@@ -1,70 +1,90 @@
 import React, { useState, useRef, useEffect } from "react";
-import { updateProfile, User } from "firebase/auth";
-import { auth } from "../firebase-config";
+import { updateProfile, User, } from "firebase/auth";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { auth, db } from "../firebase-config";
 
-// import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
-// const storage = getStorage();
-
-const cacheUser = (user: User) => {
-  const cached = {
-    uid: user.uid,
-    displayName: user.displayName,
-    photoURL: user.photoURL,
-    email: user.email,
-    creationTime: user.metadata.creationTime,
-  };
-  localStorage.setItem("cachedUser", JSON.stringify(cached));
+type CachedUser = {
+  uid: string;
+  displayName: string | null;
+  photoURL: string | null;
+  email: string | null;
+  creationTime: string | null;
 };
 
-const getCachedUser = () => {
+const cacheUser = (user: CachedUser) => {
+  localStorage.setItem("cachedUser", JSON.stringify(user));
+};
+
+const getCachedUser = (): CachedUser | null => {
   if (typeof window === "undefined") return null;
   const data = localStorage.getItem("cachedUser");
   return data ? JSON.parse(data) : null;
 };
 
 export default function UserDropdown() {
-  // Add user state here
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<CachedUser | null>(null);
   const [displayName, setDisplayName] = useState("");
   const [editing, setEditing] = useState(false);
   const [photoURL, setPhotoURL] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-  // Load from cache first
-  const cached = getCachedUser();
-  if (cached) {
-    setUser(cached);
-    setDisplayName(cached.displayName || "");
-    setPhotoURL(cached.photoURL || "");
-  } else if (auth.currentUser) {
-    // fallback if cache empty (like first time login)
-    setUser(auth.currentUser);
-    setDisplayName(auth.currentUser.displayName || "");
-    setPhotoURL(auth.currentUser.photoURL || "");
-    cacheUser(auth.currentUser);
-  }
-}, []);
-
-  const handleDisplayNameSave = async () => {
-    if (!user) return;
+  // Fetch and cache full user
+  const fetchAndCacheUser = async (firebaseUser: User) => {
+    let creationTime = firebaseUser.metadata.creationTime ?? null;
 
     try {
-      await updateProfile(auth.currentUser!, { displayName });
+      const userDoc = await getDoc(doc(db, "users", firebaseUser.uid));
+      if (userDoc.exists()) {
+        const data = userDoc.data();
+        if (data.createdAt?.toDate) {
+          creationTime = data.createdAt.toDate().toISOString();
+        }
+      }
+    } catch (err) {
+      console.warn("Couldn't load Firestore user doc:", err);
+    }
+
+    const mergedUser: CachedUser = {
+      uid: firebaseUser.uid,
+      displayName: firebaseUser.displayName,
+      photoURL: firebaseUser.photoURL,
+      email: firebaseUser.email,
+      creationTime,
+    };
+
+    setUser(mergedUser);
+    setDisplayName(mergedUser.displayName || "");
+    setPhotoURL(mergedUser.photoURL || "");
+    cacheUser(mergedUser);
+  };
+
+  useEffect(() => {
+    const cached = getCachedUser();
+    if (cached) {
+      setUser(cached);
+      setDisplayName(cached.displayName || "");
+      setPhotoURL(cached.photoURL || "");
+    } else if (auth.currentUser) {
+      fetchAndCacheUser(auth.currentUser);
+    }
+  }, []);
+
+  const handleDisplayNameSave = async () => {
+    if (!auth.currentUser) return;
+    try {
+      if (displayName === auth.currentUser.displayName) {
+        setEditing(false);
+        return;
+      }
+
+      await updateProfile(auth.currentUser, { displayName });
       setEditing(false);
 
-      // Refresh user info from auth and update state/cache
-      await auth.currentUser!.reload();
-
-      const updatedUser = auth.currentUser!;
-      setUser(updatedUser);
-      setDisplayName(updatedUser.displayName || "");
-      // reflect changes
-
-      // save it for next time
-      cacheUser(updatedUser);
-      
+      await updateDoc(doc(db, "users", auth.currentUser.uid), {
+        displayName,
+      });
+      await auth.currentUser.reload();
+      await fetchAndCacheUser(auth.currentUser);
 
     } catch (error) {
       console.error("Failed to update display name:", error);
@@ -77,25 +97,10 @@ export default function UserDropdown() {
 
   const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file || !user) return;
+    if (!file || !auth.currentUser) return;
 
     try {
-        /*
-      const photoRef = ref(storage, `profilePhotos/${user.uid}`);
-      await uploadBytes(photoRef, file);
-
-      const downloadURL = await getDownloadURL(photoRef);
-      await updateProfile(auth.currentUser!, { photoURL: downloadURL });
-
-      await auth.currentUser!.reload();
-      const updatedUser = auth.currentUser!;
-      setUser(updatedUser);
-      setPhotoURL(updatedUser.photoURL || "");
-
-      cacheUser(updatedUser);
-
-      alert("Profile photo updated!");
-      */
+      // todo: upload photo
     } catch (error) {
       console.error("Error uploading or updating profile photo:", error);
     }
@@ -169,8 +174,8 @@ export default function UserDropdown() {
       <div>
         <p className="text-sm text-gray-600">
           <span className="font-medium">Account Created:</span>{" "}
-          {user?.metadata?.creationTime
-            ? new Date(user.metadata.creationTime).toLocaleString()
+          {user?.creationTime
+            ? new Date(user.creationTime).toLocaleString()
             : "Unknown"}
         </p>
       </div>
