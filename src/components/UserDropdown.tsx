@@ -22,10 +22,10 @@ const getCachedUser = (): CachedUser | null => {
 };
 
 export default function UserDropdown() {
-  const [user, setUser] = useState<CachedUser | null>(null);
-  const [displayName, setDisplayName] = useState("");
+  const [user, setUser] = useState<CachedUser | null>(getCachedUser());
+  const [displayName, setDisplayName] = useState(user?.displayName || "");
   const [editing, setEditing] = useState(false);
-  const [photoURL, setPhotoURL] = useState("");
+  const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Fetch and cache full user
