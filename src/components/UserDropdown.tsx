@@ -1,93 +1,58 @@
 import React, { useState, useRef, useEffect } from "react";
-import { updateProfile, User, } from "firebase/auth";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { auth, db } from "../firebase-config";
-
-type CachedUser = {
-  uid: string;
-  displayName: string | null;
-  photoURL: string | null;
-  email: string | null;
-  creationTime: string | null;
-};
-
-const cacheUser = (user: CachedUser) => {
-  localStorage.setItem("cachedUser", JSON.stringify(user));
-};
-
-const getCachedUser = (): CachedUser | null => {
-  if (typeof window === "undefined") return null;
-  const data = localStorage.getItem("cachedUser");
-  return data ? JSON.parse(data) : null;
-};
+import { auth } from "../firebase-config";
+import {
+  updateProfile,
+  signOut,
+  onAuthStateChanged,
+  User,
+} from "firebase/auth";
 
 export default function UserDropdown() {
-  const [user, setUser] = useState<CachedUser | null>(getCachedUser());
-  const [displayName, setDisplayName] = useState(user?.displayName || "");
+  const [user, setUser] = useState<User | null>(auth.currentUser);
+  const [displayName, setDisplayName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
   const [editing, setEditing] = useState(false);
-  const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Fetch and cache full user
-  const fetchAndCacheUser = async (firebaseUser: User) => {
-    let creationTime = firebaseUser.metadata.creationTime ?? null;
-
-    try {
-      const userDoc = await getDoc(doc(db, "users", firebaseUser.uid));
-      if (userDoc.exists()) {
-        const data = userDoc.data();
-        if (data.createdAt?.toDate) {
-          creationTime = data.createdAt.toDate().toISOString();
-        }
-      }
-    } catch (err) {
-      console.warn("Couldn't load Firestore user doc:", err);
+  const fetchUser = async () => {
+    if (auth.currentUser) {
+      await auth.currentUser.reload();
+      const u = auth.currentUser;
+      setUser(u);
+      setDisplayName(u.displayName || "");
+      setPhotoURL(u.photoURL || "");
     }
-
-    const mergedUser: CachedUser = {
-      uid: firebaseUser.uid,
-      displayName: firebaseUser.displayName,
-      photoURL: firebaseUser.photoURL,
-      email: firebaseUser.email,
-      creationTime,
-    };
-
-    setUser(mergedUser);
-    setDisplayName(mergedUser.displayName || "");
-    setPhotoURL(mergedUser.photoURL || "");
-    cacheUser(mergedUser);
   };
 
   useEffect(() => {
-    const cached = getCachedUser();
-    if (cached) {
-      setUser(cached);
-      setDisplayName(cached.displayName || "");
-      setPhotoURL(cached.photoURL || "");
-    } else if (auth.currentUser) {
-      fetchAndCacheUser(auth.currentUser);
-    }
+    fetchUser();
+
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+      setDisplayName(firebaseUser?.displayName || "");
+      setPhotoURL(firebaseUser?.photoURL || "");
+    });
+
+    return () => unsubscribe();
   }, []);
 
   const handleDisplayNameSave = async () => {
     if (!auth.currentUser) return;
     try {
-      if (displayName === auth.currentUser.displayName) {
-        setEditing(false);
-        return;
-      }
-
       await updateProfile(auth.currentUser, { displayName });
       setEditing(false);
+      fetchUser();
+    } catch (err) {
+      console.error("Failed to update display name:", err);
+    }
+  };
 
-      await updateDoc(doc(db, "users", auth.currentUser.uid), {
-        displayName,
-      });
-      await auth.currentUser.reload();
-      await fetchAndCacheUser(auth.currentUser);
-
-    } catch (error) {
-      console.error("Failed to update display name:", error);
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      window.location.reload();
+    } catch (err) {
+      console.error("Failed to log out:", err);
     }
   };
 
@@ -100,11 +65,15 @@ export default function UserDropdown() {
     if (!file || !auth.currentUser) return;
 
     try {
-      // todo: upload photo
+      // TODO: Upload image to storage & get URL
+      // await updateProfile(auth.currentUser, { photoURL: uploadedURL });
+      // fetchUser();
     } catch (error) {
-      console.error("Error uploading or updating profile photo:", error);
+      console.error("Error updating photoURL:", error);
     }
   };
+
+  if (!user) return null;
 
   return (
     <div
@@ -119,10 +88,12 @@ export default function UserDropdown() {
           <img
             src={photoURL || "/default-avatar.png"}
             alt="Profile"
-            className="min-h-16 min-w-16 rounded-full cursor-pointer mr-1"
+            className="min-h-16 min-w-16 rounded-full cursor-pointer"
             onClick={handlePhotoClick}
-            style={{ transition: "box-shadow 0.2s, border-color 0.2s" }}
-            onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 0 0 4px #cbd5e1")}
+            style={{ transition: "box-shadow 0.2s" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.boxShadow = "0 0 0 4px #cbd5e1")
+            }
             onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "")}
           />
           <input
@@ -157,12 +128,12 @@ export default function UserDropdown() {
         </div>
       </div>
 
-      {/* Email (Disabled) */}
+      {/* Email */}
       <div className="mb-4">
         <label className="text-sm font-medium text-gray-700">Email</label>
         <input
           type="email"
-          value={user?.email || ""}
+          value={user.email || ""}
           disabled
           className="border bg-gray-100 rounded px-2 py-1 text-sm w-full"
         />
@@ -174,11 +145,21 @@ export default function UserDropdown() {
       <div>
         <p className="text-sm text-gray-600">
           <span className="font-medium">Account Created:</span>{" "}
-          {user?.creationTime
-            ? new Date(user.creationTime).toLocaleString()
+          {user.metadata.creationTime
+            ? new Date(user.metadata.creationTime).toLocaleString()
             : "Unknown"}
         </p>
       </div>
+
+      <hr className="my-4" />
+
+      {/* Logout */}
+      <button
+        onClick={handleLogout}
+        className="text-red-600 text-sm hover:underline"
+      >
+        Log Out
+      </button>
     </div>
   );
 }
