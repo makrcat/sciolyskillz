@@ -23,7 +23,7 @@ export default function UserDropdown({ user, onUpdate }: UserDropdownProps) {
     try {
       await updateProfile(user, { displayName });
       setEditing(false);
-      await user.reload();
+      // await user.reload();
       onUpdate(user); // Notify parent with updated user
     } catch (err) {
       console.error("Failed to update display name:", err);
