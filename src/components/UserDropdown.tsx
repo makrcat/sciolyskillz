@@ -7,41 +7,24 @@ import {
   User,
 } from "firebase/auth";
 
-export default function UserDropdown() {
-  const [user, setUser] = useState<User | null>(auth.currentUser);
-  const [displayName, setDisplayName] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
+
+type UserDropdownProps = {
+  user: User;
+  onUpdate: (updatedUser: User) => void;
+};
+
+export default function UserDropdown({ user, onUpdate }: UserDropdownProps) {
+  const [displayName, setDisplayName] = useState(user.displayName || "");
+  const [photoURL, setPhotoURL] = useState(user.photoURL || "");
   const [editing, setEditing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const fetchUser = async () => {
-    if (auth.currentUser) {
-      await auth.currentUser.reload();
-      const u = auth.currentUser;
-      setUser(u);
-      setDisplayName(u.displayName || "");
-      setPhotoURL(u.photoURL || "");
-    }
-  };
-
-  useEffect(() => {
-    fetchUser();
-
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-      setDisplayName(firebaseUser?.displayName || "");
-      setPhotoURL(firebaseUser?.photoURL || "");
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   const handleDisplayNameSave = async () => {
-    if (!auth.currentUser) return;
     try {
-      await updateProfile(auth.currentUser, { displayName });
+      await updateProfile(user, { displayName });
       setEditing(false);
-      fetchUser();
+      await user.reload();
+      onUpdate(user); // Notify parent with updated user
     } catch (err) {
       console.error("Failed to update display name:", err);
     }
@@ -62,24 +45,20 @@ export default function UserDropdown() {
 
   const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file || !auth.currentUser) return;
+    if (!file) return;
 
     try {
-      // TODO: Upload image to storage & get URL
-      // await updateProfile(auth.currentUser, { photoURL: uploadedURL });
-      // fetchUser();
+      // TODO: upload to Firebase Storage and get `uploadedURL`
+      // await updateProfile(user, { photoURL: uploadedURL });
+      // await user.reload();
+      // onUpdate(user);
     } catch (error) {
       console.error("Error updating photoURL:", error);
     }
   };
 
-  if (!user) return null;
-
   return (
-    <div
-      className="absolute mt-1 right-0 p-4 bg-white rounded shadow"
-      style={{ border: "1px solid lightgray" }}
-    >
+    <div className="absolute mt-1 right-0 p-4 bg-white rounded shadow" style={{ border: "1px solid lightgray" }}>
       <h3 className="text-lg font-semibold mb-4">Hello :)</h3>
 
       {/* Profile Picture */}
@@ -90,19 +69,10 @@ export default function UserDropdown() {
             alt="Profile"
             className="min-h-16 min-w-16 rounded-full cursor-pointer"
             onClick={handlePhotoClick}
-            style={{ transition: "box-shadow 0.2s" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.boxShadow = "0 0 0 4px #cbd5e1")
-            }
+            onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 0 0 4px #cbd5e1")}
             onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "")}
           />
-          <input
-            type="file"
-            accept="image/*"
-            ref={fileInputRef}
-            className="hidden"
-            onChange={handlePhotoChange}
-          />
+          <input type="file" accept="image/*" ref={fileInputRef} className="hidden" onChange={handlePhotoChange} />
         </div>
 
         <div>
@@ -116,13 +86,9 @@ export default function UserDropdown() {
               className={`border rounded px-2 py-1 text-sm ${editing ? "" : "bg-gray-100"}`}
             />
             {editing ? (
-              <button onClick={handleDisplayNameSave} className="text-blue-600 text-sm">
-                Save
-              </button>
+              <button onClick={handleDisplayNameSave} className="text-blue-600 text-sm">Save</button>
             ) : (
-              <button onClick={() => setEditing(true)} className="text-gray-600 text-sm">
-                Edit
-              </button>
+              <button onClick={() => setEditing(true)} className="text-gray-600 text-sm">Edit</button>
             )}
           </div>
         </div>
@@ -145,19 +111,13 @@ export default function UserDropdown() {
       <div>
         <p className="text-sm text-gray-600">
           <span className="font-medium">Account Created:</span>{" "}
-          {user.metadata.creationTime
-            ? new Date(user.metadata.creationTime).toLocaleString()
-            : "Unknown"}
+          {user.metadata.creationTime ? new Date(user.metadata.creationTime).toLocaleString() : "Unknown"}
         </p>
       </div>
 
       <hr className="my-4" />
 
-      {/* Logout */}
-      <button
-        onClick={handleLogout}
-        className="text-red-600 text-sm hover:underline"
-      >
+      <button onClick={handleLogout} className="text-red-600 text-sm hover:underline">
         Log Out
       </button>
     </div>
