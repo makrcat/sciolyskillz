@@ -1,41 +1,15 @@
-# Website
+# sciolyskillz
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+![banner](READMEimages/banner.png)
 
-## Installation
+This is a site to help prep for SciOly, or [Science Olympiad](https://www.soinc.org/). 
 
-```bash
-yarn
-```
+## but why?
+I noticed that all the scioly resources online were quite scattered, so I hope this website can be a central hub of information, much like https://usaco.guide/.
 
-## Local Development
+It's also a way for me to learn more about using React.js and Firebase as a backend, as well how to integrate it with front-end web design :)
 
-```bash
-yarn start
-```
+## Made for summer of making | hackclub
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-## Build
-
-```bash
-yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## Deployment
-
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Check out the project page! I post devlogs here
+https://summer.hackclub.com/projects/5460
