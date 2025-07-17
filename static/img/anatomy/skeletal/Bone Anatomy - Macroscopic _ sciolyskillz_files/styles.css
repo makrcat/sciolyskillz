@@ -2267,11 +2267,11 @@ hr {
 .hero--dark {
     --ifm-hero-background-color: #303846;
     --ifm-hero-text-color: var(--ifm-color-white);
-  }
+}
 
 .hero__title {
-    font-size: 3rem;
-  }
+  font-size: 4rem;
+}
 
 .hero__subtitle {
     font-size: 1.5rem;

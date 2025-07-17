@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'sciolyskillz',
-  tagline: 'get your study prep here B)',
+  tagline: 'A resource hub for Science Olympiad.',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
