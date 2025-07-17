@@ -3,6 +3,16 @@
  * and scoped locally.
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+.title {
+  font-family: "Fredericka the Great", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 6rem;
+}
+
+
 .heroBanner {
   padding: 4rem 0;
   text-align: center;

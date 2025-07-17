@@ -3,12 +3,8 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
-
-
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -16,9 +12,9 @@ function HomepageHeader() {
 
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <Heading as="h1" className="hero__title text-white">
+        <h1 className={styles.title}>
           {siteConfig.title}
-        </Heading>
+        </h1>
 
         <p className="hero__subtitle text-white">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
@@ -44,6 +40,8 @@ export default function Home(): ReactNode {
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
+
+    
         
       </main>
     </Layout>
