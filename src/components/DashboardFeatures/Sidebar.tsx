@@ -7,7 +7,7 @@ export default function Sidebar() {
     <div className="w-64 max-h-full">
       <aside className="w-64 shadow-lg sidebar-custom bg-slate-50 fixed h-full">
         <nav>
-          <ul className="flex flex-col px-2 py-4 space-y-0">
+          <ul className="px-2 py-4 items-start">
             <SidebarElement icon={SmileIcon} label="Dashboard" href="dashboard" />
             <SidebarElement icon={PencilIcon} label="Practice" href="practice" />
             <SidebarElement icon={Task01Icon} label="Tests" href="tests" />

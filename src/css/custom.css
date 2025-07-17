@@ -30,20 +30,22 @@ p {
 }
 
 /* custom.css */
-button, input, select, textarea {
+input, select, textarea {
   border: 1px solid #ccc; /* add subtle border */
-  
 }
 
 .force-border {
   border: 1px solid #ccc; /* add subtle border */
 }
 
+/*
+alright, don't do that. it breaks the dashboard kinda. and the buttons on the sidebar
 button {
   display: flex;
-  justify-content: center; /* centers horizontally */
+  justify-content: center; 
   align-items: center;
 }
+*/
 
 /* infima ughghggh */
 /* ---------------------------------------------------------------------------*/
@@ -98,10 +100,6 @@ button {
 
 
   
-
-.no-infima * {
-  /* it doenst work */
-}
 
 .accent {
   position: relative;
