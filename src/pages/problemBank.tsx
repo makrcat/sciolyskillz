@@ -29,22 +29,32 @@ const searchClient = algoliasearch(
 
 
 function Hit({ hit }) {
-    return (
-        <div className=" bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
-                {hit.question}
-            </h3>
-            <div className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
-                <p>
-                    <span className="font-medium text-gray-700 dark:text-gray-200">System:</span> {hit.system}
-                </p>
-                <p>
-                    <span className="font-medium text-gray-700 dark:text-gray-200">Division:</span> {hit.division}
-                </p>
-            </div>
-        </div>
-    );
+  return (
+    <div className="bg-slate-100 rounded-xl shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow dark:bg-gray-800 dark:border-gray-700">
+      <h3 className="text-lg font-semibold dark:text-white mb-3">{hit.question}</h3>
+
+      {hit.potentialAnswers && hit.potentialAnswers.length > 0 && (
+          <div>
+            <span className="font-medium">Potential Answers:</span>
+            <ul className="list-disc list-inside ml-4">
+              {hit.potentialAnswers.map((ans, idx) => (
+                <li key={idx}>{ans}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+      <div className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+        <p><span className="font-medium">Event:</span> {hit.event ?? "N/A"}</p>
+        <p><span className="font-medium">System:</span> {hit.system ?? "N/A"}</p>
+        <p><span className="font-medium">Competition:</span> 
+        {`${hit.year} ${hit.competition} ${hit.division}`}</p>
+        <p><span className="font-medium">ID:</span> {hit.id ?? "N/A"}</p>
+      </div>
+    </div>
+  );
 }
+
 
 
 export default function App() {
@@ -61,7 +71,9 @@ export default function App() {
                             <SearchDropdown />
                     </div>
 
-                    <Hits hitComponent={Hit} />
+                    <div className="mx-20  flex flex-column gap-2">
+                        <Hits hitComponent={Hit} />
+                    </div>
                     <div className="mt-6 flex justify-center">
                         <Pagination />
                     </div>
