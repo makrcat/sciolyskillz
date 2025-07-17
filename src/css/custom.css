@@ -41,6 +41,32 @@ button {
 }
 
 /* infima ughghggh */
+/* ---------------------------------------------------------------------------*/
+
+.ais-Hits-list {
+  list-style: none;
+  padding-left: 0;
+  gap: 0.5rem;
+}
+
+.ais-Pagination-list {
+  @apply flex justify-center gap-2 list-none p-0;
+}
+
+.ais-Pagination-item {
+  @apply text-sm;
+}
+
+/* Style pagination links */
+.ais-Pagination-link {
+  @apply px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700;
+}
+
+/* Active page */
+.ais-Pagination-item--selected .ais-Pagination-link {
+  @apply bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500;
+}
+
 
 
 .login-button:hover {
