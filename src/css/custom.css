@@ -15,6 +15,11 @@ a {
   @apply no-underline;
 }
 
+p {
+  margin: 0;
+  /* im oaisgdbkxcl infima please */
+}
+
 .login-button {
   background-color: rgb(232, 247, 247);
   border: 2px solid rgb(131, 199, 199);
@@ -43,11 +48,16 @@ button {
 /* infima ughghggh */
 /* ---------------------------------------------------------------------------*/
 
+
 .ais-Hits-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
   list-style: none;
-  padding-left: 0;
-  gap: 0.5rem;
 }
+
 
 .ais-Pagination-list {
   @apply flex justify-center gap-2 list-none p-0;
@@ -131,36 +141,6 @@ button {
   max-width: 100%; 
 }
 
-.checkyo-box {
-  border: 1px solid #cbd5e1; /* slate-300 */
-  background-color: oklch(98.4% 0.003 247.858);
-  border-radius: 0.5rem;      /* rounded-lg */
-  padding: 1rem;              /* p-4 */
-  color: #334155;             /* slate-700 */
-  margin-bottom: 1.25rem;     /* mb-5 */
-}
-
-
-
-/* convert */
-.checkyo-answer {
-  text-align: left;
-  border: 1px solid oklch(86.9% 0.022 252.894);
-  background: white;
-  border-radius: 0.5rem;    
-  padding: 0.5rem;
-  padding-left: 2.5rem;
-  margin-left: 1rem;
-  width: 100%;
-  /*border: 1px solid transparent;*/
-
-  transition: all 0.15s ease;
-}
-
-.checkyo-answer.selected-answer {
-  border: 1px solid #83c7c7;
-  background-color: #e8f7f7;
-}
 
 
 @media (max-width: 1200px) {

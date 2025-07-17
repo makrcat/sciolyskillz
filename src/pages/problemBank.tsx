@@ -4,7 +4,7 @@ import Layout from '@theme/Layout';
 import SearchDropdown from '../components/SearchDropdown';
 
 import '../css/custom.css';
-
+import '../components/DocsFeatures/CheckYoWork.css'
 // load correctly so my components look correct :[
 
 import {
@@ -26,33 +26,37 @@ const searchClient = algoliasearch(
     searchAPIkey
 );
 
-
+const letters = ['A', 'B', 'C', 'D'];
 
 function Hit({ hit }) {
-  return (
-    <div className="bg-slate-100 rounded-xl shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow dark:bg-gray-800 dark:border-gray-700">
-      <h3 className="text-lg font-semibold dark:text-white mb-3">{hit.question}</h3>
+    return (
+        <div className="checkyo-box padding-bottom h-full relative">
+            <p className="font-medium m-0">Event: {hit.event ?? "N/A"}</p>
+            <p className="font-medium mb-4">System: {hit.system ?? "N/A"}</p>
 
-      {hit.potentialAnswers && hit.potentialAnswers.length > 0 && (
-          <div>
-            <span className="font-medium">Potential Answers:</span>
-            <ul className="list-disc list-inside ml-4">
-              {hit.potentialAnswers.map((ans, idx) => (
-                <li key={idx}>{ans}</li>
-              ))}
-            </ul>
-          </div>
-        )}
+            <h3 className="text-lg font-semibold dark:text-white mb-4">{hit.question}</h3>
 
-      <div className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
-        <p><span className="font-medium">Event:</span> {hit.event ?? "N/A"}</p>
-        <p><span className="font-medium">System:</span> {hit.system ?? "N/A"}</p>
-        <p><span className="font-medium">Competition:</span> 
-        {`${hit.year} ${hit.competition} ${hit.division}`}</p>
-        <p><span className="font-medium">ID:</span> {hit.id ?? "N/A"}</p>
-      </div>
-    </div>
-  );
+            {hit.potentialAnswers && hit.potentialAnswers.length > 0 && (
+                <div>
+                    <span>
+                        {hit.potentialAnswers.map((ans, idx) => (
+                            <div className="checkyo-answer" style={{"margin": "0px 4px 4px 0px", "padding":"6px 12px"}}> 
+                            <span className="font-semibold mr-2">
+                                {letters[idx]} 
+                            </span>
+                            {ans} 
+                            </div>
+                        ))}
+                    </span>
+                </div>
+            )}
+
+            <div className="absolute bottom-2 text-sm text-gray-700 dark:text-gray-300">
+                <p>{`${hit.year} ${hit.competition} ${hit.division}`}</p>
+                <p>ID: {hit.id ?? "N/A"}</p>
+            </div>
+        </div>
+    );
 }
 
 
@@ -66,19 +70,23 @@ export default function App() {
                     <div style={{ "height": "50vh" }}
                         className=" bg-[rgb(48,132,84)] text-white pt-[15vh]" >
 
-                            <h1 className="text-3xl font-bold mb-4 text-center">Question Search</h1>
+                        <h1 className="text-3xl font-bold mb-4 text-center">Question Search</h1>
 
-                            <SearchDropdown />
+                        <SearchDropdown />
                     </div>
 
-                    <div className="mx-20  flex flex-column gap-2">
+
+
+                    <div className="p-10">
                         <Hits hitComponent={Hit} />
                     </div>
+
+
                     <div className="mt-6 flex justify-center">
                         <Pagination />
                     </div>
 
-                    <Configure hitsPerPage={10} />
+                    <Configure hitsPerPage={9} />
                 </div>
             </InstantSearch>
         </Layout>
