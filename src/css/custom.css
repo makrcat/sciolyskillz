@@ -24,6 +24,25 @@ a {
 
 }
 
+/* custom.css */
+button, input, select, textarea {
+  border: 1px solid #ccc; /* add subtle border */
+  
+}
+
+.force-border {
+  border: 1px solid #ccc; /* add subtle border */
+}
+
+button {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;
+}
+
+/* infima ughghggh */
+
+
 .login-button:hover {
   cursor: pointer;
   background-color: rgb(208, 231, 231);
