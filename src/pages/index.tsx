@@ -17,7 +17,7 @@ function HomepageHeader() {
           {siteConfig.title}
         </h1>
 
-        <p className="hero__subtitle text-white">{siteConfig.tagline}</p>
+        <p className="hero__subtitle text-white pb-4">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
