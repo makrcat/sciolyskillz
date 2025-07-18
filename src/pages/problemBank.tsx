@@ -42,11 +42,11 @@ function Hit({ hit }) {
                 <div>
                     <span>
                         {hit.potentialAnswers.map((ans, idx) => (
-                            <div className="checkyo-answer" style={{"margin": "0px 4px 4px 0px", "padding":"6px 12px"}}> 
-                            <span className="font-semibold mr-2">
-                                {letters[idx]} 
-                            </span>
-                            {ans} 
+                            <div className="checkyo-answer" style={{ "margin": "0px 4px 4px 0px", "padding": "6px 12px" }}>
+                                <span className="font-semibold mr-2">
+                                    {letters[idx]}
+                                </span>
+                                {ans}
                             </div>
                         ))}
                     </span>
@@ -72,9 +72,15 @@ export default function App() {
                     <div style={{ "height": "50vh" }}
                         className=" bg-[rgb(48,132,84)] text-white pt-[15vh]" >
 
-                        <h1 className="text-3xl font-bold mb-4 text-center">Question Search</h1>
+                        <center>
+                            <h1 className="text-3xl font-bold mb-4 text-center">Question Search</h1>
 
-                        <SearchDropdown />
+
+                            <SearchDropdown />
+                            <span className="flex flex-row gap-2 items-center justify-center">Powered by 
+                                <img height="20px" src="img/legality.png"></img>
+                            </span>
+                        </center>
                     </div>
 
 
