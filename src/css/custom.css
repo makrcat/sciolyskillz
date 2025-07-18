@@ -7,6 +7,11 @@
 @tailwind components;
 @tailwind utilities;
 
+em {
+  font-style: normal;
+  background-color: rgb(89, 238, 226);
+}
+
 h1 {
   font-size: 40px;
 }

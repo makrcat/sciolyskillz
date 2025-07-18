@@ -1,5 +1,7 @@
 import React from 'react';
 import algoliasearch from 'algoliasearch';
+import { Highlight } from 'react-instantsearch-dom';
+
 /* when we fix that dependency it will be {} again btw */
 
 import Layout from '@theme/Layout';
@@ -28,7 +30,7 @@ const searchClient = algoliasearch(
     searchAPIkey
 );
 
-const letters = ['A', 'B', 'C', 'D'];
+const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 
 function Hit({ hit }) {
     return (
@@ -36,7 +38,9 @@ function Hit({ hit }) {
             <p className="font-medium m-0">Event: {hit.event ?? "N/A"}</p>
             <p className="font-medium mb-4">System: {hit.system ?? "N/A"}</p>
 
-            <h3 className="text-lg font-semibold dark:text-white mb-4">{hit.question}</h3>
+            <p className="text-lg dark:text-white mb-4">
+                <Highlight attribute="question" hit={hit} tagName="em" />
+            </p>
 
             {hit.potentialAnswers && hit.potentialAnswers.length > 0 && (
                 <div>
@@ -68,16 +72,17 @@ export default function App() {
         <Layout>
             <InstantSearch indexName="sciolyskillz" searchClient={searchClient}>
 
-                <div className="max-w mx-auto">
+                <div className="w-full">
+
                     <div style={{ "height": "50vh" }}
-                        className=" bg-[rgb(48,132,84)] text-white pt-[15vh]" >
+                        className="w-full bg-[rgb(48,132,84)] text-white pt-[15vh]" >
 
                         <center>
                             <h1 className="text-3xl font-bold mb-4 text-center">Question Search</h1>
 
 
                             <SearchDropdown />
-                            <span className="flex flex-row gap-2 items-center justify-center">Powered by 
+                            <span className="flex flex-row gap-2 items-center justify-center">Powered by
                                 <img height="20px" src="img/legality.png"></img>
                             </span>
                         </center>
@@ -95,8 +100,13 @@ export default function App() {
                     </div>
 
                     <Configure hitsPerPage={9} />
+
+
                 </div>
             </InstantSearch>
+
+
+
         </Layout>
     );
 }
