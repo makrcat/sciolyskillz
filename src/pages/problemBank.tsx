@@ -1,5 +1,7 @@
 import React from 'react';
-import { algoliasearch } from 'algoliasearch';
+import algoliasearch from 'algoliasearch';
+/* when we fix that dependency it will be {} again btw */
+
 import Layout from '@theme/Layout';
 import SearchDropdown from '../components/SearchDropdown';
 
