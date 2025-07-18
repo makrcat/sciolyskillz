@@ -11,19 +11,19 @@ import styles from './index.module.css';
 function AAAAAAA() {
   return (
     <div className="relative w-2/3 flex justify-center items-center h-64">
-          <div
-            className="w-1/2 bg-slate-100 h-64 rounded-xl absolute"
-            style={{ transform: 'rotate(-10deg) translateX(-60px)', transformOrigin: 'bottom center' }}
-          ></div>
-          <div
-            className="w-1/2 bg-slate-200 h-64 rounded-xl absolute"
-            style={{ transform: 'rotate(0deg) translateX(0)', transformOrigin: 'bottom center' }}
-          ></div>
-          <div
-            className="w-1/2 bg-slate-300 h-64 rounded-xl absolute"
-            style={{ transform: 'rotate(10deg) translateX(60px)', transformOrigin: 'bottom center' }}
-          ></div>
-        </div>
+      <div
+        className="w-1/2 bg-slate-100 h-64 rounded-xl absolute"
+        style={{ transform: 'rotate(-10deg) translateX(-60px)', transformOrigin: 'bottom center' }}
+      ></div>
+      <div
+        className="w-1/2 bg-slate-200 h-64 rounded-xl absolute"
+        style={{ transform: 'rotate(0deg) translateX(0)', transformOrigin: 'bottom center' }}
+      ></div>
+      <div
+        className="w-1/2 bg-slate-300 h-64 rounded-xl absolute"
+        style={{ transform: 'rotate(10deg) translateX(60px)', transformOrigin: 'bottom center' }}
+      ></div>
+    </div>
   )
 }
 
@@ -114,30 +114,29 @@ export default function Home(): ReactNode {
         </div>
 
 
-        <div className="mx-[10vh] m-6">
+        <div className="mx-[20vh] m-6 flex flex-col gap-12 p-2">
 
 
-          <div className="flex flex-col gap-6 p-2 ">
+          <div className="
+            flex flex-row gap-6 
+            w-full 
+            force-border rounded p-8
+            bg-slate-100
+            ">
 
 
-            <div className="w-full force-border rounded p-4">
-              <h2>Docs Guide</h2>
-            
-
+            <div className="flex-1">
+              bro i cant ui design what the fudsioxfjdklvaxcklvfdkgjsklfjgjcbv
             </div>
 
 
-            <div className="w-full force-border rounded p-4">
-              <h2>Dashboard</h2>
-            </div>
-
-            <div className="w-full force-border rounded p-4">
+            <div className="flex-1">
               <h2>Docs Guide</h2>
+              <p>Yay docs! Wow! Wonderful! AAAAAAAAA I hope docs will be useful</p>
             </div>
 
 
           </div>
-
 
         </div>
 
