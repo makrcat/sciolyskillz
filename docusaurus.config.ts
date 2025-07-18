@@ -89,7 +89,7 @@ const config: Config = {
         */
         { to: '/dashboard', label: 'Dashboard', position: 'left' },
         { to: '/topics', label: 'Topics', position: 'left' },
-        { to: '#', label: 'Problem Bank', position: 'left' },
+        { to: '/problemBank', label: 'Problem Bank', position: 'left' },
         { to: '/blog', label: 'Blog', position: 'right' }, // it's just like a doc I guess
 
         { to: '#', label: 'About', position: 'right' },

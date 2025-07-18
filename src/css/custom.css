@@ -7,12 +7,22 @@
 @tailwind components;
 @tailwind utilities;
 
+em {
+  font-style: normal;
+  background-color: rgb(89, 238, 226);
+}
+
 h1 {
   font-size: 40px;
 }
 
 a {
   @apply no-underline;
+}
+
+p {
+  margin: 0;
+  /* im oaisgdbkxcl infima please */
 }
 
 .login-button {
@@ -23,6 +33,58 @@ a {
   color: rgb(45, 66, 66);
 
 }
+
+/* custom.css */
+input, select, textarea {
+  border: 1px solid #ccc; /* add subtle border */
+}
+
+.force-border {
+  border: 1px solid #ccc; /* add subtle border */
+}
+
+/*
+alright, don't do that. it breaks the dashboard kinda. and the buttons on the sidebar
+button {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+*/
+
+/* infima ughghggh */
+/* ---------------------------------------------------------------------------*/
+
+
+.ais-Hits-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+
+.ais-Pagination-list {
+  @apply flex justify-center gap-2 list-none p-0;
+}
+
+.ais-Pagination-item {
+  @apply text-sm;
+}
+
+/* Style pagination links */
+.ais-Pagination-link {
+  @apply px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700;
+}
+
+/* Active page */
+.ais-Pagination-item--selected .ais-Pagination-link {
+  @apply bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500;
+}
+
+
 
 .login-button:hover {
   cursor: pointer;
@@ -43,10 +105,6 @@ a {
 
 
   
-
-.no-infima * {
-  /* it doenst work */
-}
 
 .accent {
   position: relative;
@@ -86,36 +144,6 @@ a {
   max-width: 100%; 
 }
 
-.checkyo-box {
-  border: 1px solid #cbd5e1; /* slate-300 */
-  background-color: oklch(98.4% 0.003 247.858);
-  border-radius: 0.5rem;      /* rounded-lg */
-  padding: 1rem;              /* p-4 */
-  color: #334155;             /* slate-700 */
-  margin-bottom: 1.25rem;     /* mb-5 */
-}
-
-
-
-/* convert */
-.checkyo-answer {
-  text-align: left;
-  border: 1px solid oklch(86.9% 0.022 252.894);
-  background: white;
-  border-radius: 0.5rem;    
-  padding: 0.5rem;
-  padding-left: 2.5rem;
-  margin-left: 1rem;
-  width: 100%;
-  /*border: 1px solid transparent;*/
-
-  transition: all 0.15s ease;
-}
-
-.checkyo-answer.selected-answer {
-  border: 1px solid #83c7c7;
-  background-color: #e8f7f7;
-}
 
 
 @media (max-width: 1200px) {
