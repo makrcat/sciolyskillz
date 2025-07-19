@@ -8,26 +8,6 @@ import LikeAndSubscribe from '../components/HomepageFeatures/LikeAndSubscribe';
 import styles from './index.module.css';
 
 
-function AAAAAAA() {
-  return (
-    <div className="relative w-2/3 flex justify-center items-center h-64">
-      <div
-        className="w-1/2 bg-slate-100 h-64 rounded-xl absolute"
-        style={{ transform: 'rotate(-10deg) translateX(-60px)', transformOrigin: 'bottom center' }}
-      ></div>
-      <div
-        className="w-1/2 bg-slate-200 h-64 rounded-xl absolute"
-        style={{ transform: 'rotate(0deg) translateX(0)', transformOrigin: 'bottom center' }}
-      ></div>
-      <div
-        className="w-1/2 bg-slate-300 h-64 rounded-xl absolute"
-        style={{ transform: 'rotate(10deg) translateX(60px)', transformOrigin: 'bottom center' }}
-      ></div>
-    </div>
-  )
-}
-
-
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -78,18 +58,7 @@ export default function Home(): ReactNode {
         <div className="mx-[25vh] m-6 flex flex-col gap-12 p-2">
 
 
-          <div className="
-            flex flex-row gap-6 
-            w-full 
-            force-border rounded p-8
-            bg-slate-100
-            ">
-
-
-            <div>
-              bro i cant ui design what
-            </div>
-
+          <div className="flex flex-row gap-6 w-full force-border rounded p-8 bg-slate-100 relative min-h-60 overflow-hidden">
 
             <div>
               <h2>Docs Guide</h2>
@@ -97,7 +66,15 @@ export default function Home(): ReactNode {
             </div>
 
 
-          </div>
+              <div
+                className="w-64 bg-slate-300 h-64 rounded-lg absolute bottom-[-4rem] right-16"
+                style={{ transform: 'rotate(8deg)', transformOrigin: 'bottom center' }}
+              ></div>
+              <div
+                className="w-64 bg-amber-500 h-64 rounded-lg absolute bottom-[-4rem] right-16"
+                style={{ transform: 'rotate(0deg)', transformOrigin: 'bottom center' }}
+              ></div>
+            </div>
 
         </div>
 
