@@ -51,9 +51,11 @@ export default function Home(): ReactNode {
       <main>
 
         <div className={styles.AUGHJHHHHH}
-          title="Unless you're me, making this homepage UI *stressing continues*">
+          title="Don't start, just stress. (Don't be happy, worry.)">
           Don't stress, just start.
+
         </div>
+        
 
 
         <div className="mx-[25vh] m-6 flex flex-col gap-12 p-2">
@@ -63,7 +65,7 @@ export default function Home(): ReactNode {
 
             <div className='mr-96'>
               <h2>Practice tests</h2>
-              <p className='text-lg'>Our backend sifts through a bin of past questions like LEGO, and builds a neat practice test on any topic. I mean, hopefully</p>
+              <p className='text-lg'>Our backend sifts through a bin of past questions like a child with a bin of LEGO, and builds a neat practice test on any topic. I mean, hopefully</p>
             </div>
 
             <div
