@@ -7,9 +7,17 @@
 @tailwind components;
 @tailwind utilities;
 
-em {
+em.ais-Highlight-highlighted {
   font-style: normal;
   background-color: rgb(89, 238, 226);
+}
+
+/*i make my own :3*/
+.mdx-paragraph {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  line-height: 1.8;
+  color: #333;
 }
 
 h1 {
@@ -22,6 +30,7 @@ a {
 
 p {
   margin: 0;
+  line-height: 1.5;
   /* im oaisgdbkxcl infima please */
 }
 

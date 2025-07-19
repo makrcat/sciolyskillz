@@ -93,11 +93,6 @@ const config: Config = {
         { to: '/blog', label: 'Blog', position: 'right' }, // it's just like a doc I guess
 
         { to: '#', label: 'About', position: 'right' },
-        {
-          href: 'https://nuhuh',
-          label: 'GitHub',
-          position: 'right',
-        },
       ],
     },
     footer: {
