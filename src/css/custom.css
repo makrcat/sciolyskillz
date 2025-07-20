@@ -38,6 +38,13 @@ h3 {
   font-weight: 600;
 }
 
+h4 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/*todo: make some styles specific to docs */
+
 a {
   @apply no-underline;
 }
