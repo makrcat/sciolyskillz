@@ -75,15 +75,21 @@ export default function App() {
                 <div className="w-full">
 
                     <div style={{ "height": "50vh" }}
-                        className="w-full bg-[rgb(48,132,84)] text-white pt-[15vh]" >
+                        className="w-full bg-gray-600 text-white pt-[15vh]" >
 
                         <center>
-                            <h1 className="text-3xl font-bold mb-4 text-center">Question Search</h1>
+                            <h1 className="text-5xl font-bold mb-10 text-center">Question Search</h1>
 
 
                             <SearchDropdown />
-                            <span className="flex flex-row gap-2 items-center justify-center">Powered by
-                                <img height="20px" src="img/legality.png"></img>
+
+                            <span className="mt-5 flex flex-row gap-2 items-center justify-center">Search by
+                                <img
+                                    className="h-5 cursor-pointer"
+                                    src="img/legality.png"
+                                    alt="Legality"
+                                    onClick={() => window.open('https://www.algolia.com/', '_blank')}
+                                />
                             </span>
                         </center>
                     </div>
@@ -95,7 +101,7 @@ export default function App() {
                     </div>
 
 
-                    <div className="mt-6 flex justify-center">
+                    <div className="my-6 flex justify-center">
                         <Pagination />
                     </div>
 

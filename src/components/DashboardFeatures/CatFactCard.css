@@ -33,14 +33,15 @@
 .catfact-card button {
   background-color: #ffd6a5;
   border: none;
-  padding: 0.4rem 0.8rem;
+  padding: 0.2rem 0.4rem;
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
   color: #5b3219;
   transition: background-color 0.2s;
   position: absolute;
-  bottom: 14px;
+  bottom: 10px;
+  font-size: 14px;
 }
 
 .catfact-card button:hover {

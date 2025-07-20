@@ -69,6 +69,7 @@ const config: Config = {
     ],
   ],
 
+  stylesheets: [],
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
@@ -127,7 +128,7 @@ const config: Config = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} by makrcat. Built with Docusaurus.`,
     },
-    
+
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,

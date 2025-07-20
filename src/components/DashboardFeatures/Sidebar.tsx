@@ -4,8 +4,8 @@ import { SmileIcon, PencilIcon, Bookmark02Icon, BookEditIcon, Task01Icon } from 
 
 export default function Sidebar() {
   return (
-    <div className="w-64 max-h-full">
-      <aside className="w-64 shadow-lg sidebar-custom bg-slate-50 fixed h-full">
+
+      <div className="w-64 sidebar-custom h-full shadow" style={{"borderRight":"1px solid lightgray"}}>
         <nav>
           <ul className="px-2 py-4 items-start">
             <SidebarElement icon={SmileIcon} label="Dashboard" href="dashboard" />
@@ -15,7 +15,6 @@ export default function Sidebar() {
             <SidebarElement icon={Bookmark02Icon} label="Bookmarks" href="bookmarks" />
           </ul>
         </nav>
-      </aside>
-    </div>
+      </div>
   );
 }

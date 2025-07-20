@@ -196,11 +196,12 @@ function Topics() {
     const { siteConfig } = useDocusaurusContext();
     return (
 
-        <header className={clsx('hero hero--primary', styles.heroBanner)}>
+        <header className="bg-teal-600 text-white text-center p-12">
             <div className="container">
-                <Heading as="h1" className="hero__title">
+                <h1>
                     Events for 2026
-                </Heading>
+                </h1>
+                <p className="subtitle">Yes I will fix up this page later!</p>
             </div>
         </header>
     );

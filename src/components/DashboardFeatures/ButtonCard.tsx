@@ -54,7 +54,7 @@ export default function ButtonCard() {
 
   return (
     <div className="button-card">
-      <h3 className="text-md p-0 pb-0 mb-2">Button card</h3>
+      <h3 className="text-md p-0 mb-2">Button card</h3>
       <p className="text-sm mb-2">Why do you have access to this? Well, because I don't know how to use firebase yet.</p>
       
       <div>Counter: {counter}</div>

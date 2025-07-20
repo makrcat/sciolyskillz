@@ -4,6 +4,7 @@
  * work well for content-centric websites.
  */
 
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -22,6 +23,19 @@ em.ais-Highlight-highlighted {
 
 h1 {
   font-size: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 600;
 }
 
 a {
@@ -30,8 +44,13 @@ a {
 
 p {
   margin: 0;
+  font-size: 16px;
   line-height: 1.5;
   /* im oaisgdbkxcl infima please */
+}
+
+p.subtitle {
+  font-size: 22px;
 }
 
 .login-button {

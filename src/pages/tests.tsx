@@ -5,6 +5,7 @@ import Layout from '@theme/Layout';
 
 
 import Sidebar from "../components/DashboardFeatures/Sidebar";
+import Tabs from "../components/Tabs";
 
 export default function Tests() {
   return (
@@ -12,10 +13,29 @@ export default function Tests() {
 
       <div className="flex flex-row">
         <Sidebar />
-        <div className="p-8 pt-8">
-          <h1>Tests</h1>
-          <p> This page hasn't been made yet!</p>
-          
+
+        <div className="p-8 w-full">
+
+          <div className="flex flex-col items-start gap-4 mb-0">
+            <h1 className="text-4xl m-0">Practice tests</h1>
+            <p>Whrrr. Generating test...</p>
+
+            
+            <div className="p-4">
+              <button className="btn btn-primary">Hello World</button>
+            </div>
+
+
+          </div>
+          <hr className="my-2 mx-0" />
+
+          <div>a bunch of graphs</div>
+
+          <p> active tests?</p>
+          <em>practice makes perfect, as they say</em>
+
+          <Tabs />
+
         </div>
       </div>
     </Layout >

@@ -56,7 +56,7 @@ export  default function  Day() {
   const formattedDate = `${month} ${day}${suffix}`;
 
   return (
-    <div className="bg-yellow-100 border-l-4 text-yellow-900 p-4 rounded-lg shadow-sm h-full relative" style={{"border":"1px solid goldenrod"}}>
+    <div className="bg-yellow-100 text-yellow-900 p-4 rounded-lg h-full relative" style={{"border":"1px solid goldenrod"}}>
       <div className="text-base font-normal">
         <h3 className="p-0 m-0 font-normal">Today is</h3>
         <h1 className="p-0 m-0 font-normal">
@@ -69,7 +69,7 @@ export  default function  Day() {
 
       {googleLink && (
         <span className="text-sm">
-          <span className="absolute bottom-0 right-1.5">
+          <span className="absolute bottom-1.5 right-1.5">
             
               <ExternalLink href={googleLink}>
                 <HugeiconsIcon icon={LinkSquare02Icon} size={20}/>

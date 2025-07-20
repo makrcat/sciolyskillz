@@ -31,8 +31,9 @@ function SearchDropdown({ currentRefinement, refine }) {
 
     return (
         <form
-            className="max-w-lg mx-auto bg-gradient-to-r from-teal-500 to-blue-600 p-4 rounded-lg"
+            className="max-w-lg mx-auto relative"
             onSubmit={handleSubmit}>
+            <div className="w-full h-full blur-2xl absolute bg-gradient-to-r from-teal-500 to-blue-600 p-2 rounded-xl "></div>
             <div className="flex">
                 <label
                     htmlFor="search-dropdown"
@@ -113,7 +114,7 @@ function SearchDropdown({ currentRefinement, refine }) {
                     />
                     <button
                         type="submit"
-                        className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-teal-700 rounded-e-lg border border-blue-700 hover:bg-teal-800" 
+                        className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-teal-700 rounded-e-lg border hover:bg-teal-800" 
                     >
                         <svg
                             className="w-4 h-4"

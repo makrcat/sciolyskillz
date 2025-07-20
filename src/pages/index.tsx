@@ -21,11 +21,10 @@ function HomepageHeader() {
           {siteConfig.title}
         </h1>
 
-
-        <p className="hero__subtitle text-white pb-6">{siteConfig.tagline}</p>
+        <p className="subtitle text-white pb-6 mt-4 ">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
+            className="button button--secondary button--lg bg-white text-black "
             to="/topics" style={{ position: 'relative' }}>
             Start learning
 
@@ -55,7 +54,7 @@ export default function Home(): ReactNode {
           Don't stress, just start.
 
         </div>
-        
+
 
 
         <div className="mx-[25vh] m-6 flex flex-col gap-12 p-2">
@@ -76,10 +75,10 @@ export default function Home(): ReactNode {
               <div className="flex flex-row items-center space-x-4">
                 {/* Fixed size circle */}
                 <div className="w-6 h-6 rounded-full border-2 border-black flex items-center justify-center bg-white flex-shrink-0">
-                  <span className="font-bold text-black select-none">A</span>
+                  <span className="font-bold text-black">A</span>
                 </div>
                 {/* Text */}
-                <p className="text-black font-medium select-none">
+                <p className="text-black font-medium">
                   Mitochondria
                 </p>
               </div>
@@ -87,10 +86,10 @@ export default function Home(): ReactNode {
               <div className="flex flex-row items-center space-x-4">
                 {/* Fixed size circle */}
                 <div className="w-6 h-6 rounded-full border-2 border-black flex items-center justify-center bg-white flex-shrink-0">
-                  <span className="font-bold text-black select-none">B</span>
+                  <span className="font-bold text-black ">B</span>
                 </div>
                 {/* Text */}
-                <p className="text-black font-medium select-none">
+                <p className="text-black font-medium ">
                   Golgi Apparatus
                 </p>
               </div>
@@ -98,10 +97,10 @@ export default function Home(): ReactNode {
               <div className="flex flex-row items-center space-x-4">
                 {/* Fixed size circle */}
                 <div className="w-6 h-6 rounded-full border-2 border-black flex items-center justify-center bg-white flex-shrink-0">
-                  <span className="font-bold text-black select-none">C</span>
+                  <span className="font-bold text-black ">C</span>
                 </div>
                 {/* Text */}
-                <p className="text-black font-medium select-none">
+                <p className="text-black font-medium ">
                   Peroxisomus Purificus
                 </p>
               </div>
@@ -109,17 +108,17 @@ export default function Home(): ReactNode {
               <div className="flex flex-row items-center space-x-4">
                 {/* Fixed size circle */}
                 <div className="w-6 h-6 rounded-full border-2 border-black flex items-center justify-center bg-white flex-shrink-0">
-                  <span className="font-bold text-black select-none">D</span>
+                  <span className="font-bold text-black ">D</span>
                 </div>
                 {/* Text */}
-                <p className="text-black font-medium select-none">
+                <p className="text-black font-medium ">
                   Wingardium Leviosa
                 </p>
               </div>
 
 
             </div>
-            
+
           </div>
 
 
@@ -140,9 +139,36 @@ export default function Home(): ReactNode {
               className="w-64 bg-amber-500 h-64 rounded-lg absolute bottom-[-4rem] right-16"
               style={{ transform: 'rotate(0deg)', transformOrigin: 'bottom center' }}
             ></div>
+
+
           </div>
 
 
+          {/*
+          <div className="flex flex-row gap-6 w-full force-border rounded p-8 bg-slate-100 relative min-h-60 overflow-hidden">
+
+            <div>
+              <h2>A dashboard</h2>
+              <p className='text-lg'>Woaww so many widgets</p>
+            </div>
+
+
+
+            <div
+              className="w-96 force-border h-48 rounded-lg absolute bottom-1  right-16 grid grid-cols-4 gap-4 gap-x-4 gap-y-4"
+            >
+
+              <div className="bg-amber-500 col-start-1 col-span-2">a</div>
+              <div className="bg-amber-500">a</div>
+              <div className="bg-amber-500">a</div>
+              <div className="bg-amber-500">a</div>
+
+            </div>
+
+
+
+          </div>
+            */}
 
         </div>
 
