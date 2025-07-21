@@ -1,9 +1,14 @@
 @import "tailwindcss";
 @tailwind utilities;
 
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
 }
 
 @theme inline {
@@ -23,7 +28,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Nunito Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 
@@ -73,8 +78,9 @@ p {
   margin: 0;
   font-size: 16px;
   line-height: 1.5;
-  /* im oaisgdbkxcl infima please */
 }
+
+
 
 p.subtitle {
   font-size: 22px;
@@ -218,10 +224,7 @@ button {
   border-radius: 4px;
   border: 1px solid rgb(166, 171, 176)
 }
-button {
-  border: none;
-  background-color: transparent;
-}
+
 
 /* You can override the default Infima variables here. */
 :root {

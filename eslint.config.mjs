@@ -16,14 +16,14 @@ const eslintConfig = [
     files: ["**/*.ts", "**/*.tsx"],
     rules: {
       // chill out
-      "react/no-unescaped-entities": "off",
+      "react/no-unescaped-entities": "warn",
 
       // stop attacking me
-      "@typescript-eslint/no-explicit-any": "warn", // or "off"
+      "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
 
       // please
-      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-require-imports": "warn",
 
       // allow `@ts-ignore`
       "@typescript-eslint/ban-ts-comment": ["error", {

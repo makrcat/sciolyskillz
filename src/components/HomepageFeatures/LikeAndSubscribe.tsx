@@ -31,13 +31,13 @@ const LikeAndSubscribe = () => {
 
   return (
     <div className="w-full lg:py-16 lg:px-6">
-      <div className="w-full sm:text-center">
-        <h2 className="text-3xl font-semibold mb-4">Join the mailing list</h2>
-        <p className="mb-8 mx-auto max-w-2xl font-regular text-gray-500 sm:text-xl dark:text-gray-400">
+      <div className="w-full text-center">
+        <h2 className="text-3xl font-semibold mb-6">Join the mailing list</h2>
+        <p className="mb-8 mx-auto font-regular text-gray-500 sm:text-xl dark:text-gray-400">
           Get notified when stuff happens! Like releases, updates, features, etc.
         </p>
 
-        <form onSubmit={handleSubmit} className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
+        <form onSubmit={handleSubmit} className="items-center mx-auto mt-6 max-w-screen-sm sm:flex sm:space-y-0">
           <div className="relative w-full">
             <label htmlFor="email" className="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email address</label>
 
@@ -74,7 +74,7 @@ const LikeAndSubscribe = () => {
         {status === 'success' && <p className="text-green-600 mt-2">Added your email!</p>}
         {status === 'error' && <p className="text-red-600 mt-2">Please enter a valid email or try again.</p>}
 
-        <div className="mx-auto max-w-screen-sm text-sm text-left text-gray-500 mt-4">
+        <div className="mx-auto max-w-screen-sm text-sm text-left text-gray-500 mt-2">
           Data exists lol. <a href="#" className="font-medium text-primary-600 dark:text-primary-500 hover:underline">There is no Privacy Policy</a>.
         </div>
       </div>

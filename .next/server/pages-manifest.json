@@ -1,15 +1,6 @@
 {
   "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/hello": "pages/api/hello.js",
-  "/bookmarks": "pages/bookmarks.js",
-  "/dashboard": "pages/dashboard.js",
-  "/default": "pages/default.js",
-  "/docs": "pages/docs.js",
-  "/": "pages/index.js",
-  "/practice": "pages/practice.js",
-  "/problemBank": "pages/problemBank.js",
-  "/tests": "pages/tests.js",
-  "/topics": "pages/topics.js",
-  "/_error": "pages/_error.js"
+  "/": "pages/index.js"
 }

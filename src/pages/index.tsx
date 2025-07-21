@@ -1,39 +1,31 @@
 import type { ReactNode } from 'react';
-import clsx from 'clsx';
 import Layout from "../components/Layout";
 
 import LikeAndSubscribe from '../components/HomepageFeatures/LikeAndSubscribe';
 import styles from './index.module.css';
-
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowRight01Icon } from '@hugeicons/core-free-icons';
 
 
 function HomepageHeader() {
   return (
 
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-
-      {/*Header*/}
-      <div className="container">
+    <header className={styles.heroBanner}>
+      <div>
         <h1 className={styles.title}>
           sciolyskillz
         </h1>
 
         <p className="subtitle text-white pb-6 mt-4 ">A resource hub for Science Olympiad.</p>
-        <div className={styles.buttons}>
-          <button
-            className="button button--secondary button--lg bg-white text-black " 
-            style={{ position: 'relative' }}>
-            Start learning
 
+          <button className="bg-white text-lg font-semibold text-black pl-5 pr-3 py-2 rounded-full ">
+            <div className="flex flex-row justify-center align-center">
+              Start learning <HugeiconsIcon icon={ArrowRight01Icon} className='relative mt-0.5 mx-0 mb-0' />
+            </div>
           </button>
-
-        </div>
-
-        {/*Header end*/}
-
-
       </div>
     </header>
+
   );
 }
 
@@ -170,7 +162,6 @@ export default function Home(): ReactNode {
         <LikeAndSubscribe />
 
       </main>
-      {/*</Layout>*/}
     </Layout>
   );
 }
