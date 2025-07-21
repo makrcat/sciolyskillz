@@ -1,16 +1,13 @@
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
+//import Layout from '@theme/Layout';
 
-import LikeAndSubscribe from '../components/HomepageFeatures/LikeAndSubscribe';
+//import LikeAndSubscribe from '../components/HomepageFeatures/LikeAndSubscribe';
 import styles from './index.module.css';
 
 
 
 function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
   return (
 
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
@@ -18,17 +15,17 @@ function HomepageHeader() {
       {/*Header*/}
       <div className="container">
         <h1 className={styles.title}>
-          {siteConfig.title}
+          sciolyskillz
         </h1>
 
-        <p className="subtitle text-white pb-6 mt-4 ">{siteConfig.tagline}</p>
+        <p className="subtitle text-white pb-6 mt-4 ">A resource hub for Science Olympiad.</p>
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg bg-white text-black "
-            to="/topics" style={{ position: 'relative' }}>
+          <button
+            className="button button--secondary button--lg bg-white text-black " 
+            style={{ position: 'relative' }}>
             Start learning
 
-          </Link>
+          </button>
 
         </div>
 
@@ -41,11 +38,13 @@ function HomepageHeader() {
 }
 
 export default function Home(): ReactNode {
-  const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
+    
+
+    <div>
+      {/*<Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Description will go into a meta tag in <head />">*/}
       <HomepageHeader />
       <main>
 
@@ -171,15 +170,10 @@ export default function Home(): ReactNode {
             */}
 
         </div>
-
-
-
-
-
-        <LikeAndSubscribe />
-
+        {/*<LikeAndSubscribe />*/}
 
       </main>
-    </Layout>
+      {/*</Layout>*/}
+    </div>
   );
 }
