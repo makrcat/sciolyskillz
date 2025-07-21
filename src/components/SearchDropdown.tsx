@@ -5,6 +5,7 @@ const CustomSearchBox = connectSearchBox(SearchDropdown);
 export default CustomSearchBox;
 
 
+//@ts-ignore
 function SearchDropdown({ currentRefinement, refine }) {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [division, setDivision] = useState("B");
@@ -12,7 +13,9 @@ function SearchDropdown({ currentRefinement, refine }) {
 
     // Close dropdown if clicked outside
     useEffect(() => {
+        //@ts-ignore
         function handleClickOutside(event) {
+            //@ts-ignore
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setDropdownOpen(false);
             }
@@ -23,6 +26,7 @@ function SearchDropdown({ currentRefinement, refine }) {
 
     const [searchValue, setSearchValue] = useState(currentRefinement);
 
+    //@ts-ignore
     const handleSubmit = (e) => {
         e.preventDefault();
         // refine manually

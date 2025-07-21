@@ -1,9 +1,6 @@
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
-
+import Layout from "../components/Layout";
 import styles from './index.module.css';
 
 const categories = [
@@ -150,7 +147,15 @@ const categories = [
 ];
 
 
-function TopicCard({ topicName, topicLink, description }) {
+interface TopicCardProps {
+  topicName : string, 
+  topicLink : string, 
+  description : string
+}
+
+
+
+function TopicCard({ topicName, topicLink, description }: TopicCardProps) {
     return (
         <div className="relative bg-slate-50 border border-solid border-slate-300 rounded-lg shadow-md p-6 hover:shadow-xl transition cursor-pointer h-52">
             <h3 className="text-xl font-semibold mb-2">{topicName}</h3>
@@ -193,7 +198,6 @@ function TopicsGrid() {
 
 
 function Topics() {
-    const { siteConfig } = useDocusaurusContext();
     return (
 
         <header className="bg-teal-600 text-white text-center p-12">
@@ -209,9 +213,7 @@ function Topics() {
 
 export default function Home(): ReactNode {
     return (
-        <Layout
-            title={`Explore Topics :)`}
-            description="Description will go into a meta tag in <head />">
+        <Layout>
 
             <main>
                 <Topics />

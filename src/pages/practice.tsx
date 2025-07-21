@@ -1,14 +1,13 @@
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
+import Layout from "../components/Layout";
 
 
 import Sidebar from "../components/DashboardFeatures/Sidebar";
 
 export default function Practice() {
   return (
-    <Layout noFooter>
+    <Layout>
 
       <div className="flex flex-row">
         <Sidebar />

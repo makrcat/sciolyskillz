@@ -1,10 +1,8 @@
 import React from 'react';
-import algoliasearch from 'algoliasearch';
+import { algoliasearch }  from 'algoliasearch';
 import { Highlight } from 'react-instantsearch-dom';
 
 /* when we fix that dependency it will be {} again btw */
-
-import Layout from '@theme/Layout';
 import SearchDropdown from '../components/SearchDropdown';
 
 import '../css/custom.css';
@@ -32,7 +30,7 @@ const searchClient = algoliasearch(
 
 const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 
-function Hit({ hit }) {
+function Hit({ hit }:any) {
     return (
         <div className="checkyo-box padding-bottom h-full relative">
             <p className="font-medium m-0">Event: {hit.event ?? "N/A"}</p>
@@ -45,7 +43,7 @@ function Hit({ hit }) {
             {hit.potentialAnswers && hit.potentialAnswers.length > 0 && (
                 <div>
                     <span>
-                        {hit.potentialAnswers.map((ans, idx) => (
+                        {hit.potentialAnswers.map((ans:string, idx:number) => (
                             <div className="checkyo-answer" style={{ "margin": "0px 4px 4px 0px", "padding": "6px 12px" }}>
                                 <span className="font-semibold mr-2">
                                     {letters[idx]}
@@ -69,7 +67,7 @@ function Hit({ hit }) {
 
 export default function App() {
     return (
-        <Layout>
+        <div>
             <InstantSearch indexName="sciolyskillz" searchClient={searchClient}>
 
                 <div className="w-full">
@@ -113,6 +111,6 @@ export default function App() {
 
 
 
-        </Layout>
+       </div>
     );
 }

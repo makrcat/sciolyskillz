@@ -26,7 +26,7 @@ export default function UserButton({ user: initialUser }: UserButtonProps) {
         className="ml-2 logged-in-button rounded-lg px-3 py-2 text-center inline-flex items-center"
       >
         <img
-          src={user.photoURL}
+          src={user.photoURL!}
           alt="profile"
           className="rounded-full w-6 h-6 mr-2"
         />

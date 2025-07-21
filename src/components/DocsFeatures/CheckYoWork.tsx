@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 
-function Choice({ label, text, selected, onClick }) {
+type ChoiceProps = {
+  label: string;
+  text: string;
+  selected: boolean;
+  onClick: () => void;
+};
+
+function Choice({ label, text, selected, onClick }: ChoiceProps) {
   return (
     <div
       onClick={onClick}
@@ -47,6 +54,17 @@ function Choice({ label, text, selected, onClick }) {
   );
 }
 
+type CheckYoWorkProps = {
+  title: string;
+  subtext?: string;         // optional
+  choiceA: string;
+  choiceB: string;
+  choiceC: string;
+  choiceD: string;
+  answer: 0 | 1 | 2 | 3;    // limit to those values
+  explanation?: string;     // optional
+};
+
 export default function CheckYoWork({
   title,
   subtext,
@@ -54,10 +72,10 @@ export default function CheckYoWork({
   choiceB,
   choiceC,
   choiceD,
-  answer,/* 0 1 2 3 */
-  explanation
-}) {
-  const [selected, setSelected] = useState(null);
+  answer,
+  explanation,
+}: CheckYoWorkProps) {
+  const [selected, setSelected] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
 
   const choices = [

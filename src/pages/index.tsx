@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
-//import Layout from '@theme/Layout';
+import Layout from "../components/Layout";
 
-//import LikeAndSubscribe from '../components/HomepageFeatures/LikeAndSubscribe';
+import LikeAndSubscribe from '../components/HomepageFeatures/LikeAndSubscribe';
 import styles from './index.module.css';
 
 
@@ -170,7 +170,7 @@ export default function Home(): ReactNode {
             */}
 
         </div>
-        {/*<LikeAndSubscribe />*/}
+        <LikeAndSubscribe />
 
       </main>
       {/*</Layout>*/}

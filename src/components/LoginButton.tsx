@@ -5,12 +5,13 @@ import { auth, provider } from "../firebase-config";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { createUserDoc } from "../utils/createUserDoc";
+import type { User } from "firebase/auth";
 
 import UserButton from "./UserButton";
 
 
 export default function GoogLoginButton() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
 
   // Load user on first render
   useEffect(() => {

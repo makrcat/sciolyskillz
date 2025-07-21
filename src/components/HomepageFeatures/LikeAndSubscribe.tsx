@@ -4,9 +4,9 @@ import { db } from "../../firebase-config";
 
 const LikeAndSubscribe = () => {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState(null); // null, 'loading', 'success', 'error'
+  const [status, setStatus] = useState<string | null>(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e : any) => {
     e.preventDefault();
 
     if (!email) {
