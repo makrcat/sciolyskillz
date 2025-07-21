@@ -57,7 +57,7 @@ export default function UserDropdown({ user, onUpdate }: UserDropdownProps) {
   };
 
   return (
-    <div className="absolute mt-1 right-0 p-4 bg-white rounded shadow" style={{ border: "1px solid lightgray" }}>
+    <div className="z-3 absolute mt-1 right-0 p-4 bg-white rounded shadow" style={{ border: "1px solid lightgray" }}>
       <h3 className="text-lg font-semibold mb-4">Hello :)</h3>
 
       {/* Profile Picture */}

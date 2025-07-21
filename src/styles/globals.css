@@ -11,13 +11,6 @@
   
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -28,7 +21,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Nunito Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Nunito Sans', system-ui;
 }
 
 
@@ -68,10 +61,8 @@ h4 {
   font-weight: 400;
 }
 
-/*todo: make some styles specific to docs */
-
 a {
-  @apply no-underline;
+  text-decoration: none;
 }
 
 p {
@@ -113,9 +104,6 @@ button {
 }
 */
 
-/* infima ughghggh */
-/* ---------------------------------------------------------------------------*/
-
 
 .ais-Hits-list {
   display: grid;
@@ -126,25 +114,49 @@ button {
   list-style: none;
 }
 
-
 .ais-Pagination-list {
-  @apply flex justify-center gap-2 list-none p-0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem; /* Tailwind gap-2 */
+  list-style: none;
+  padding: 0;
 }
 
-.ais-Pagination-item {
-  @apply text-sm;
-}
-
-/* Style pagination links */
 .ais-Pagination-link {
-  @apply px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700;
+  padding: 0.25rem 0.75rem; /* Tailwind py-1 px-3 */
+  border-radius: 0.25rem; /* Tailwind rounded */
+  border: 1px solid #D1D5DB; /* Tailwind border-gray-300 */
+  color: #374151; /* Tailwind text-gray-700 */
+  transition: background-color 0.2s ease;
+
+  /* Hover */
+}
+.ais-Pagination-link:hover {
+  background-color: #F3F4F6; /* Tailwind hover:bg-gray-100 */
 }
 
-/* Active page */
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .ais-Pagination-link {
+    border-color: #4B5563; /* dark:border-gray-600 */
+    color: #E5E7EB; /* dark:text-gray-200 */
+  }
+
+  .ais-Pagination-link:hover {
+    background-color: #374151; /* dark:hover:bg-gray-700 */
+  }
+
+  .ais-Pagination-item--selected .ais-Pagination-link {
+    background-color: #3B82F6; /* dark:bg-blue-500 */
+    border-color: #3B82F6;     /* dark:border-blue-500 */
+  }
+}
+
 .ais-Pagination-item--selected .ais-Pagination-link {
-  @apply bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500;
+  background-color: #2563EB; /* Tailwind bg-blue-600 */
+  color: white;
+  border-color: #2563EB;     /* Tailwind border-blue-600 */
 }
-
 
 
 .login-button:hover {

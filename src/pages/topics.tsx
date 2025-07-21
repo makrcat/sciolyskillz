@@ -155,7 +155,7 @@ interface TopicCardProps {
 
 function TopicCard({ topicName, topicLink, description }: TopicCardProps) {
     return (
-        <div className="relative bg-slate-50 border border-solid border-slate-300 rounded-lg shadow-md p-6 hover:shadow-xl transition cursor-pointer h-52">
+        <div className="relative bg-slate-50 border border-solid border-slate-300 rounded-lg shadow-md px-4 py-3 hover:shadow-xl transition cursor-pointer h-52">
             <h3 className="text-xl font-semibold mb-2">{topicName}</h3>
             <p className="text-gray-700 text-sm mb-10">{description}</p>
             <a
