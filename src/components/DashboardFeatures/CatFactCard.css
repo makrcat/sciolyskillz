@@ -1,0 +1,49 @@
+.catfact-card {
+  background-color: #fdf6ec;
+  border: 2px solid #ffd6a5;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-family: "Georgia", serif;
+  height: 100%;
+  position: relative;
+}
+
+.catfact-card h3 {
+  margin: 0;
+  color: #ff914d;
+}
+
+.fact-text {
+  margin: 4px 0 0 0;
+  font-size: 0.95rem;
+
+
+  height: 60%;
+  font-family: Arial;
+  border: 2px solid #ffd6a5;
+  background-color: #fbeedb;
+  padding: 4px;
+  line-height: 1.3;
+  font-size: 14px;
+
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.catfact-card button {
+  background-color: #ffd6a5;
+  border: none;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #5b3219;
+  transition: background-color 0.2s;
+  position: absolute;
+  bottom: 10px;
+  font-size: 14px;
+}
+
+.catfact-card button:hover {
+  background-color: #ffc48f;
+}

@@ -1,0 +1,229 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+em.ais-Highlight-highlighted {
+  font-style: normal;
+  background-color: rgb(89, 238, 226);
+}
+
+/*i make my own :3*/
+.mdx-paragraph {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+h1 {
+  font-size: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/*todo: make some styles specific to docs */
+
+a {
+  @apply no-underline;
+}
+
+p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  /* im oaisgdbkxcl infima please */
+}
+
+p.subtitle {
+  font-size: 22px;
+}
+
+.login-button {
+  background-color: rgb(232, 247, 247);
+  border: 2px solid rgb(131, 199, 199);
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+  color: rgb(45, 66, 66);
+
+}
+
+/* custom.css */
+input, select, textarea {
+  border: 1px solid #ccc; /* add subtle border */
+}
+
+.force-border {
+  border: 1px solid #ccc; /* add subtle border */
+}
+
+/*
+alright, don't do that. it breaks the dashboard kinda. and the buttons on the sidebar
+button {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+*/
+
+/* infima ughghggh */
+/* ---------------------------------------------------------------------------*/
+
+
+.ais-Hits-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+
+.ais-Pagination-list {
+  @apply flex justify-center gap-2 list-none p-0;
+}
+
+.ais-Pagination-item {
+  @apply text-sm;
+}
+
+/* Style pagination links */
+.ais-Pagination-link {
+  @apply px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700;
+}
+
+/* Active page */
+.ais-Pagination-item--selected .ais-Pagination-link {
+  @apply bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500;
+}
+
+
+
+.login-button:hover {
+  cursor: pointer;
+  background-color: rgb(208, 231, 231);
+}
+
+.logged-in-button {
+  border: 1px solid rgb(219, 222, 222);
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+  color: rgb(45, 66, 66);
+}
+
+.logged-in-button:hover {
+  cursor: pointer;
+  background-color: rgb(235, 238, 238);
+}
+
+
+  
+
+.accent {
+  position: relative;
+  z-index: 1;
+  padding: 4px;
+}
+
+.accent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid pink;
+  background-color: rgb(254, 191, 201, 0.5);
+  /*transform: rotate(0deg);*/
+  z-index: -1;
+  border-radius: 4px; /* optional: makes it look more sketchy */
+}
+
+.img-margin-right {
+  margin-right: 15px;
+}
+
+.doc-flex {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  align-items: flex-start;
+}
+
+.doc-flex img {
+  flex-shrink: 0;   
+  flex-grow: 0; 
+  height: auto; 
+  max-width: 100%; 
+}
+
+
+
+@media (max-width: 1200px) {
+  .doc-flex {
+    flex-direction: column;
+  }
+
+  .doc-flex div {
+    margin-top: 10px;
+  }
+}
+
+
+
+.doc-image {
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid rgb(166, 171, 176)
+}
+button {
+  border: none;
+  background-color: transparent;
+}
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
