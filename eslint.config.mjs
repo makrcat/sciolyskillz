@@ -11,6 +11,34 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    rules: {
+      // chill out
+      "react/no-unescaped-entities": "off",
+
+      // stop attacking me
+      "@typescript-eslint/no-explicit-any": "warn", // or "off"
+      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+
+      // please
+      "@typescript-eslint/no-require-imports": "off",
+
+      // allow `@ts-ignore`
+      "@typescript-eslint/ban-ts-comment": ["error", {
+        "ts-ignore": false, // allow ts-ignore
+        "ts-expect-error": true
+      }],
+
+      // allow <img>
+      "@next/next/no-img-element": "warn",
+
+      // calm React warnings
+      "react/jsx-key": "warn",
+    },
+  },
+  
 ];
 
 export default eslintConfig;

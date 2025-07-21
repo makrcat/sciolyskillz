@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react';
-import clsx from 'clsx';
 import Layout from "../components/Layout";
 
 import Sidebar from "../components/DashboardFeatures/Sidebar";

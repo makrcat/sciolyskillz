@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
 
-import { auth, provider } from "../firebase-config";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from "../firebase-config";
+import { auth, provider, db } from "../firebase-config";
+import { doc, getDoc } from "firebase/firestore";
 import { createUserDoc } from "../utils/createUserDoc";
 import type { User } from "firebase/auth";
 

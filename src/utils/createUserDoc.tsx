@@ -1,5 +1,5 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { updateProfile, updateEmail, User } from "firebase/auth";
+import { updateProfile, User } from "firebase/auth";
 import { db } from "../firebase-config";
 
 export async function createUserDoc(user: User) {

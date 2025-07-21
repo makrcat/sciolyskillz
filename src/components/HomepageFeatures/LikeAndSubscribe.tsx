@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { SyntheticEvent, useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from "../../firebase-config"; 
 
@@ -6,7 +6,7 @@ const LikeAndSubscribe = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<string | null>(null);
 
-  const handleSubmit = async (e : any) => {
+  const handleSubmit = async (e : SyntheticEvent) => {
     e.preventDefault();
 
     if (!email) {

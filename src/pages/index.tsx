@@ -41,10 +41,7 @@ export default function Home(): ReactNode {
   return (
     
 
-    <div>
-      {/*<Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">*/}
+    <Layout>
       <HomepageHeader />
       <main>
 
@@ -174,6 +171,6 @@ export default function Home(): ReactNode {
 
       </main>
       {/*</Layout>*/}
-    </div>
+    </Layout>
   );
 }

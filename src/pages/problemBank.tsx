@@ -1,19 +1,15 @@
 import React from 'react';
-import { algoliasearch }  from 'algoliasearch';
+import { algoliasearch } from 'algoliasearch';
 import { Highlight } from 'react-instantsearch-dom';
 
 /* when we fix that dependency it will be {} again btw */
-import SearchDropdown from '../components/SearchDropdown';
-
-import '../css/custom.css';
-import '../components/DocsFeatures/CheckYoWork.css'
+import CustomSearchBox from '../components/SearchDropdown';
+import '../components/DocsFeatures/CheckYoWork.module.css'
 // load correctly so my components look correct :[
 
 import {
     InstantSearch,
-    SearchBox,
     Hits,
-    RefinementList,
     Pagination,
     Configure
 } from 'react-instantsearch-dom';
@@ -30,7 +26,7 @@ const searchClient = algoliasearch(
 
 const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 
-function Hit({ hit }:any) {
+function Hit({ hit }: any) {
     return (
         <div className="checkyo-box padding-bottom h-full relative">
             <p className="font-medium m-0">Event: {hit.event ?? "N/A"}</p>
@@ -40,18 +36,27 @@ function Hit({ hit }:any) {
                 <Highlight attribute="question" hit={hit} tagName="em" />
             </p>
 
+            
             {hit.potentialAnswers && hit.potentialAnswers.length > 0 && (
                 <div>
-                    <span>
-                        {hit.potentialAnswers.map((ans:string, idx:number) => (
-                            <div className="checkyo-answer" style={{ "margin": "0px 4px 4px 0px", "padding": "6px 12px" }}>
-                                <span className="font-semibold mr-2">
-                                    {letters[idx]}
-                                </span>
-                                {ans}
-                            </div>
-                        ))}
-                    </span>
+                    <div>
+                        {hit.potentialAnswers.map((ans: string, idx: number) => {
+                            console.log("Answer at index", idx, "is:", ans, "type:", typeof ans);
+
+                            return (
+                                <div
+                                    key={idx} // <--- Important!
+                                    className="checkyo-answer"
+                                    style={{ margin: "0px 4px 4px 0px", padding: "6px 12px" }}
+                                >
+                                    <span className="font-semibold mr-2">
+                                        {letters[idx]}
+                                    </span>
+                                    {typeof ans === "string" ? ans : JSON.stringify(ans)}
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             )}
 
@@ -79,7 +84,7 @@ export default function App() {
                             <h1 className="text-5xl font-bold mb-10 text-center">Question Search</h1>
 
 
-                            <SearchDropdown />
+                            <CustomSearchBox />
 
                             <span className="mt-5 flex flex-row gap-2 items-center justify-center">Search by
                                 <img
@@ -111,6 +116,6 @@ export default function App() {
 
 
 
-       </div>
+        </div>
     );
 }

@@ -1,9 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { connectSearchBox } from "react-instantsearch-dom";
 
-const CustomSearchBox = connectSearchBox(SearchDropdown);
-export default CustomSearchBox;
-
 
 //@ts-ignore
 function SearchDropdown({ currentRefinement, refine }) {
@@ -142,3 +139,7 @@ function SearchDropdown({ currentRefinement, refine }) {
         </form>
     );
 }
+
+
+const CustomSearchBox = connectSearchBox(SearchDropdown);
+export default CustomSearchBox;

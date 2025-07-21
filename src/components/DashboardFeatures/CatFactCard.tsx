@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./CatFactCard.css";
+import "./CatFactCard.module.css";
 
 export default function CatFactCard() {
   const [fact, setFact] = useState("loading...");

@@ -1,0 +1,95 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/bookmarks",
+      "regex": "^/bookmarks(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/bookmarks(?:/)?$"
+    },
+    {
+      "page": "/dashboard",
+      "regex": "^/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard(?:/)?$"
+    },
+    {
+      "page": "/default",
+      "regex": "^/default(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/default(?:/)?$"
+    },
+    {
+      "page": "/docs",
+      "regex": "^/docs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs(?:/)?$"
+    },
+    {
+      "page": "/practice",
+      "regex": "^/practice(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/practice(?:/)?$"
+    },
+    {
+      "page": "/problemBank",
+      "regex": "^/problemBank(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/problemBank(?:/)?$"
+    },
+    {
+      "page": "/tests",
+      "regex": "^/tests(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/tests(?:/)?$"
+    },
+    {
+      "page": "/topics",
+      "regex": "^/topics(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/topics(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "RSC",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "Next-Router-Segment-Prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

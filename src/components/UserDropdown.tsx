@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { auth } from "../firebase-config";
 import {
   updateProfile,
   signOut,
-  onAuthStateChanged,
   User,
 } from "firebase/auth";
 

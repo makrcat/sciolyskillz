@@ -1,6 +1,3 @@
-import type { ReactNode } from 'react';
-
-
 import Sidebar from "../components/DashboardFeatures/Sidebar";
 import Tabs from "../components/Tabs";
 import Layout from "../components/Layout";
