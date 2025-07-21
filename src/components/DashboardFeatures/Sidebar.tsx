@@ -5,7 +5,7 @@ import { SmileIcon, PencilIcon, Bookmark02Icon, BookEditIcon, Task01Icon } from 
 export default function Sidebar() {
   return (
 
-      <div className="w-64 sidebar-custom h-full shadow" style={{"borderRight":"1px solid lightgray"}}>
+      <div className="w-64 sidebar-custom h-full shadow-sm" style={{"borderRight":"1px solid lightgray"}}>
         <nav>
           <ul className="px-2 py-4 items-start">
             <SidebarElement icon={SmileIcon} label="Dashboard" href="dashboard" />

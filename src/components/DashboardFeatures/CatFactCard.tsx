@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./CatFactCard.module.css";
+import styles from "./CatFactCard.module.css";
 
 export default function CatFactCard() {
   const [fact, setFact] = useState("loading...");
@@ -16,9 +16,9 @@ export default function CatFactCard() {
   }
 
   return (
-    <div className="catfact-card">
+    <div className={styles['catfact-card']}>
       <h3>🐾 Cat Fact</h3>
-      <p className="fact-text">
+      <p className={styles['fact-text']}>
 
         {fact}
 

@@ -9,7 +9,7 @@ export default function StatsPanel() {
       {/* Practices */}
       <div className="flex-1 min-w-[200px] p-4">
         <h3 className="text-lg font-semibold mb-3">Practices</h3>
-        <div className="h-30 my-3 border-2 border-dashed border-slate-300 rounded-lg flex items-center justify-center text-slate-400 italic">
+        <div className="my-3 border-2 border-dashed border-slate-300 rounded-lg flex items-center justify-center text-slate-400 italic h-max">
           [Pie Chart]
         </div>
         <p>
@@ -26,7 +26,7 @@ export default function StatsPanel() {
       {/* Progress */}
       <div className="flex-1 min-w-[200px] p-4">
         <h3 className="text-lg font-semibold mb-3">Tests</h3>
-        <div className="h-30 my-3 border-2 border-dashed border-slate-300 rounded-lg flex items-center justify-center text-slate-400 italic">
+        <div className="my-3 border-2 border-dashed border-slate-300 rounded-lg flex items-center justify-center text-slate-400 italic h-max">
           [Bar Graph]
         </div>
       </div>

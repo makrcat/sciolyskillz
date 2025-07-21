@@ -9,6 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 .AUGHJHHHHH {
+  position: relative;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-style: normal;
@@ -30,7 +31,7 @@
   font-family: "Fredericka the Great", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 8vw;
+  font-size: 6.5vw;
   color: white;
 }
 

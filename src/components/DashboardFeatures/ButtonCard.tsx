@@ -1,7 +1,9 @@
-import './ButtonCard.module.css';
+
 import React, { useState, useEffect } from 'react';
 import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../firebase-config.js';
+
+import styles from './ButtonCard.module.css';
 
 const BUTTON_DOC_ID = 'button';
 
@@ -53,16 +55,16 @@ export default function ButtonCard() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="button-card">
-      <h3 className="text-md p-0 mb-2">Button card</h3>
+    <div className={styles['button-card']}>
+      <h3 className="text-md p-0 mb-1">Button card</h3>
       <p className="text-sm mb-2">Why do you have access to this? Well, because I don't know how to use firebase yet.</p>
       
       <div>Counter: {counter}</div>
-      <button className="button-card-button" onClick={handleIncrement}>
+      <button className={styles['button-card-button']} onClick={handleIncrement}>
         Click!
       </button>
       <button
-        className="button-card-button"
+        className={styles['button-card-button']} 
         onClick={handleSave}
         style={{ marginLeft: 4}}
         disabled={counter === savedCounter}
@@ -70,7 +72,7 @@ export default function ButtonCard() {
         Save
       </button>
       <button
-        className="button-card-button"
+        className={styles['button-card-button']} 
         onClick={handleDelete}
         style={{ marginLeft: 4}}
       >

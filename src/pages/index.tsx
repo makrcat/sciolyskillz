@@ -20,7 +20,7 @@ function HomepageHeader() {
 
           <button className="bg-white text-lg font-semibold text-black pl-5 pr-3 py-2 rounded-full ">
             <div className="flex flex-row font-normal justify-center align-center">
-              Start learning <HugeiconsIcon icon={ArrowRight01Icon} className='relative mt-0.5 mx-0 mb-0' />
+              Explore topics <HugeiconsIcon icon={ArrowRight01Icon} className='relative mt-0.5 mx-0 mb-0' />
             </div>
           </button>
       </div>

@@ -84,11 +84,13 @@ export default function UserDropdown({ user, onUpdate }: UserDropdownProps) {
               onChange={(e) => setDisplayName(e.target.value)}
               className={`border rounded px-2 py-1 text-sm ${editing ? "" : "bg-gray-100"}`}
             />
+            <div className="ml-2">
             {editing ? (
               <button onClick={handleDisplayNameSave} className="text-blue-600 text-sm">Save</button>
             ) : (
               <button onClick={() => setEditing(true)} className="text-gray-600 text-sm">Edit</button>
             )}
+            </div>
           </div>
         </div>
       </div>
@@ -104,21 +106,21 @@ export default function UserDropdown({ user, onUpdate }: UserDropdownProps) {
         />
       </div>
 
-      <hr className="my-4" />
+      <hr className="my-2 border-gray-300" />
 
       {/* Account Info */}
-      <div>
-        <p className="text-sm text-gray-600">
-          <span className="font-medium">Account Created:</span>{" "}
+      <div className="py-2">
+        <span className="text-sm text-gray-600">
+          Account Created:{" "}
           {user.metadata.creationTime ? new Date(user.metadata.creationTime).toLocaleString() : "Unknown"}
-        </p>
+        </span>
       </div>
 
-      <hr className="my-4" />
+      <hr className="my-2 border-gray-300" />
 
-      <button onClick={handleLogout} className="text-red-600 text-sm hover:underline">
+      <button onClick={handleLogout} className="text-red-600 text-sm text-left pt-2">
         Log Out
       </button>
-    </div>
+    </div> 
   );
 }

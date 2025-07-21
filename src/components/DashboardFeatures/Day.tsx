@@ -58,10 +58,10 @@ export  default function  Day() {
   return (
     <div className="bg-yellow-100 text-yellow-900 p-4 rounded-lg h-full relative" style={{"border":"1px solid goldenrod"}}>
       <div className="text-base font-normal">
-        <h3 className="p-0 m-0 font-normal">Today is</h3>
-        <h1 className="p-0 m-0 font-normal">
+        <div className="p-0 m-0 text-xl">Today is</div>
+        <div className="p-0 m-0 text-4xl">
           {formattedDate} 
-          </h1>
+          </div>
           —
           <br />
         <span className="italic">{holiday}</span>
