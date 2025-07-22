@@ -6,6 +6,7 @@ import TestStats from "../components/TestStats";
 import React, { useState } from "react";
 import CreateTestComponent from "../components/CreateTestComponent"
 
+import GetTests from "../components/GetTestsComponent"
 
 export default function Tests() {
   const [showCreate, setShowCreate] = useState(false);
@@ -14,7 +15,7 @@ export default function Tests() {
     
     <Layout noFooter>
 
-      <div className="flex flex-row">
+      <div className="flex flex-row items-stretch">
         <Sidebar />
 
         <div className="p-8 w-full">
@@ -50,6 +51,8 @@ export default function Tests() {
         </div>
 
         {showCreate && <CreateTestComponent onClose={() => setShowCreate(false)} />}
+
+          <GetTests />
 
       </div>
     </div>

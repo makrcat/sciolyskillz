@@ -16,8 +16,8 @@ export default function Dashboard() {
 
       <div className="flex flex-row">
         <Sidebar />
-        <div className="bg-[url(/img/dashboardbanner.png)] bg-top bg-contain bg-no-repeat p-8 pt-16">
-          <center><h1>Hi! You're logged in.</h1></center>
+        <div className="bg-top bg-contain bg-no-repeat p-8 pt-8">
+          <center><h1 className="font-semibold text-4xl mb-8">Hi! You're logged in.</h1></center>
           <LeftOff></LeftOff>
 
           <div className="grid grid-cols-5 [grid-template-rows:repeat(3,clamp(200px,20vh,300px))] gap-4 max-w-6xl mt-4">

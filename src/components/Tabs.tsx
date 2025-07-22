@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import GetTestsComponent from "./GetTestsComponent"
 
 export default function Tabs() {
   const [activeTab, setActiveTab] = useState(0);
@@ -49,7 +48,7 @@ export default function Tabs() {
             aria-labelledby={`tab-${idx}`}
             className={`${activeTab === idx ? '' : 'hidden'}`}
           >
-            <GetTestsComponent/>
+            aa
           </div>
         ))}
       </div>
