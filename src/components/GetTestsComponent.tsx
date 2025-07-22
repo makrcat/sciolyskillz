@@ -3,16 +3,22 @@ import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { TestDocument } from "../utils/CreateTest";
 
+import { onAuthStateChanged } from "firebase/auth";
+
+
+
 export default function GetTests() {
     const [tests, setTests] = useState<TestDocument[]>([]);
     const [loading, setLoading] = useState(true);
 
+
     useEffect(() => {
-        const fetchTests = async () => {
-            const auth = getAuth();
-            const user = auth.currentUser;
+        const auth = getAuth();
+
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (!user) {
                 console.warn("User not logged in.");
+                setTests([]);
                 setLoading(false);
                 return;
             }
@@ -29,10 +35,11 @@ export default function GetTests() {
             } finally {
                 setLoading(false);
             }
-        };
+        });
 
-        fetchTests();
+        return () => unsubscribe();
     }, []);
+
 
     if (loading) return (
         <div className="text-black">Loading tests...</div>

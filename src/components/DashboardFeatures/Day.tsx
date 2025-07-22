@@ -1,14 +1,8 @@
-import React from "react";
-import ExternalLink from '../ExternalLink';
-
+import React, { useEffect, useState } from "react";
+import ExternalLink from "../ExternalLink";
 import sillyHolidaysData from "../../../static/silly-holidays-US.json";
-
 import { HugeiconsIcon } from "@hugeicons/react";
 import { LinkSquare02Icon } from "@hugeicons/core-free-icons";
-
-// credit: https://todaysholiday.herokuapp.com/holidays
-// but i hope they fix their link
-// todo: add the herokuapp link to website credits 
 
 type SillyHoliday = {
   tags: string[];
@@ -20,29 +14,30 @@ type SillyHoliday = {
 
 function getTodaySillyHolidayNames(holidays: SillyHoliday[]): string[] {
   const today = new Date();
-  const todayMonth = today.getMonth() + 1; // getMonth() is 0-based
+  const todayMonth = today.getMonth() + 1;
   const todayDay = today.getDate();
 
   return holidays
-    .filter(h => h.month === todayMonth && h.day === todayDay)
-    .map(h => h.name);
+    .filter((h) => h.month === todayMonth && h.day === todayDay)
+    .map((h) => h.name);
 }
 
-const names = getTodaySillyHolidayNames(sillyHolidaysData as SillyHoliday[]);
-let holiday : string;
-let googleLink : string | null = null;
+export default function Day() {
+  const [holiday, setHoliday] = useState<string>("...");
+  const [googleLink, setGoogleLink] = useState<string | null>(null);
 
+  useEffect(() => {
+    const names = getTodaySillyHolidayNames(sillyHolidaysData as SillyHoliday[]);
+    if (names.length === 0) {
+      setHoliday("no silly holiday :/");
+    } else {
+      const chosen = names[Math.floor(Math.random() * names.length)];
+      setHoliday(chosen);
+      setGoogleLink("https://www.checkiday.com/");
+    }
+  }, []);
 
-if (names.length === 0) {
-  holiday = "no silly holiday :/";
-} else {
-  holiday = names[Math.floor(Math.random() * names.length)];
-  googleLink = "https://www.checkiday.com/";
-}
-
-export  default function  Day() {
   const today = new Date();
-
   const month = today.toLocaleString("default", { month: "long" });
   const day = today.getDate();
   const suffix =
@@ -56,28 +51,24 @@ export  default function  Day() {
   const formattedDate = `${month} ${day}${suffix}`;
 
   return (
-    <div className="bg-yellow-100 text-yellow-900 p-4 rounded-lg h-full relative" style={{"border":"1px solid goldenrod"}}>
+    <div
+      className="bg-yellow-100 text-yellow-900 p-4 rounded-lg h-full relative"
+      style={{ border: "1px solid goldenrod" }}
+    >
       <div className="text-base font-normal">
         <div className="p-0 m-0 text-xl">Today is</div>
-        <div className="p-0 m-0 text-4xl">
-          {formattedDate} 
-          </div>
-          —
-          <br />
+        <div className="p-0 m-0 text-4xl">{formattedDate}</div>—<br />
         <span className="italic">{holiday}</span>
         <br />
-
-      {googleLink && (
-        <span className="text-sm">
-          <span className="absolute bottom-1.5 right-1.5">
-            
+        {googleLink && (
+          <span className="text-sm">
+            <span className="absolute bottom-1.5 right-1.5">
               <ExternalLink href={googleLink}>
-                <HugeiconsIcon icon={LinkSquare02Icon} size={20}/>
+                <HugeiconsIcon icon={LinkSquare02Icon} size={20} />
               </ExternalLink>
-            
+            </span>
           </span>
-        </span>
-      )}
+        )}
       </div>
     </div>
   );

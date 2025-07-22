@@ -40,23 +40,19 @@ const anatomy_by_year: Record<number, string[]> = {
 
 export default function CreateTestComponent({ onClose }: Props) {
     const [category, setCategory] = useState("");
-
     const [selectedYear, setSelectedYear] = useState<number | null>(null);
     const [selectedSubsystems, setSelectedSubsystems] = useState<string[]>([]);
-
-
-
     const [tags, setTags] = useState("");
     const [timeLimit, setTimeLimit] = useState("15:00");
-
     const [aiQuestions, setAiQuestions] = useState(0);
     const [noTimeLimit, setNoTimeLimit] = useState(false);
     const [questions, setQuestions] = useState(10);
-
-
-
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
     const [error, setError] = useState<string | null>(null);
+
+    /* react :sob: */
+    /*************** */
+
     const handleTimeChange = (value: string) => {
         // Allow empty string so user can clear input
         if (value === "") {
@@ -92,7 +88,6 @@ export default function CreateTestComponent({ onClose }: Props) {
         setTimeLimit(value);
     };
 
-
     const handleCreateTest = async () => {
         setStatus("submitting");
         setError(null);
@@ -124,6 +119,8 @@ export default function CreateTestComponent({ onClose }: Props) {
         }
     };
 
+    /*************** */
+
     return (
         <>
             {/* Blur overlay */}
@@ -134,7 +131,6 @@ export default function CreateTestComponent({ onClose }: Props) {
             <div className="absolute inset-0 flex justify-center items-center z-50">
                 <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
                     <h2 className="text-xl font-bold">Let's make a test!</h2>
-
 
 
                     <div className="flex flex-col mb-3 mt-2">
