@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import GetTestsComponent from "./GetTestsComponent"
 
 export default function Tabs() {
   const [activeTab, setActiveTab] = useState(0);
@@ -48,9 +49,7 @@ export default function Tabs() {
             aria-labelledby={`tab-${idx}`}
             className={`${activeTab === idx ? '' : 'hidden'}`}
           >
-            <p className="text-gray-500 dark:text-neutral-400">
-              This is the <em className="font-semibold text-gray-800 dark:text-neutral-200">{tabLabels[idx].toLowerCase()}</em> tab body.
-            </p>
+            <GetTestsComponent/>
           </div>
         ))}
       </div>
