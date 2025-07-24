@@ -107,6 +107,10 @@ export default function CreateTestComponent({ onClose }: Props) {
             score: null,
             submitted: false,
             timeLeft: timeLimit,
+            metaData: {
+                dateCreated: new Date(),
+                pinned: false,
+            }
         };
 
         const result = await createUserTest(testDoc);

@@ -62,16 +62,6 @@ export default function GetTests() {
                         </h2>
 
                         <div className="text-sm space-y-1 mt-2">
-                            <div className="font-semibold">Config:</div>
-                            <pre className="bg-gray-100 dark:bg-gray-800 p-2 rounded overflow-x-auto">
-                                {JSON.stringify(config, null, 2)}
-                            </pre>
-
-                            <div className="font-semibold">History:</div>
-                            <pre className="bg-gray-100 dark:bg-gray-800 p-2 rounded overflow-x-auto">
-                                {JSON.stringify(history, null, 2)}
-                            </pre>
-
                             <div className="font-semibold">Full Test Object:</div>
                             <pre className="bg-gray-200 dark:bg-gray-700 p-2 rounded overflow-x-auto">
                                 {JSON.stringify(test, null, 2)}

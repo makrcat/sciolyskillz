@@ -2,6 +2,10 @@ import { getAuth } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 
+export interface MetaData {
+  dateCreated: Date;
+  pinned: boolean;
+}
 
 export interface TestConfig {
   AIquestions: number; //0 20 40 50 60 70 
@@ -21,6 +25,8 @@ export interface TestDocument {
   score: boolean | null;
   submitted: boolean;
   timeLeft: string;
+
+  metaData: MetaData;
 
 }
 

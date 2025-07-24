@@ -4,9 +4,12 @@
  */
 
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief&family=Darumadrop+One&family=Emilys+Candy&family=Freckle+Face&family=Love+Ya+Like+A+Sister&family=Mountains+of+Christmas&family=Palette+Mosaic&family=Poiret+One&family=Rampart+One&display=swap');
+
 
 .AUGHJHHHHH {
   position: relative;
@@ -33,6 +36,23 @@
   font-style: normal;
   font-size: 6.5vw;
   color: white;
+}
+
+.title:hover {
+  animation-name: fontParty;
+  animation-duration: 11s;
+}
+
+@keyframes fontParty {
+  10%  { font-family: 'Darumadrop One', sans-serif; }
+  20%  { font-family: 'Mountains of Christmas'; }
+  30%  { font-family: 'Comic Relief'; }
+  40%  { font-family: 'Palette Mosaic'; }
+  50%  { font-family: 'Rampart One'; }
+  60%  { font-family: 'Freckle Face'; }
+  70%  { font-family: 'Poiret One'; }
+  80%  { font-family: 'Emilys Candy'; }
+  90%  { font-family: 'Love Ya Like A Sister'; }
 }
 
 

@@ -1,83 +1,22 @@
-'use client';
+
 import React from 'react';
-
-import { liteClient as algoliasearch } from 'algoliasearch/lite';
-import { Highlight } from 'react-instantsearch-dom';
-import { InstantSearch } from 'react-instantsearch-dom';
-
-/* when we fix that dependency it will be {} again btw */
+import { InstantSearch, Hits, Pagination, Configure } from 'react-instantsearch-hooks-web';
 import CustomSearchBox from '../components/SearchDropdown';
-import '../components/DocsFeatures/CheckYoWork.module.css'
-// load correctly so my components look correct :[
+import QuestionHit from '../components/QuestionHit';
+import algoliaClient from '../utils/algoliaClient';
 
-import {
-    Hits,
-    Pagination,
-    Configure
-} from 'react-instantsearch-dom';
+import Layout from "../components/Layout";
 
 
-
-const appID = "9UDFND4IRA";
-const searchAPIkey = "b9d0863d3b39bf08b9180c5937d38ee8";
-
-const searchClient = algoliasearch(
-    appID,
-    searchAPIkey
-);
-
-const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-
-function Hit({ hit }: any) {
-    console.log("Full hit:", hit);
-    return (
-        <div className="checkyo-box padding-bottom h-full relative">
-            <p className="font-medium m-0">Event: {hit.event ?? "N/A"}</p>
-            <p className="font-medium mb-4">System: {hit.system ?? "N/A"}</p>
-
-            <p className="text-lg dark:text-white mb-4">
-                <Highlight attribute="question" hit={hit} tagName="em" />
-            </p>
-
-
-            {hit.potentialAnswers && hit.potentialAnswers.length > 0 && (
-                <div>
-                    <div>
-                        {hit.potentialAnswers.map((ans: string, idx: number) => {
-                            console.log("Answer at index", idx, "is:", ans, "type:", typeof ans);
-
-                            return (
-                                <div
-                                    key={idx} // <--- Important!
-                                    className="checkyo-answer"
-                                    style={{ margin: "0px 4px 4px 0px", padding: "6px 12px" }}
-                                >
-                                    <span className="font-semibold mr-2">
-                                        {letters[idx]}
-                                    </span>
-                                    {typeof ans === "string" ? ans : JSON.stringify(ans)}
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            )}
-
-            <div className="absolute bottom-2 text-sm text-gray-700 dark:text-gray-300">
-                <p>{`${hit.year} ${hit.competition} ${hit.division}`}</p>
-                <p>ID: {hit.id ?? "N/A"}</p>
-            </div>
-        </div>
-    );
-}
-
-
-
-export default function App() {
+export default function SearchUI() {
 
     return (
-        <div>
-            <InstantSearch indexName="sciolyskillz" searchClient={searchClient} >
+
+        <Layout>
+
+        {
+        //@ts-ignore
+            <InstantSearch searchClient={algoliaClient} indexName="sciolyskillz">
 
                 <div className="w-full">
 
@@ -93,7 +32,7 @@ export default function App() {
                             <span className="mt-5 flex flex-row gap-2 items-center justify-center">Search by
                                 <img
                                     className="h-5 cursor-pointer"
-                                    src="img/legality.png"
+                                    src="../../static/img/legality.png"
                                     alt="Legality"
                                     onClick={() => window.open('https://www.algolia.com/', '_blank')}
                                 />
@@ -104,22 +43,28 @@ export default function App() {
 
 
                     <div className="p-10">
-                        <Hits hitComponent={Hit} />
+                        {//@ts-ignore
+                            <Hits hitComponent={QuestionHit} />}
                     </div>
 
 
                     <div className="my-6 flex justify-center">
-                        <Pagination />
+                        {//@ts-ignore
+                            <Pagination />}
                     </div>
 
-                    <Configure hitsPerPage={9} />
+                    {
+                        //@ts-ignore
+                        <Configure hitsPerPage={9} />
+                    }
 
 
                 </div>
 
 
             </InstantSearch>
+}
 
-        </div>
+        </Layout>
     );
 }
