@@ -4,8 +4,6 @@
 # Production
 /build
 
-# Generated files
-.docusaurus
 .cache-loader
 
 # Misc
@@ -19,10 +17,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-.gitpod.yml
-
-.gitpod.yml
 
 # Other
 .env.local
 .gitpod.yml
+.vscode
+
+
+# holy shit i forgot to
+.next
+node_modules
+

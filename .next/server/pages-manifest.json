@@ -1,16 +1,9 @@
 {
   "/_app": "pages/_app.js",
-  "/_document": "pages/_document.js",
-  "/api/hello": "pages/api/hello.js",
-  "/bookmarks": "pages/bookmarks.html",
-  "/dashboard": "pages/dashboard.html",
-  "/default": "pages/default.html",
-  "/docs": "pages/docs.html",
-  "/": "pages/index.html",
-  "/practice": "pages/practice.html",
-  "/tests": "pages/tests.html",
-  "/problemBank": "pages/problemBank.html",
-  "/topics": "pages/topics.html",
   "/_error": "pages/_error.js",
-  "/404": "pages/404.html"
+  "/_document": "pages/_document.js",
+  "/": "pages/index.js",
+  "/topics": "pages/topics.js",
+  "/tests": "pages/tests.js",
+  "/dashboard": "pages/dashboard.js"
 }

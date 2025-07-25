@@ -118,7 +118,7 @@ export default function CreateTestComponent({ onClose }: Props) {
     /*************** */
 
     return (
-        <>
+        <div className="fixed top-0 left-0 h-screen w-screen">
             {/* Blur overlay */}
             <div className="absolute inset-0 bg-gray-300/20 backdrop-blur-sm z-40"
                 onClick={onClose} />
@@ -327,6 +327,6 @@ export default function CreateTestComponent({ onClose }: Props) {
                     {status === "error" && <p className="mt-2 text-red-600 text-sm">Error: {error}</p>}
                 </div>
             </div >
-        </>
+        </div>
     );
 }
