@@ -23,8 +23,8 @@ export default function CalendarGrid() {
       <div className="calendar-header flex items-center mb-3">
         <span className="font-semibold">2025 July</span>
         <div className="space-x-2">
-          <button className="px-2 py-1 border rounded">&lt;</button>
-          <button className="px-2 py-1 border rounded">&gt;</button>
+          <button className="px-2 py-1  rounded-sm">&lt;</button>
+          <button className="px-2 py-1 rounded-sm">&gt;</button>
         </div>
       </div>
 
@@ -38,7 +38,7 @@ export default function CalendarGrid() {
           {levels.map((level, idx) => (
             <div
               key={idx}
-              className={`w-4 h-4 ${levelToColor[level]} rounded-sm`}
+              className={`w-4 h-4 ${levelToColor[level]}`}
               title={`Level ${level}`}
             ></div>
           ))}

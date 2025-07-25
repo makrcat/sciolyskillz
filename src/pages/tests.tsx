@@ -1,11 +1,11 @@
 import React from "react";
 import Sidebar from "../components/DashboardFeatures/Sidebar";
-import Layout from "../components/Layout";
+import Layout from "../components/General/Layout";
 import { useRouter } from 'next/router';
 
-import TestsHome from "../components/TestsHome";
-import TestReviewer from "../components/TestReviewer";
-import TestPlayer from "../components/TestPlayer";
+import TestsHome from "../components/TestsFeatures/TestsHome";
+import TestReviewer from "../components/TestsFeatures/TestReviewer";
+import TestPlayer from "../components/TestsFeatures/TestPlayer";
 
 export default function Tests() {
   const router = useRouter();
@@ -21,10 +21,10 @@ export default function Tests() {
 
   return (
     <Layout noFooter>
-      <div className="flex flex-row items-stretch">
+      <div className="flex flex-row">
         <Sidebar />
-        <div className="flex flex-col w-full p-6 gap-4">
-          <div className="mt-4">
+        <div className="w-full">
+          <div>
             {!reviewTest && !practiceTest && (
               <TestsHome
                 onReviewTest={handleReviewTest}

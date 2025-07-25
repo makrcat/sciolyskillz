@@ -5,9 +5,7 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Comic+Relief&family=Darumadrop+One&family=Emilys+Candy&family=Freckle+Face&family=Love+Ya+Like+A+Sister&family=Mountains+of+Christmas&family=Palette+Mosaic&family=Poiret+One&family=Rampart+One&display=swap');
 
 
@@ -40,11 +38,11 @@
 
 .title:hover {
   animation-name: fontParty;
-  animation-duration: 11s;
+  animation-duration: 5.5s;
 }
 
 @keyframes fontParty {
-  10%  { font-family: 'Darumadrop One', sans-serif; }
+  10%  { font-family: 'Darumadrop One';}
   20%  { font-family: 'Mountains of Christmas'; }
   30%  { font-family: 'Comic Relief'; }
   40%  { font-family: 'Palette Mosaic'; }
@@ -66,7 +64,7 @@
   justify-content: center;
   align-items: center;
 
-  background-image: url('../../static/img/homepagebanner.png'); 
+  background-image: url('/static/img/homepagebanner.png'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

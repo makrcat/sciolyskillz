@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ExternalLink from "../ExternalLink";
-import sillyHolidaysData from "../../../static/silly-holidays-US.json";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { LinkSquare02Icon } from "@hugeicons/core-free-icons";
 
@@ -26,16 +25,26 @@ export default function Day() {
   const [holiday, setHoliday] = useState<string>("...");
   const [googleLink, setGoogleLink] = useState<string | null>(null);
 
+
   useEffect(() => {
-    const names = getTodaySillyHolidayNames(sillyHolidaysData as SillyHoliday[]);
-    if (names.length === 0) {
-      setHoliday("no silly holiday :/");
-    } else {
-      const chosen = names[Math.floor(Math.random() * names.length)];
-      setHoliday(chosen);
-      setGoogleLink("https://www.checkiday.com/");
-    }
+    fetch("/static/silly-holidays-US.json")
+      .then((res) => res.json())
+      .then((data: SillyHoliday[]) => {
+        const names = getTodaySillyHolidayNames(data);
+        if (names.length === 0) {
+          setHoliday("no silly holiday :/");
+        } else {
+          const chosen = names[Math.floor(Math.random() * names.length)];
+          setHoliday(chosen);
+          setGoogleLink("https://www.checkiday.com/");
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to load silly holidays", err);
+        setHoliday("error loading silly holiday :(");
+      });
   }, []);
+
 
   const today = new Date();
   const month = today.toLocaleString("default", { month: "long" });
@@ -44,10 +53,10 @@ export default function Day() {
     day % 10 === 1 && day !== 11
       ? "st"
       : day % 10 === 2 && day !== 12
-      ? "nd"
-      : day % 10 === 3 && day !== 13
-      ? "rd"
-      : "th";
+        ? "nd"
+        : day % 10 === 3 && day !== 13
+          ? "rd"
+          : "th";
   const formattedDate = `${month} ${day}${suffix}`;
 
   return (

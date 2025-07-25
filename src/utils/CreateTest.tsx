@@ -2,7 +2,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore, collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import algoliaClient from "./algoliaClient";
 
-import { TestDoc_to_Card } from "@/components/GetTestsComponent";
+import { TestDoc_to_Card } from "@/components/TestsFeatures/GetTestsComponent";
 
 
 export interface MetaData {

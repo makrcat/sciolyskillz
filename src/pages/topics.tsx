@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Layout from "../components/Layout";
+import Layout from "../components/General/Layout";
 
 const categories = [
     {
@@ -200,7 +200,7 @@ function Topics() {
 
         <header className="bg-teal-600 text-white text-center p-12">
             <div className="container">
-                <h1>
+                <h1 className="text-5xl mb-2">
                     Events for 2026
                 </h1>
                 <p className="subtitle">Yes I will fix up this page later!</p>

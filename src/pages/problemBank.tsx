@@ -1,11 +1,11 @@
 
 import React from 'react';
 import { InstantSearch, Hits, Pagination, Configure } from 'react-instantsearch-hooks-web';
-import CustomSearchBox from '../components/SearchDropdown';
-import QuestionHit from '../components/QuestionHit';
+import CustomSearchBox from '../components/SearchFeatures/SearchDropdown';
+import QuestionHit from '../components/SearchFeatures/QuestionHit';
 import algoliaClient from '../utils/algoliaClient';
 
-import Layout from "../components/Layout";
+import Layout from "../components/General/Layout";
 
 
 export default function SearchUI() {
@@ -32,7 +32,7 @@ export default function SearchUI() {
                             <span className="mt-5 flex flex-row gap-2 items-center justify-center">Search by
                                 <img
                                     className="h-5 cursor-pointer"
-                                    src="../../static/img/legality.png"
+                                    src="/static/img/legality.png"
                                     alt="Legality"
                                     onClick={() => window.open('https://www.algolia.com/', '_blank')}
                                 />

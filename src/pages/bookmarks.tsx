@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../components/General/Layout";
 
 import Sidebar from "../components/DashboardFeatures/Sidebar";
 

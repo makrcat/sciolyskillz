@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Layout from "../components/Layout";
+import Layout from "../components/General/Layout";
 
 import LikeAndSubscribe from '../components/HomepageFeatures/LikeAndSubscribe';
 import styles from './index.module.css';
