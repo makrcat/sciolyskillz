@@ -48,7 +48,6 @@ export default function Tabs() {
             aria-labelledby={`tab-${idx}`}
             className={`${activeTab === idx ? '' : 'hidden'}`}
           >
-            aa
           </div>
         ))}
       </div>

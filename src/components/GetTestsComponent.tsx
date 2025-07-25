@@ -1,14 +1,44 @@
 import React, { useEffect, useState } from "react";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, getDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { TestDocument } from "../utils/CreateTest";
 
 import { onAuthStateChanged } from "firebase/auth";
 
+import { TestConfig, MetaData, TestDocument } from "../utils/CreateTest";
 
 
-export default function GetTests() {
-    const [tests, setTests] = useState<TestDocument[]>([]);
+
+export interface TestCardInfo {
+    config: TestConfig;
+    score: boolean | null;
+    submitted: boolean;
+    timeLeft: string;
+    metaData: MetaData;
+    id: string;
+}
+
+export function TestDoc_to_Card(doc: TestDocument, id_: string) {
+
+    const a: TestCardInfo = {
+        config: doc.config,
+        score: doc.score,
+        submitted: doc.submitted,
+        timeLeft: doc.timeLeft,
+        metaData: doc.metaData,
+        id: id_
+    }
+
+    return a;
+
+}
+
+
+/**THIS component goes to firebase and pretty please asks for the big document file with all the key info */
+
+
+
+export default function GetTests({ onReviewTest, onPlayTest }: { onReviewTest: (id: string) => void, onPlayTest: (id: string) => void }) {
+    const [tests, setTests] = useState<TestCardInfo[]>([]);
     const [loading, setLoading] = useState(true);
 
 
@@ -24,12 +54,24 @@ export default function GetTests() {
             }
 
             const db = getFirestore();
-            const testsRef = collection(db, "users", user.uid, "practiceTests");
+            const summaryDoc = doc(db, "users", user.uid, "practiceTests", "ongoing_tests");
 
             try {
-                const snapshot = await getDocs(testsRef);
-                const testDocs: TestDocument[] = snapshot.docs.map(doc => doc.data() as TestDocument);
-                setTests(testDocs);
+
+                const docSnap = await getDoc(summaryDoc);
+
+                const data = docSnap.data() || {};
+
+                const testCards: TestCardInfo[] = Object.entries(data).map(([id, info]) => {
+                    // info is a string of JSON, so parse it first:
+                    const parsedInfo = JSON.parse(info as string);
+                    return { ...parsedInfo, id };
+                });
+
+                setTests(testCards);
+
+
+
             } catch (err) {
                 console.error("Error fetching tests:", err);
             } finally {
@@ -47,10 +89,8 @@ export default function GetTests() {
 
     return (
         <div className="space-y-4">
-            {tests.map((test, index) => {
-                const { config, history } = test;
-                const answered = Object.values(history).filter(choice => choice !== -1).length;
-                const total = Object.keys(history).length;
+            {tests.map((testCard, index) => {
+                const config = testCard.config;
 
                 return (
                     <div
@@ -64,10 +104,33 @@ export default function GetTests() {
                         <div className="text-sm space-y-1 mt-2">
                             <div className="font-semibold">Full Test Object:</div>
                             <pre className="bg-gray-200 dark:bg-gray-700 p-2 rounded overflow-x-auto">
-                                {JSON.stringify(test, null, 2)}
+                                {JSON.stringify(testCard, null, 2)}
                             </pre>
                         </div>
+
+
+                        <div>
+
+                            <div>{testCard.id}</div>
+                            <button
+                                onClick={() => onReviewTest(testCard.id)}
+                                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                            >
+                                Review
+                            </button>
+
+                            <button
+                                onClick={() => onPlayTest(testCard.id)}
+                                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 ml-2"
+                            >
+                                Play
+                            </button>
+
+                        </div>
+
                     </div>
+
+
                 );
 
             })}

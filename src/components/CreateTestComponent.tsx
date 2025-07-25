@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createUserTest, TestDocument } from "../utils/CreateTest";
+import { createUserTest, TestConfig} from "../utils/CreateTest";
 import { HugeiconsIcon } from '@hugeicons/react';
 import { StopWatchIcon, InfinityCircleIcon } from "@hugeicons/core-free-icons";
 
@@ -33,6 +33,7 @@ const categories = [
 ];
 
 const anatomy_by_year: Record<number, string[]> = {
+    2024: ["Cardiovascular", "Lymphatic", "Excretory"],
     2025: ["Integumentary", "Skeletal", "Muscular"],
     2026: ["Nervous", "Endocrine", "Sensory"],
 };
@@ -92,8 +93,8 @@ export default function CreateTestComponent({ onClose }: Props) {
         setStatus("submitting");
         setError(null);
 
-        const testDoc: TestDocument = {
-            config: {
+        const testDoc: TestConfig = {
+
                 AIquestions: aiQuestions,
                 category,
                 noTimeLimit,
@@ -102,16 +103,7 @@ export default function CreateTestComponent({ onClose }: Props) {
                 timeLimit,
                 questions,
                 systems: selectedSubsystems,
-            },
-            history: {},
-            score: null,
-            submitted: false,
-            timeLeft: timeLimit,
-            metaData: {
-                dateCreated: new Date(),
-                pinned: false,
             }
-        };
 
         const result = await createUserTest(testDoc);
 

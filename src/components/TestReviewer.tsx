@@ -21,6 +21,8 @@ interface Question {
 
 export default function TestReviewer({ testID }: { testID: string }) {
     const [history, setHistory] = useState<any>(null);
+    const [questionOrder, setQO] = useState<string[]>([]);
+
     const [loading, setLoading] = useState(true);
 
     const [user, setUser] = useState<User | null>(null);
@@ -57,11 +59,15 @@ export default function TestReviewer({ testID }: { testID: string }) {
                 if (!testDocSnap.exists()) {
                     console.error(`No test found for ID ${testID}`);
                     setHistory(null);
+                    
+
                     setLoading(false);
                     return;
                 }
 
                 const testData = testDocSnap.data();
+                setQO(testData?.questionOrder ?? []);
+
                 setHistory(testData?.history ?? null);
                 setLoading(false);
             } catch (error) {
@@ -102,7 +108,8 @@ export default function TestReviewer({ testID }: { testID: string }) {
             </pre>
 
             <div>
-                {Object.entries(history).map(([qid, userAnswer]: [string, any]) => {
+                {questionOrder.map((qid: string) => {
+                    const userAnswer = history[qid];
                     const question = data.find((q: Question) => q.id === qid);
                     if (!question) return null;
 
@@ -140,23 +147,31 @@ export default function TestReviewer({ testID }: { testID: string }) {
                                     const isUserAnswer = userAnswer === index;
 
                                     let bgColor = "";
-                                    if (isCorrectAnswer) {
+
+                                    if (isUserAnswer && isCorrectAnswer) {
+                                        // ✅ User selected the correct answer
                                         bgColor = "bg-green-100 border-green-500 text-green-800";
                                     } else if (isUserAnswer && !isCorrectAnswer) {
+                                        // ❌ User selected the wrong answer
                                         bgColor = "bg-red-100 border-red-500 text-red-800";
+                                    } else if (!isUserAnswer && isCorrectAnswer) {
+                                        // ⚠️ User missed the correct answer (didn't select it)
+                                        bgColor = "bg-yellow-100 border-yellow-500 text-yellow-800";
                                     } else {
+                                        // Default for everything else
                                         bgColor = "bg-gray-100 border-gray-300 text-gray-700 dark:bg-gray-700 dark:text-gray-200";
                                     }
 
+
                                     return (
-  
+
                                         <div
                                             key={index}
                                             className={`relative ml-4 border rounded px-3 pl-10 py-1 ${bgColor}`}
                                         >
                                             <div className="absolute left-2">{String.fromCharCode(index + 65)}</div>
                                             {choice}
-                                            
+
                                         </div>
                                     );
                                 })}

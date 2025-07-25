@@ -23,6 +23,8 @@ export default function TestReviewer({ testID }: { testID: string }) {
     const [history, setHistory] = useState<any>(null);
     const [loading, setLoading] = useState(true);
 
+    const [questionOrder, setQO] = useState<string[]>([]);
+
     const [user, setUser] = useState<User | null>(null);
     const [authChecked, setAuthChecked] = useState(false);
 
@@ -65,7 +67,10 @@ export default function TestReviewer({ testID }: { testID: string }) {
 
                 const testData = testDocSnap.data();
                 setHistory(testData?.history ?? null);
+                setQO(testData?.questionOrder ?? []); 
                 setLoading(false);
+
+
             } catch (error) {
                 console.error('Error loading test data:', error);
                 setHistory(null);
@@ -111,7 +116,7 @@ export default function TestReviewer({ testID }: { testID: string }) {
             </pre>
 
             <div>
-                {Object.entries(history).map(([qid, userAnswer]: [string, any]) => {
+                {questionOrder.map((qid: string) => {
                     const question = data.find((q: Question) => q.id === qid);
                     if (!question) return null;
 

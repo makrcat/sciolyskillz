@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import GoogLoginButton from "./LoginButton";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Sun01Icon, Moon02Icon } from "@hugeicons/core-free-icons";
@@ -25,28 +26,31 @@ export default function Header() {
           src="../../static/img/logo.png"
           alt="Site Logo"
           className="h-12 w-auto"
-        /><a href="/" className="font-semibold">sciolyskillz</a>
+        /><Link href="/" className="font-semibold">sciolyskillz</Link>
         </div>
 
         {/* Navigation links */}
         <nav className="flex gap-2 space-x-4 text-gray-700 dark:text-gray-300 font-medium">
-          <a href="/dashboard" className="hover:text-teal-600 dark:hover:text-teal-400">
+          <Link href="/dashboard" className="hover:text-teal-600 dark:hover:text-teal-400">
             Dashboard
-          </a>
-          <a href="/topics" className="hover:text-teal-600 dark:hover:text-teal-400">
+          </Link>
+          
+          <Link href="/topics" className="hover:text-teal-600 dark:hover:text-teal-400">
             Topics
-          </a>
-          <a href="/problemBank" className="hover:text-teal-600 dark:hover:text-teal-400">
+          </Link>
+          
+          <Link href="/problemBank" className="hover:text-teal-600 dark:hover:text-teal-400">
             Problem Bank
-          </a>
+          </Link>
+          
         </nav>
       </div>
 
       {/* Right side: About + Dark Mode + Sign Up */}
       <div className="flex items-center space-x-6">
-        <a href="/about" className="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 font-medium">
+        <Link href="/about" className="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 font-medium">
           About
-        </a>
+        </Link>
 
 
         <button

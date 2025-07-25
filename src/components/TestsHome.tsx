@@ -4,7 +4,7 @@ import TestStats from "./TestStats";
 import CreateTestComponent from "./CreateTestComponent"
 import GetTests from "./GetTestsComponent"
 
-export default function TestsHome() {
+export default function TestsHome({ onReviewTest, onPlayTest }: { onReviewTest: (id: string) => void, onPlayTest: (id: string) => void }) {
     const [showCreate, setShowCreate] = useState(false);
     return (
         <div className="p-8 w-full">
@@ -54,7 +54,7 @@ export default function TestsHome() {
 
             {showCreate && <CreateTestComponent onClose={() => setShowCreate(false)} />}
 
-            <GetTests />
+            <GetTests onReviewTest={onReviewTest} onPlayTest={onPlayTest} />
 
 
 
