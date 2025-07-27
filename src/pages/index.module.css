@@ -9,35 +9,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Relief&family=Darumadrop+One&family=Emilys+Candy&family=Freckle+Face&family=Love+Ya+Like+A+Sister&family=Mountains+of+Christmas&family=Palette+Mosaic&family=Poiret+One&family=Rampart+One&display=swap');
 
 
+
 .AUGHJHHHHH {
   position: relative;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-style: normal;
   text-align: center;
-  margin: 40px;
   font-size: 40px;
 }
 
-.AUGHJHHHHH2 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  text-align: center;
-  margin: 20px;
-  font-size: 40px;
+.wavy {
+    text-decoration: rgb(255, 96, 231) wavy underline;
+    text-decoration-skip-ink: none;
+    height: 1.5em;
+    text-underline-offset: 10px;
+}
+
+
+.grid-pattern {
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to right, #80808024 1px, transparent 1px),
+    linear-gradient(to bottom, #80808024 1px, transparent 1px);
+  background-size: 24px 24px;
+
+  padding: 50px;
 }
 
 .title {
-  font-family: "Fredericka the Great", serif;
+  font-family: "Poppins", serif;
   font-weight: 400;
   font-style: normal;
   font-size: 6.5vw;
-  color: white;
 }
 
 .title:hover {
-  animation-name: fontParty;
   animation-duration: 5.5s;
 }
 
@@ -52,26 +60,16 @@
   80%  { font-family: 'Emilys Candy'; }
   90%  { font-family: 'Love Ya Like A Sister'; }
 }
-
-
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 10 / 3.5; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-image: url('/static/img/homepagebanner.png'); 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
+@keyframes glow-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
+
+

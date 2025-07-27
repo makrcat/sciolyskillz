@@ -10,6 +10,9 @@ interface Props {
 // Example categories/events
 const categories = [
     "Anatomy & Physiology",
+]
+
+/*
     "Astronomy",
     "Chemistry Lab",
     "Codebusters",
@@ -30,7 +33,7 @@ const categories = [
     "Tower",
     "Wright Stuff",
     "Write It Do It",
-];
+*/
 
 const anatomy_by_year: Record<number, string[]> = {
     2024: ["Cardiovascular", "Lymphatic", "Excretory"],
@@ -118,7 +121,7 @@ export default function CreateTestComponent({ onClose }: Props) {
     /*************** */
 
     return (
-        <div className="fixed top-0 left-0 h-screen w-screen">
+        <div className="z-99 fixed top-0 left-0 h-screen w-screen">
             {/* Blur overlay */}
             <div className="absolute inset-0 bg-gray-300/20 backdrop-blur-sm z-40"
                 onClick={onClose} />

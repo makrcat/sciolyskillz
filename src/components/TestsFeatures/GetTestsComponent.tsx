@@ -118,25 +118,28 @@ function GroupedTestsList({ tests, onPlayTest }: Props) {
                                         </div>
                                     </div>
 
-                                    {/* Category */}
                                     <h2 className="text-lg font-bold text-gray-800 dark:text-white">
                                         {testCard.config.category || "Untitled"}
                                     </h2>
 
                                     {/* Systems */}
-                                    {testCard.config.systems && testCard.config.systems.length > 0 && (
-                                        <div className="flex flex-wrap gap-2 text-sm items-center">
-                                            <span className="font-semibold">Systems:</span>
-                                            {testCard.config.systems.map((system, i) => (
-                                                <span
-                                                    key={i}
-                                                    className="bg-green-100 text-green-800 px-2 py-1 rounded-full"
-                                                >
-                                                    {system}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    )}
+                                    <div className="flex flex-wrap gap-2 text-sm items-center">
+                                        <span className="font-semibold">Systems:</span>
+                                        {testCard.config.systems && testCard.config.systems.length > 0 ? (
+                                            <div className="flex flex-wrap gap-2">
+                                                {testCard.config.systems.map((system, i) => (
+                                                    <span
+                                                        key={i}
+                                                        className="bg-green-100 text-green-800 px-2 py-1 rounded-full"
+                                                    >
+                                                        {system}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        ) : (
+                                            <div className="text-gray-500 italic">No systems configured.</div>
+                                        )}
+                                    </div>
 
                                     {/* Progress bar */}
                                     <div>

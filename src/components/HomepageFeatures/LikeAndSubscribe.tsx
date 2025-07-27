@@ -63,8 +63,7 @@ const LikeAndSubscribe = () => {
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="text-white font-bold py-3 px-5 w-full text-sm text-center bg-[rgba(47,133,85,255)] rounded-lg border cursor-pointer border-primary-600 sm:rounded-none sm:rounded-r-lg"
-              style={{ border: "1px solid rgba(47,133,85,255)", borderLeft: "none" }}
+              className="text-white font-bold py-3 px-5 w-full text-sm text-center bg-teal-600 rounded-lg border cursor-pointer border-primary-600 sm:rounded-none sm:rounded-r-lg border-teal-700"
             >
               {status === 'loading' ? 'Submitting...' : 'Thanks!'}
             </button>

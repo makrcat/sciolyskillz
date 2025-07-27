@@ -25,5 +25,6 @@ yarn-error.log*
 
 
 # holy shit i forgot to
-.next
+.next/*
 
+# git rm -r --cached .next

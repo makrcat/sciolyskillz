@@ -3,133 +3,167 @@ import Layout from "../components/General/Layout";
 
 import LikeAndSubscribe from '../components/HomepageFeatures/LikeAndSubscribe';
 import styles from './index.module.css';
-import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowRight01Icon } from '@hugeicons/core-free-icons';
+import clsx from "clsx";
 
 
 function HomepageHeader() {
   return (
+    <div className="relative w-full h-[60vh] flex justify-center items-center gap-8 bg-white">
 
-    <header className={styles.heroBanner}>
-      <div>
+      <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-r from-teal-100 to-blue-100 z-0" />
+      <div className="absolute top-0 left-0 inset-0 h-48 bg-gradient-to-b from-white/10 to-white z-10" />
+      <img className="absolute top-0 left-0 w-full z-20 opacity-20" src='/static/img/bannner.png'></img>
+
+      <div className="relative z-10 pr-[10%]">
         <h1 className={styles.title}>
           sciolyskillz
         </h1>
+        <p className="text-2xl">A resource hub for Science Olympiad.</p>
 
-        <p className="subtitle text-white pb-6 mt-4 ">A resource hub for Science Olympiad.</p>
 
-          <button className="bg-white text-lg font-semibold text-black pl-5 pr-3 py-2 rounded-full ">
-            <div className="flex flex-row font-normal justify-center align-center">
-              Explore topics <HugeiconsIcon icon={ArrowRight01Icon} className='relative mt-0.5 mx-0 mb-0' />
+{/*
+        <div className="flex flex-col justify-center relative inline-block mt-8">
+          <div className="relative group cursor-pointer">
+            <div
+              className="absolute -inset-1 bg-gradient-to-r from-red-600 to-violet-600 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500 group-hover:duration-500 z-0"
+            ></div>
+
+            <div
+              className="relative px-4 py-3 bg-white ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-start">
+
+              <p className="text-slate-800">Explore the topics</p>
+
             </div>
-          </button>
+          </div>
+        </div>
+*/}
+
+<br></br>
+<button className="btn btn-lg">Explore the topics</button>
+
+
       </div>
-    </header>
+    </div>
+
+
 
   );
 }
 
 export default function Home(): ReactNode {
   return (
-    
+
 
     <Layout>
       <HomepageHeader />
-      <main>
+      <main className="mt-24 border border-t-2 border-gray-300 pt-10">
 
+
+        {/*
         <div className={styles.AUGHJHHHHH}
           title="Don't start, just stress. (Don't be happy, worry.)">
-          Don't stress, just start.
+          <span >Don't stress, </span> 
+          <span>just start.</span>
 
         </div>
+        */}
+        <div className="mx-[15vw] m-6 flex flex-col gap-12 p-2  ">
 
 
 
-        <div className="mx-[25vh] m-6 flex flex-col gap-12 p-2">
+          <div className="flex flex-row w-full rounded justify-between relative min-h-60 
+          border border-gray-200 p-8 overflow-clip">
 
+            <div className="absolute -bottom-6 -right-2 opacity-15 w-48 h-48 rounded-full bg-blue-400 z-1"></div>
+            <div className="absolute -top-12 -left-12 opacity-15 w-72 h-72 rounded-full bg-teal-400  z-1"></div>
 
-          <div className="flex flex-row gap-6 w-full force-border rounded p-8 bg-slate-100 relative min-h-60 overflow-hidden">
-
-            <div className='mr-96'>
-              <h2>Practice tests</h2>
-              <p className='text-lg'>Our backend sifts through a bin of past questions like a child with a bin of LEGO, and builds a neat practice test on any topic. I mean, hopefully</p>
+            <div className="w-96 z-10">
+              <h2 className='text-4xl'>Practice tests</h2>
+              <p className='text-lg text-gray-800'>The questions are sourced from the released past tests on scioly wiki</p>
             </div>
 
-            <div
-              className="w-64 bg-amber-500 h-48 rounded-lg absolute top-5 right-16 flex flex-col gap-1 p-4"
-              style={{ transform: 'rotate(4deg)', transformOrigin: 'bottom center' }}
-            >
-              <p className='text-md font-bold'>What is the powerhouse of the cell?</p>
-              <div className="flex flex-row items-center space-x-4">
-                {/* Fixed size circle */}
-                <div className="w-6 h-6 rounded-full border-2 border-black flex items-center justify-center bg-white flex-shrink-0">
-                  <span className="font-bold text-black">A</span>
-                </div>
-                {/* Text */}
-                <p className="text-black font-medium">
-                  Mitochondria
-                </p>
-              </div>
 
-              <div className="flex flex-row items-center space-x-4">
-                {/* Fixed size circle */}
-                <div className="w-6 h-6 rounded-full border-2 border-black flex items-center justify-center bg-white flex-shrink-0">
-                  <span className="font-bold text-black ">B</span>
-                </div>
-                {/* Text */}
-                <p className="text-black font-medium ">
-                  Golgi Apparatus
-                </p>
-              </div>
+            <div className="z-2 bg-white w-80 border border-gray-300 rounded-lg top-5 right-16 p-4 flex flex-col gap-1">
 
-              <div className="flex flex-row items-center space-x-4">
-                {/* Fixed size circle */}
-                <div className="w-6 h-6 rounded-full border-2 border-black flex items-center justify-center bg-white flex-shrink-0">
-                  <span className="font-bold text-black ">C</span>
-                </div>
-                {/* Text */}
-                <p className="text-black font-medium ">
-                  Peroxisomus Purificus
-                </p>
-              </div>
+              <p className="text-lg font-semibold pb-1">What is the powerhouse of the cell?</p>
 
-              <div className="flex flex-row items-center space-x-4">
-                {/* Fixed size circle */}
-                <div className="w-6 h-6 rounded-full border-2 border-black flex items-center justify-center bg-white flex-shrink-0">
-                  <span className="font-bold text-black ">D</span>
-                </div>
-                {/* Text */}
-                <p className="text-black font-medium ">
-                  Wingardium Leviosa
-                </p>
-              </div>
+              {[
+                { label: "A", text: "Mitochondria" },
+                { label: "B", text: "Golgi Apparatus" },
+                { label: "C", text: "Peroxisomus Purificus" },
+                { label: "D", text: "Wingardium Leviosa" },
+              ].map(({ label, text }) => (
 
+                <div
+                  key={label}
+                  className=" bg-gray-100  border border-gray-300 flex items-center gap-2 cursor-pointer hover:bg-gray-300 rounded-md p-2"
+                >
+                  <div className="w-6 h-6 rounded-full border-2 border-black flex items-center justify-center bg-white flex-shrink-0">
+                    <span className="font-bold text-black">{label}</span>
+                  </div>
+                  <p className="text-black font-medium">{text}</p>
+                </div>
+              ))}
 
             </div>
+
 
           </div>
 
 
-          <div className="flex flex-row gap-6 w-full force-border rounded p-8 bg-slate-100 relative min-h-60 overflow-hidden">
 
-            <div>
-              <h2>Docs Guide</h2>
-              <p className='text-lg'>Yay docs! Wow! Wonderful! They're not finished</p>
+
+
+
+
+          <div className={clsx(
+            "flex flex-row w-full rounded justify-between relative min-h-60 border border-gray-200 p-8 overflow-clip",
+          )}
+          >
+
+
+            <div className="absolute -bottom-6 -right-2 opacity-15 w-48 h-48 rounded-full bg-pink-400 z-1"></div>
+            <div className="absolute -top-12 -left-12 opacity-15 w-72 h-72 rounded-full bg-purple-400  z-1"></div>
+
+            <div className="w-96">
+              <h2 className='text-4xl'>DOCS</h2>
+              <p className='text-lg text-gray-800'>The ducks walked up to the lemonade stand, and they said to the man running the stand: hey. (bomp bomp bomp.) got any </p>
             </div>
 
 
 
+
             <div
-              className="w-64 bg-slate-300 h-64 rounded-lg absolute bottom-[-4rem] right-16"
+              className="z-10 w-64 bg-slate-300 h-64 rounded-lg absolute bottom-[-4rem] right-32"
               style={{ transform: 'rotate(8deg)', transformOrigin: 'bottom center' }}
             ></div>
             <div
-              className="w-64 bg-amber-500 h-64 rounded-lg absolute bottom-[-4rem] right-16"
+              className="z-10 w-64 bg-gray-500 h-64 rounded-lg absolute bottom-[-4rem] right-32"
               style={{ transform: 'rotate(0deg)', transformOrigin: 'bottom center' }}
             ></div>
 
 
           </div>
+
+
+
+
+          <div className={clsx(
+            "flex flex-row w-full rounded justify-between relative min-h-60 border border-gray-200 p-8 overflow-clip",
+          )}
+          >
+
+
+            <div className="absolute -bottom-6 -right-2 opacity-15 w-48 h-48 rounded-full bg-amber-400 z-1"></div>
+            <div className="absolute -top-12 -left-12 opacity-15 w-72 h-72 rounded-full bg-red-400  z-1"></div>
+
+            <div className="w-96">
+              <h2 className='text-4xl'>LEARN</h2>
+              <p className='text-lg text-gray-800'>The ducks walked up to the lemonade stand, and they said to the man running the stand: hey. (bomp bomp bomp.) got any </p>
+            </div>
+          </div>
+
+
 
 
           {/*
@@ -146,10 +180,10 @@ export default function Home(): ReactNode {
               className="w-96 force-border h-48 rounded-lg absolute bottom-1  right-16 grid grid-cols-4 gap-4 gap-x-4 gap-y-4"
             >
 
-              <div className="bg-amber-500 col-start-1 col-span-2">a</div>
-              <div className="bg-amber-500">a</div>
-              <div className="bg-amber-500">a</div>
-              <div className="bg-amber-500">a</div>
+              <div className="bg-gray-500 col-start-1 col-span-2">a</div>
+              <div className="bg-gray-500">a</div>
+              <div className="bg-gray-500">a</div>
+              <div className="bg-gray-500">a</div>
 
             </div>
 
@@ -160,6 +194,7 @@ export default function Home(): ReactNode {
 
         </div>
         <LikeAndSubscribe />
+
 
       </main>
     </Layout>

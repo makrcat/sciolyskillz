@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../../firebase-config';
+import { TestDocument } from '@/utils/CreateTest';
 import { onAuthStateChanged, User } from 'firebase/auth';
 
 interface Question {
@@ -27,9 +28,12 @@ export default function TestReviewer({ testID }: { testID: string }) {
 
     const [user, setUser] = useState<User | null>(null);
     const [authChecked, setAuthChecked] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0); // current question index
 
     const [answers, setAnswers] = useState<{ [qid: string]: number }>({});
 
+    const [data, setData] = useState<any>(null);
+    const [TD, setTD] = useState<TestDocument>();
 
 
     // Listen for Firebase auth state changes to get the user reliably
@@ -65,7 +69,10 @@ export default function TestReviewer({ testID }: { testID: string }) {
                     return;
                 }
 
-                const testData = testDocSnap.data();
+                // is this.. right... hm # todo
+                const testData = testDocSnap.data() as TestDocument;
+
+                setTD(testData);
                 setHistory(testData?.history ?? null);
                 setQO(testData?.questionOrder ?? []);
                 setLoading(false);
@@ -81,8 +88,6 @@ export default function TestReviewer({ testID }: { testID: string }) {
         loadTest(user.uid);
 
     }, [authChecked, user, testID]);
-
-    const [data, setData] = useState<any>(null);
 
     useEffect(() => {
         if (history) {
@@ -104,73 +109,112 @@ export default function TestReviewer({ testID }: { testID: string }) {
     if (loading) return <div>Loading test history...</div>;
     if (!history) return <div>No history found for test ID: {testID}</div>;
 
-    if (!data || !history) return <div> Couldn't find questions DB JSON data!</div>
+    const qid = questionOrder[currentIndex];
+    const question = data.find((q: Question) => q.id === qid);
+
 
     return (
 
 
         <div className="mx-16 w-4xl my-6">
-            <h2>Test History for test ID: {testID}</h2>
-            <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-                {JSON.stringify(history, null, 2)}
-            </pre>
+            <div className="collapse bg-base-100 border-base-300 border">
+                <input type="checkbox" />
+
+                <div className="collapse-title font-semibold">Debug Info for: <code>{testID}</code></div>
+                <div className="collapse-content text-sm">
+                    <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+                        {JSON.stringify(history, null, 2)}
+                    </pre>
+
+                </div>
+            </div>
+
 
             <div>
-                {questionOrder.map((qid: string) => {
-                    const question = data.find((q: Question) => q.id === qid);
-                    if (!question) return null;
 
-                    return (
-                        <div
-                            key={qid}
-                            className="border border-gray-300 rounded-xl p-4 mb-4 shadow-sm bg-white dark:bg-gray-800 "
-                        >
-                            <div className="flex flex-row mb-4">
-                                <span className="text-gray-500 text-sm flex-1">
-                                    {question.system}
-                                </span>
-
-                                <span className="text-gray-500 text-sm">
-                                    # {question.number} on page {question.page} • {question.year} {question.competition} {question.division}
-                                </span>
-                            </div>
-
-                            {/* Question Number Bubble */}
-                            <div className="flex items-center gap-2 mb-2">
+                <div className="flex flex-row justify-between my-2">
+                    <div>Right Dog</div>
+                    <div>{TD!.timeLeft}{" / "}{TD!.config.timeLimit}</div>
+                    
+                </div>
 
 
-                                {/* Question Text */}
-                                <p className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
-                                    {question.question}
-                                </p>
+                {question ? (
+                    <div
+                        key={qid}
+                        className="border border-gray-300 rounded-xl p-4 mb-4 shadow-sm bg-white dark:bg-gray-800 "
+                    >
+                        <div className="flex flex-row mb-4">
+                            <span className="text-gray-500 text-sm flex-1">
+                                {question.system ?? (<em>No System</em>)}
+                            </span>
 
-                            </div>
+                            <span className="text-gray-500 text-sm">
+                                # {question.number} on page {question.page} • {question.year} {question.competition} {question.division}
+                            </span>
+                        </div>
+
+                        {/* Question Number Bubble */}
+                        <div className="flex items-center gap-2 mb-2">
 
 
-                            {/* Answer Choices */}
-                            <div className="space-y-1 mb-2">
-                                {question.potentialAnswers.map((choice: string, index: number) => {
-                                    const isSelected = answers[question.id] === index;
-
-                                    return (
-                                        <div
-                                            key={index}
-                                            className={`cursor-pointer border rounded px-3 py-1 ${isSelected ? 'bg-blue-200' : 'bg-gray-100'} hover:bg-blue-100`}
-                                            onClick={() => setAnswers(prev => ({ ...prev, [question.id]: index }))}
-                                        >
-                                            <strong className="mr-2">{String.fromCharCode(index + 65)}.</strong> {choice}
-                                        </div>
-                                    );
-                                })}
-
-                            </div>
-
+                            {/* Question Text */}
+                            <p className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
+                                {question.question}
+                            </p>
 
                         </div>
 
-                    );
-                })}
+
+                        {/* Answer Choices */}
+                        <div className="space-y-1 mb-2">
+                            {question.potentialAnswers.map((choice: string, index: number) => {
+                                const isSelected = answers[question.id] === index;
+
+                                return (
+                                    <div
+                                        key={index}
+                                        className={`cursor-pointer border rounded px-3 py-1 ${isSelected ? 'bg-blue-200' : 'bg-gray-100'} hover:bg-blue-100`}
+                                        onClick={() => setAnswers(prev => ({ ...prev, [question.id]: index }))}
+                                    >
+                                        <strong className="mr-2">{String.fromCharCode(index + 65)}.</strong> {choice}
+                                    </div>
+                                );
+                            })}
+
+                        </div>
+
+
+                    </div>
+
+                ) : (
+                    <div>❌ Couldn't find the question data.</div>
+                )}
+
             </div>
+
+            <div className="flex justify-between items-center mt-4">
+                <button
+                    onClick={() => setCurrentIndex((i) => Math.max(i - 1, 0))}
+                    disabled={currentIndex === 0}
+                    className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+                >
+                    ⬅ Previous
+                </button>
+
+                <span className="text-sm text-gray-600">
+                    Question {currentIndex + 1} of {questionOrder.length}
+                </span>
+
+                <button
+                    onClick={() => setCurrentIndex((i) => Math.min(i + 1, questionOrder.length - 1))}
+                    disabled={currentIndex === questionOrder.length - 1}
+                    className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+                >
+                    Next ➡
+                </button>
+            </div>
+
 
             <button
                 className="mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
