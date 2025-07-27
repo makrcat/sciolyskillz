@@ -1,9 +1,13 @@
+"use client";
+import { useEffect, useState } from "react";
 import type { ReactNode } from 'react';
 import Layout from "../components/General/Layout";
 
 import LikeAndSubscribe from '../components/HomepageFeatures/LikeAndSubscribe';
 import styles from './index.module.css';
 import clsx from "clsx";
+
+
 
 
 function HomepageHeader() {
@@ -21,7 +25,7 @@ function HomepageHeader() {
         <p className="text-2xl">A resource hub for Science Olympiad.</p>
 
 
-{/*
+        {/*
         <div className="flex flex-col justify-center relative inline-block mt-8">
           <div className="relative group cursor-pointer">
             <div
@@ -38,8 +42,8 @@ function HomepageHeader() {
         </div>
 */}
 
-<br></br>
-<button className="btn btn-lg">Explore the topics</button>
+        <br></br>
+        <button className="btn btn-lg">Explore the topics</button>
 
 
       </div>
@@ -50,13 +54,66 @@ function HomepageHeader() {
   );
 }
 
+
+const Arrow = () => (
+  <svg
+    className="inline-block mx-1 sm:mx-2 w-8 sm:w-10 h-8 sm:h-10 fill-white"
+    viewBox="0 0 24 24"
+  >
+    <polygon points="2,2 12,12 2,22 8,22 18,12 8,2" fill="gray" />
+  </svg>
+);
+
+
+function ArrowBanner() {
+  const [arrowCount, setArrowCount] = useState(10); // default fallback
+
+  useEffect(() => {
+    const updateArrowCount = () => {
+      const count = Math.floor(window.innerWidth / 170); // adjust spacing here
+      setArrowCount(count);
+    };
+
+    updateArrowCount(); // initial count
+    window.addEventListener("resize", updateArrowCount);
+    return () => window.removeEventListener("resize", updateArrowCount);
+  }, []);
+
+  return (
+    <div className="mt-24 w-full bg-gray-200 py-6 overflow-hidden">
+      <div className="whitespace-nowrap flex flex-row justify-center items-center flex-wrap">
+        {[...Array(arrowCount)].map((_, i) => (
+          <Arrow key={`left-${i}`} />
+        ))}
+
+        <span
+          className={clsx(
+            "px-4 sm:px-6 text-[rgb(100,100,100)] text-3xl sm:text-4xl font-semibold",
+            "poppins"
+          )}
+        >
+          Check it out
+        </span>
+
+        {[...Array(arrowCount)].map((_, i) => (
+          <Arrow key={`right-${i}`} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
 export default function Home(): ReactNode {
   return (
 
 
     <Layout>
       <HomepageHeader />
-      <main className="mt-24 border border-t-2 border-gray-300 pt-10">
+      <ArrowBanner />
+
+
+      <main className="pt-10">
 
 
         {/*

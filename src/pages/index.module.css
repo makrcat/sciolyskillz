@@ -26,6 +26,10 @@
     text-underline-offset: 10px;
 }
 
+.poppins {
+   font-family: "Poppins", serif;
+}
+
 
 .grid-pattern {
   inset: 0;
