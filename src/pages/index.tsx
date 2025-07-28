@@ -46,6 +46,12 @@ function HomepageHeader() {
         <button className="btn btn-lg">Explore the topics</button>
 
 
+        <div className="absolute right-12">
+          <span className="absolute text-gray-600 right-12 w-40 overflow-wrap">This site is under construction!</span>
+          <img src="/static/img/broom.png" />
+        </div>
+
+
       </div>
     </div>
 
@@ -128,8 +134,8 @@ export default function Home(): ReactNode {
 
 
 
-          <div className="flex flex-row w-full rounded justify-between relative min-h-60 
-          border border-gray-200 p-8 overflow-clip gap-16">
+          <div className="flex flex-row w-full rounded-lg justify-between relative min-h-60 
+          border border-gray-300 p-8 overflow-clip gap-16">
 
             <div className="absolute -bottom-6 -right-2 opacity-15 w-48 h-48 rounded-full bg-blue-400 z-1"></div>
             <div className="absolute -top-12 -left-12 opacity-15 w-72 h-72 rounded-full bg-teal-400  z-1"></div>
@@ -137,7 +143,7 @@ export default function Home(): ReactNode {
             <div className="flex-1 z-10">
               <h2 className='text-4xl'>Practice tests & questions</h2>
               <p className='text-lg text-gray-800'>
-                <br />The questions are compiled from previously released competitions, accessible on the scioly wiki. There's <span className="font-bold">single choice, multiple choice, matching, and short answer.</span> 
+                <br />The questions are compiled from previously released competitions, accessible on the scioly wiki. There's <span className="font-bold">single choice, multiple choice, matching, and short answer.</span>
                 <br /><br />There are currently 7 competitions in the DB, amounting to about 130 problems! </p>
             </div>
 
@@ -178,7 +184,7 @@ export default function Home(): ReactNode {
 
 
           <div className={clsx(
-            "flex flex-row w-full rounded justify-between relative min-h-60 border border-gray-200 p-8 overflow-clip",
+            "flex flex-row w-full rounded-lg justify-between relative min-h-60 border border-gray-300 p-8 overflow-clip",
           )}
           >
 
@@ -195,11 +201,11 @@ export default function Home(): ReactNode {
 
 
             <div
-              className="z-10 w-64 bg-slate-300 h-64 rounded-lg absolute bottom-[-4rem] right-32"
+              className="z-10 w-64 bg-gray-100 border border-gray-300 h-64 rounded-lg absolute bottom-[-4rem] right-20"
               style={{ transform: 'rotate(8deg)', transformOrigin: 'bottom center' }}
             ></div>
             <div
-              className="z-10 w-64 bg-gray-500 h-64 rounded-lg absolute bottom-[-4rem] right-32"
+              className="z-10 w-64 bg-white border border-gray-300 h-64 rounded-lg absolute bottom-[-4rem] right-20"
               style={{ transform: 'rotate(0deg)', transformOrigin: 'bottom center' }}
             ></div>
 
@@ -210,7 +216,7 @@ export default function Home(): ReactNode {
 
 
           <div className={clsx(
-            "flex flex-row w-full rounded justify-between relative min-h-60 border border-gray-200 p-8 overflow-clip",
+            "flex flex-row w-full rounded-lg justify-between relative min-h-60 border border-gray-300 p-8 overflow-clip",
           )}
           >
 

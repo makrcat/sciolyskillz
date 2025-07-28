@@ -28,15 +28,21 @@ export default function Docs() {
                     legalstyles["line-height"],
                     'policy-container mx-32 my-6'
                 )}>
-                    
+
+
+
+                    <div className="flex justify-center mb-6">
+                        <img src="/static/img/term.svg" style={{ "height": "52px", "width": "auto" }} />
+                    </div>
+
 
                     <pre className="whitespace-pre-wrap break-words bg-gray-100 px-6 border border-gray-300 rounded-md mb-4">
-                    {`
+                        {`
 TLDR; Site data is managed using firebase and firestore. It doesn't use google analytics yet.
 Authentication data is completely private. 
 User data can technically be seen by me (the creator of the site), but I won't bother to.
                                 `}
-                </pre>
+                    </pre>
 
                     <p className={legalstyles["legal"]} >This Privacy Notice for sciolyskillz (doing business as sciolyskillz) ("we," "us," or "our"), describes how and why we might access, collect, store, use, and/or share ("process") your personal information when you use our services ("Services"), including when you:</p>
 
@@ -184,7 +190,7 @@ User data can technically be seen by me (the creator of the site), but I won't b
 
 
 
-               
+
             </div>
         </Layout >
     );
