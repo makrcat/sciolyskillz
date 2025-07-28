@@ -20,6 +20,13 @@ export default function Docs() {
                     </p>
 
                 </div>
+<div
+  className="w-full h-12 bg-repeat-x bg-center bg-[length:100px_40px] mb-2 -mt-2"
+  style={{
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 100 40' preserveAspectRatio='none'><path d='M0,20 Q25,0 50,20 T100,20' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='square' stroke-linejoin='miter'/></svg>")`,
+  }}
+></div>
+
 
 
 
