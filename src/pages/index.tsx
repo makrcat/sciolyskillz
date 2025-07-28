@@ -16,7 +16,7 @@ function HomepageHeader() {
 
       <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-r from-teal-100 to-blue-100 z-0" />
       <div className="absolute top-0 left-0 inset-0 h-48 bg-gradient-to-b from-white/10 to-white z-10" />
-      <img className="absolute top-0 left-0 w-full z-20 opacity-20" src='/static/img/bannner.png'></img>
+      <img className="absolute top-4 left-0 w-full z-20 opacity-20" src='/static/img/bannner.png'></img>
 
       <div className="relative z-10 pr-[10%]">
         <h1 className={styles.title}>
@@ -80,7 +80,7 @@ function ArrowBanner() {
   }, []);
 
   return (
-    <div className="mt-24 w-full bg-gray-200 py-6 overflow-hidden">
+    <div className="absolute bottom-0 w-full bg-gray-200 py-6 overflow-hidden">
       <div className="whitespace-nowrap flex flex-row justify-center items-center flex-wrap">
         {[...Array(arrowCount)].map((_, i) => (
           <Arrow key={`left-${i}`} />
@@ -113,7 +113,7 @@ export default function Home(): ReactNode {
       <ArrowBanner />
 
 
-      <main className="pt-10">
+      <main className="mt-72">
 
 
         {/*
@@ -129,18 +129,20 @@ export default function Home(): ReactNode {
 
 
           <div className="flex flex-row w-full rounded justify-between relative min-h-60 
-          border border-gray-200 p-8 overflow-clip">
+          border border-gray-200 p-8 overflow-clip gap-16">
 
             <div className="absolute -bottom-6 -right-2 opacity-15 w-48 h-48 rounded-full bg-blue-400 z-1"></div>
             <div className="absolute -top-12 -left-12 opacity-15 w-72 h-72 rounded-full bg-teal-400  z-1"></div>
 
-            <div className="w-96 z-10">
-              <h2 className='text-4xl'>Practice tests</h2>
-              <p className='text-lg text-gray-800'>The questions are sourced from the released past tests on scioly wiki</p>
+            <div className="flex-1 z-10">
+              <h2 className='text-4xl'>Practice tests & questions</h2>
+              <p className='text-lg text-gray-800'>
+                <br />The questions are compiled from previously released competitions, accessible on the scioly wiki. There's <span className="font-bold">single choice, multiple choice, matching, and short answer.</span> 
+                <br /><br />There are currently 7 competitions in the DB, amounting to about 130 problems! </p>
             </div>
 
 
-            <div className="z-2 bg-white w-80 border border-gray-300 rounded-lg top-5 right-16 p-4 flex flex-col gap-1">
+            <div className="relative z-2 bg-white w-72 border border-gray-300 rounded-lg p-4 flex flex-col gap-1">
 
               <p className="text-lg font-semibold pb-1">What is the powerhouse of the cell?</p>
 
@@ -162,6 +164,8 @@ export default function Home(): ReactNode {
                 </div>
               ))}
 
+
+
             </div>
 
 
@@ -182,9 +186,9 @@ export default function Home(): ReactNode {
             <div className="absolute -bottom-6 -right-2 opacity-15 w-48 h-48 rounded-full bg-pink-400 z-1"></div>
             <div className="absolute -top-12 -left-12 opacity-15 w-72 h-72 rounded-full bg-purple-400  z-1"></div>
 
-            <div className="w-96">
+            <div className="w-[50%]">
               <h2 className='text-4xl'>DOCS</h2>
-              <p className='text-lg text-gray-800'>The ducks walked up to the lemonade stand, and they said to the man running the stand: hey. (bomp bomp bomp.) got any </p>
+              <p className='text-lg text-gray-800'>A notes-style guide, to make things make sense.</p>
             </div>
 
 
