@@ -1,5 +1,5 @@
 
-import styles from './index.module.css';
+import styles from '../index.module.css';
 import clsx from "clsx";
 
 export default function Docs() {

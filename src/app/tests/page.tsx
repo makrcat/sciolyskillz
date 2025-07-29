@@ -1,63 +1,17 @@
-import React from "react";
-import Sidebar from "../../components/DashboardFeatures/Sidebar";
-import { useSearchParams, useRouter } from 'next/navigation';
+// *not* marked "use client"
 
-import TestsHome from "../../components/TestsFeatures/TestsHome";
-import TestReviewer from "../../components/TestsFeatures/TestReviewer";
-import TestPlayer from "../../components/TestsFeatures/TestPlayer";
+import Sidebar from '../../components/DashboardFeatures/Sidebar';
+import { Suspense } from 'react';
+import TestsClient from '../../components/TestsFeatures/TestsClient';
 
 export default function Tests() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const reviewTest = searchParams.get('reviewTest');
-  const practiceTest = searchParams.get('practiceTest');
-
-  const handleReviewTest = (id: string) => {
-    router.push(`/tests?reviewTest=${id}`);
-  };
-
-  const handlePlayTest = (id: string) => {
-    router.push(`/tests?practiceTest=${id}`);
-  };
-
   return (
-    <div>
-      <div className="flex flex-row">
-        <Sidebar />
-        <div className="w-full">
-          <div>
-            {!reviewTest && !practiceTest && (
-              <TestsHome
-                onReviewTest={handleReviewTest}
-                onPlayTest={handlePlayTest}
-              />
-            )}
-
-            {typeof reviewTest === "string" && (
-              <>
-                <button
-                  onClick={() => router.push('/tests')}
-                  className="mb-4 px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
-                >
-                  ← Back
-                </button>
-                <TestReviewer testID={reviewTest} />
-              </>
-            )}
-
-            {typeof practiceTest === "string" && (
-              <>
-                <button
-                  onClick={() => router.push('/tests')}
-                  className="mb-4 px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
-                >
-                  ← Back
-                </button>
-              <TestPlayer testID={practiceTest} />
-              </>
-            )}
-          </div>
-        </div>
+    <div className="flex flex-row">
+      <Sidebar />
+      <div className="w-full">
+        <Suspense fallback={<div>Loading...</div>}>
+          <TestsClient />
+        </Suspense>
       </div>
     </div>
   );
