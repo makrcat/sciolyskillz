@@ -38,8 +38,12 @@
   background-image: linear-gradient(to right, #80808024 1px, transparent 1px),
     linear-gradient(to bottom, #80808024 1px, transparent 1px);
   background-size: 24px 24px;
+}
 
-  padding: 50px;
+.dots {
+  background-image: radial-gradient(circle at 1.5px 1.5px, rgba(0, 0, 0, 0.2) 1.5px, transparent 0);
+  background-size: 30px 30px;
+  background-position: 10px 10px;
 }
 
 .title {

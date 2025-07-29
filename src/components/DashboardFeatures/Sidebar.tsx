@@ -1,3 +1,5 @@
+"use client"
+// im so confused
 import React from "react";
 import SidebarElement from "./SidebarElement";
 import { SmileIcon, PencilIcon, Bookmark02Icon, BookEditIcon, Task01Icon } from "@hugeicons/core-free-icons";

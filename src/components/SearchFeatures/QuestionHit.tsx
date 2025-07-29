@@ -14,7 +14,7 @@ export default function QuestionHit({ hit }: any) {
       <div className="text-lg mt-4 mb-4">
         {
 //@ts-ignore
-<Highlight attribute="question" hit={hit} tagName="em" />
+<Highlight attribute="question" hit={hit} tagname="em" />
         }
         
       </div>

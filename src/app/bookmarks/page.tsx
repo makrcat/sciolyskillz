@@ -1,10 +1,9 @@
-import Layout from "../components/General/Layout";
 
-import Sidebar from "../components/DashboardFeatures/Sidebar";
+import Sidebar from "../../components/DashboardFeatures/Sidebar";
 
 export default function Bookmarks() {
   return (
-    <Layout>
+    <div>
 
       <div className="flex flex-row">
         <Sidebar />
@@ -14,6 +13,6 @@ export default function Bookmarks() {
           <p> This page hasn't been made yet!</p>
         </div>
       </div>
-    </Layout >
+    </div>
   );
 }

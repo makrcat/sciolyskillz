@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import Layout from "../components/General/Layout";
 
 const categories = [
     {
@@ -211,12 +210,12 @@ function Topics() {
 
 export default function Home(): ReactNode {
     return (
-        <Layout>
+        <div>
 
             <main>
                 <Topics />
                 <TopicsGrid />
             </main>
-        </Layout>
+        </div>
     );
 }

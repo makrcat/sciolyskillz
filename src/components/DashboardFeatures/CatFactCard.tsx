@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import styles from "./CatFactCard.module.css";
 
@@ -17,7 +18,7 @@ export default function CatFactCard() {
 
   return (
     <div className={styles['catfact-card']}>
-      <h3>🐾 Cat Fact</h3>
+      <h4 className="text-amber-500 text-lg font-bold">🐾 Cat Fact</h4>
       <p className={styles['fact-text']}>
 
         {fact}

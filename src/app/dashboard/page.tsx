@@ -1,18 +1,16 @@
-import Layout from "../components/General/Layout";
 
 
-
-import Sidebar from "../components/DashboardFeatures/Sidebar";
-import StatsPanel from "../components/DashboardFeatures/StatsPanel";
-import TopicsPanel from "../components/DashboardFeatures/TopicsPanel";
-import CatFactCard from "../components/DashboardFeatures/CatFactCard";
-import Day from "../components/DashboardFeatures/Day";
-import LeftOff from "../components/DashboardFeatures/LeftOff";
-import ButtonCard from "../components/DashboardFeatures/ButtonCard";
+import Sidebar from "../../components/DashboardFeatures/Sidebar";
+import StatsPanel from "../../components/DashboardFeatures/StatsPanel";
+import TopicsPanel from "../../components/DashboardFeatures/TopicsPanel";
+import CatFactCard from "../../components/DashboardFeatures/CatFactCard";
+import Day from "../../components/DashboardFeatures/Day";
+import LeftOff from "../../components/DashboardFeatures/LeftOff";
+import ButtonCard from "../../components/DashboardFeatures/ButtonCard";
 
 export default function Dashboard() {
   return (
-     <Layout>
+     <div>
 
       <div className="flex flex-row">
         <Sidebar />
@@ -52,6 +50,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }

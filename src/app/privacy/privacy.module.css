@@ -1,0 +1,31 @@
+
+.legal {
+  margin-top: 0;    
+  margin-bottom: 1em; 
+  color: rgb(82, 82, 82);
+}
+
+a.link_upper {
+    color: rgb(0, 154, 154);
+    text-transform: uppercase;
+}
+
+a.link {
+    color: rgb(0, 154, 154);
+}
+
+.line-height {
+    line-height: 1.6;
+}
+
+
+ul.legal {
+  list-style: disc;  /* default bullet style */
+  padding-left: 40px; /* default left padding for bullets */
+  
+}
+
+ul.legal li {
+  margin-bottom: 1rem;
+}
+
