@@ -1,10 +1,10 @@
-import Layout from "../components/General/Layout";
+
 import styles from './index.module.css';
 import clsx from "clsx";
 
 export default function Docs() {
     return (
-        <Layout>
+        <div>
 
             <div>
                 <div className={clsx(styles.dots, "flex flex-col items-center justify-center h-72")}>
@@ -26,6 +26,6 @@ hey so like dont nuke mah site thsxx
                                 `}
                 </pre>
             </div>
-        </Layout >
+        </div>
     );
 }

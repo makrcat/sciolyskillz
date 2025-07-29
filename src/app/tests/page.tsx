@@ -1,15 +1,16 @@
 import React from "react";
-import Sidebar from "../components/DashboardFeatures/Sidebar";
-import Layout from "../components/General/Layout";
-import { useRouter } from 'next/router';
+import Sidebar from "../../components/DashboardFeatures/Sidebar";
+import { useSearchParams, useRouter } from 'next/navigation';
 
-import TestsHome from "../components/TestsFeatures/TestsHome";
-import TestReviewer from "../components/TestsFeatures/TestReviewer";
-import TestPlayer from "../components/TestsFeatures/TestPlayer";
+import TestsHome from "../../components/TestsFeatures/TestsHome";
+import TestReviewer from "../../components/TestsFeatures/TestReviewer";
+import TestPlayer from "../../components/TestsFeatures/TestPlayer";
 
 export default function Tests() {
   const router = useRouter();
-  const { reviewTest, practiceTest } = router.query;
+  const searchParams = useSearchParams();
+  const reviewTest = searchParams.get('reviewTest');
+  const practiceTest = searchParams.get('practiceTest');
 
   const handleReviewTest = (id: string) => {
     router.push(`/tests?reviewTest=${id}`);
@@ -20,7 +21,7 @@ export default function Tests() {
   };
 
   return (
-    <Layout noFooter>
+    <div>
       <div className="flex flex-row">
         <Sidebar />
         <div className="w-full">
@@ -58,6 +59,6 @@ export default function Tests() {
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }

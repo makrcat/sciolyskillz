@@ -1,12 +1,19 @@
-import Layout from "../components/General/Layout";
-import styles from './index.module.css';
+import styles from '../index.module.css';
 
-export default function Docs() {
+export default function About() {
     return (
-        <Layout>
+        <div>
 
             <div className={styles["grid-pattern"]}>
-                <div className="flex flex-col items-center justify-center">
+                <div className="relative flex flex-col items-center justify-center">
+
+                    <div className="z-0">
+                        <div className="absolute opacity-20 -top-5 left-15 bg-teal-500 w-52 h-52 rounded-full"></div>
+                        <div className="absolute opacity-20 top-25 -left-5 bg-sky-500 w-32 h-32 rounded-full"></div>
+
+                        <div className="absolute opacity-20 top-30 right-10 bg-pink-500 w-48 h-48 rounded-full"></div>
+                        <div className="absolute opacity-20 top-20 -right-5 bg-yellow-500 w-32 h-32 rounded-full"></div>
+                    </div>
 
                     <div className="h-[30vh] flex flex-col items-center justify-center">
 
@@ -18,7 +25,7 @@ export default function Docs() {
                     </div>
 
 
-                    <div className="w-4xl rounded-lg border border-gray-200 bg-white shadow-lg text-lg">
+                    <div className="max-w-4xl rounded-lg border border-gray-200 bg-white shadow-lg text-lg z-1">
 
 
                         <div className="whitespace-pre-wrap break-words px-6 py-4">
@@ -52,6 +59,6 @@ Site info:
 
                 </div>
             </div>
-        </Layout >
+        </div>
     );
 }

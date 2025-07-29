@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import type { ReactNode } from 'react';
-import Layout from "../components/General/Layout";
 
 import LikeAndSubscribe from '../components/HomepageFeatures/LikeAndSubscribe';
 import styles from './index.module.css';
@@ -114,7 +113,7 @@ export default function Home(): ReactNode {
   return (
 
 
-    <Layout>
+    <div>
       <HomepageHeader />
       <ArrowBanner />
 
@@ -264,6 +263,6 @@ export default function Home(): ReactNode {
 
 
       </main>
-    </Layout>
+    </div>
   );
 }

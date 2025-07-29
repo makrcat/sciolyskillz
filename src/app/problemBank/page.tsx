@@ -1,18 +1,18 @@
+"use client";
 
 import React from 'react';
 import { InstantSearch, Hits, Pagination, Configure } from 'react-instantsearch-hooks-web';
-import CustomSearchBox from '../components/SearchFeatures/SearchDropdown';
-import QuestionHit from '../components/SearchFeatures/QuestionHit';
-import algoliaClient from '../utils/algoliaClient';
+import CustomSearchBox from '../../components/SearchFeatures/SearchDropdown';
+import QuestionHit from '../../components/SearchFeatures/QuestionHit';
+import algoliaClient from '../../utils/algoliaClient';
 
-import Layout from "../components/General/Layout";
 
 
 export default function SearchUI() {
 
     return (
 
-        <Layout>
+        <div>
 
         {
         //@ts-ignore
@@ -65,6 +65,6 @@ export default function SearchUI() {
             </InstantSearch>
 }
 
-        </Layout>
+        </div>
     );
 }

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { createUserTest, TestConfig} from "../../utils/CreateTest";
 import { HugeiconsIcon } from '@hugeicons/react';

@@ -1,11 +1,11 @@
-import Layout from "../components/General/Layout";
+
 import styles from './index.module.css';
 import legalstyles from './privacy.module.css';
 import clsx from "clsx";
 
 export default function Docs() {
     return (
-        <Layout>
+        <div>
 
             <div >
                 <div className={clsx(styles.dots, "flex flex-col items-center justify-center h-72")}>
@@ -199,6 +199,6 @@ User data can technically be seen by me (the creator of the site), but I won't b
 
 
             </div>
-        </Layout >
+        </div>
     );
 }

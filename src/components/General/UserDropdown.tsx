@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useRef } from "react";
 import { auth } from "../../firebase-config";
 import {
