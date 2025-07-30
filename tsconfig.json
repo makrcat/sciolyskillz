@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "ES2017",
     "lib": [
       "dom",
@@ -18,9 +17,6 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
-      ],
       "@/*": [
         "./src/*"
       ]
@@ -37,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     "next-env.d.ts",
-    ".next/types/**/*.ts",
+    ".next/types/**/*.ts", 
   ],
   "exclude": [
     "node_modules"
