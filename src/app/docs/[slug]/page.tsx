@@ -5,7 +5,9 @@ import MDXContent from '@/components/MDXContent'
 
 export async function generateStaticParams() {
   const docs = getAllDocs()
-  return docs.map(({ slug }) => ({ slug }))
+  return docs
+    .filter(doc => doc.slug !== 'page')
+    .map(({ slug }) => ({ slug }))
 }
 
 export default async function DocPage({ params }: { params: Promise<{ slug: string }> }) {
