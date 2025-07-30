@@ -111,6 +111,12 @@ export default function TestReviewer({ testID }: { testID: string }) {
     if (!history) return <div>No history found for test ID: {testID}</div>;
 
     const qid = questionOrder[currentIndex];
+
+    if (!data || !Array.isArray(data)) {
+        return <div>Loading DB questions...</div>;
+    }
+
+
     const question = data.find((q: Question) => q.id === qid);
 
 
@@ -136,7 +142,7 @@ export default function TestReviewer({ testID }: { testID: string }) {
                 <div className="flex flex-row justify-between my-2">
                     <div>Right Dog</div>
                     <div>{TD!.timeLeft}{" / "}{TD!.config.timeLimit}</div>
-                    
+
                 </div>
 
 

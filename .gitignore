@@ -28,3 +28,6 @@ yarn-error.log*
 .next/*
 
 # git rm -r --cached .next
+
+# contentlayer
+.contentlayer
