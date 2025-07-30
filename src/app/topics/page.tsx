@@ -158,7 +158,7 @@ function TopicCard({ topicName, topicLink, description }: TopicCardProps) {
             <h3 className="text-xl font-semibold mb-2">{topicName}</h3>
             <p className="text-gray-700 text-sm mb-10">{description}</p>
             <a
-                href={topicLink+"/intro"}
+                href={"docs/"  + topicLink+"/"}
                 className="absolute bottom-4 right-4 text-blue-600 font-medium hover:text-blue-800 hover:underline"
             >
                 Let's go &rarr;
