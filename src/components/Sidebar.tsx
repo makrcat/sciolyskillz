@@ -45,7 +45,7 @@ function SidebarItemComponent({ item, level = 0 }: { item: SidebarItem; level?: 
 
   if (item.type === 'file') {
     let href = item.slug === 'page' ? '/docs' : `/docs/${item.slug}`
-    href = href.replace(/\/page/g, '/')
+    href = href.replace(/\/page$/, '') // now only trailing /page instead of any /page
 
     return (
       <div

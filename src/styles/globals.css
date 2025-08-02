@@ -1,16 +1,27 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Fredericka+the+Great&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @import "tailwindcss";
 @plugin "daisyui";
+
+
 
 ol {
   list-style-type: decimal;
   margin-left: 2rem;
 }
 
+hr {
+  border: none;           /* Remove default border */
+  border-top: 1px solid #bbb;  /* Light gray top border */
+  margin: 1.5rem 0;       /* Vertical spacing */
+  width: 100%;            /* Full width */
+  opacity: 0.6;           /* Slightly transparent */
+}
+
+p.doc {
+  line-height: 1.6;
+  margin-bottom: 0.6rem;
+}
 
 *:disabled {
   background-color: oklch(96.7% 0.003 264.542);
@@ -68,6 +79,7 @@ h1 {
   display: block;
 }
 
+
 h2 {
   font-weight: 600;
   font-size: 30px;
@@ -89,6 +101,12 @@ h4 {
   font-weight: 600;
 }
 
+h1.doc, h2.doc, h3.doc, h4.doc {
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+
 a {
   text-decoration: none;
 }
@@ -97,8 +115,6 @@ p {
   margin: 0;
   line-height: 1.5;
 }
-
-
 
 p.subtitle {
   font-size: 22px;

@@ -2,6 +2,9 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
+
+/// GPT helped with this file
+
 type SidebarItem = {
   type: 'folder' | 'file'
   name: string
@@ -17,6 +20,9 @@ export function getSidebarTree(
   const entries = fs.readdirSync(rootDir, { withFileTypes: true })
 
   return entries.map((entry) => {
+    if (entry.name.startsWith('[') || entry.name.startsWith('_')) return false;
+
+
     if (entry.isDirectory()) {
       // Folder node with children
       return {
@@ -28,7 +34,10 @@ export function getSidebarTree(
       const fullPath = path.join(rootDir, entry.name)
       const fileContents = fs.readFileSync(fullPath, 'utf8')
       const { data: frontmatter } = matter(fileContents)
+
+
       const slug = baseSlug + entry.name.replace(/\.mdx$/, '')
+
       return {
         type: 'file',
         name: frontmatter.title || entry.name.replace(/\.mdx$/, ''),
@@ -42,12 +51,23 @@ export function getSidebarTree(
 
 const docsPath = path.join(process.cwd(), 'src', 'app', 'docs')
 
+
 export function getDocBySlug(slug: string) {
-  const fullPath = path.join(docsPath, `${slug}.mdx`)
+  const docsPath = path.join(process.cwd(), 'src', 'app', 'docs')
+  let fullPath = path.join(docsPath, `${slug}.mdx`)
+
+  if (!fs.existsSync(fullPath)) {
+    fullPath = path.join(docsPath, slug, 'page.mdx')
+    if (!fs.existsSync(fullPath)) {
+      throw new Error(`Doc not found for slug: ${slug}`)
+    }
+  }
+
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data: frontmatter, content } = matter(fileContents)
   return { frontmatter, content }
 }
+
 
 export function getAllDocs() {
   const entries = fs.readdirSync(docsPath, { withFileTypes: true })

@@ -19,9 +19,9 @@ export default function Header() {
   };
 
   return (
-    <header className="z-999 sticky top-0 flex flex-row text-md items-center justify-between h-15 px-6 bg-white dark:bg-gray-900 shadow-sm">
+    <header className="z-999 fixed top-0 w-full flex flex-row text-md items-center justify-between h-16 px-6 bg-white dark:bg-gray-900 shadow-sm">
       {/* Left side: Logo + main links */}
-      <div className="flex items-center space-x-6 ">
+      <div className="flex items-center space-x-6">
         {/* Logo / site image */}
         <div className="flex flex-row items-center justify-center align-center"><img
           src="/static/img/logo.png"
@@ -47,7 +47,6 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* Right side: About + Dark Mode + Sign Up */}
       <div className="flex items-center space-x-6">
         <Link href="/about" className="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 font-medium">
           About
