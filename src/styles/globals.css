@@ -225,8 +225,12 @@ button {
 .accent {
   position: relative;
   z-index: 1;
-  padding: 4px;
+  padding: 0px 4px;
+  word-break: break-word;
+  display: inline-block; 
 }
+
+
 
 .accent::before {
   content: "";

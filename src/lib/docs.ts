@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
+// OK TODO is: the slug thing? the frontmatter thing bug 
+
 
 /// GPT helped with this file
 
