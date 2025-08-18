@@ -27,7 +27,8 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
       </aside>
 
 
-      <main style={{ flex: 1, padding: '1rem' }}>{children}</main>
+      <main style={{ flex: 1, padding: '1rem' }}
+      className="ml-2 prose">{children}</main>
 
       <aside
         style={{

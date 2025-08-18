@@ -4,6 +4,9 @@ import { serialize } from 'next-mdx-remote/serialize'
 import ClientMDXContent from '@/components/ClientMDXContent'
 import remarkGfm from 'remark-gfm'
 
+
+// docs stuff part 5
+
 interface Props {
   params: { slug?: string[] } // optional, empty array for /docs
 }
