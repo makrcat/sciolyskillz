@@ -4,27 +4,27 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
+// docs stuff pt 2
+
 
 type SidebarItem = {
   type: 'folder' | 'file'
   name: string
-  slug?: string          // for files
-  frontmatter?: any      // for files
-  children?: SidebarItem[] // for folders
+  slug?: string           //for files
+  frontmatter?: any       //for files
+  children?: SidebarItem[]  //for folders
 }
 
 export function getSidebarTree(
-  rootDir: string = path.join(process.cwd(), 'src', 'app', 'docs'),
+  rootDir: string = path.join(process.cwd(), 'src', 'content', 'docs'),
   baseSlug = ''
 ): SidebarItem[] {
   const entries = fs.readdirSync(rootDir, { withFileTypes: true })
 
   return entries.map((entry) => {
-    if (entry.name.startsWith('[') || entry.name.startsWith('_')) return false;
-
 
     if (entry.isDirectory()) {
-      // Folder node with children
+
       return {
         type: 'folder',
         name: entry.name,
@@ -49,29 +49,27 @@ export function getSidebarTree(
   }).filter(Boolean) as SidebarItem[]
 }
 
-const docsPath = path.join(process.cwd(), 'src', 'app', 'docs')
+
+const docsPath = path.join(process.cwd(), 'src', 'content', 'docs')
 
 
 export function getDocBySlug(slug: string) {
-  //const docsPath = path.join(process.cwd(), 'src', 'app', 'docs')
-  //let fullPath = path.join(docsPath, `${slug}.mdx`)
+  const docsPath = path.join(process.cwd(), 'src', 'content', 'docs');
+  let fullPath = path.join(docsPath, `${slug}.mdx`);
 
-  //if (!fs.existsSync(fullPath)) {
-  //  fullPath = path.join(docsPath, slug, 'page.mdx')
-  //  if (!fs.existsSync(fullPath)) {
-  //    throw new Error(`Doc not found for slug: ${slug}`)
-  //  }
-  //}
-
-
-  //const fileContents = fs.readFileSync(fullPath, 'utf8').trimStart();
-  
-  //const { data: frontmatter, content: content } = matter(fileContents)
-
-  return { 
-    frontmatter: "what the fuck", 
-    content: "AAAAAAAGGGGGGGGGGGHHHHHHHHH"
+  if (!fs.existsSync(fullPath)) {
+    fullPath = path.join(docsPath, slug, 'page.mdx')
+    if (!fs.existsSync(fullPath)) {
+      throw new Error(`Doc not found for slug: ${slug}`)
+    }
   }
+
+
+  const fileContents = fs.readFileSync(fullPath, 'utf8').trimStart();
+  
+  const { data: frontmatter, content: content } = matter(fileContents)
+
+  return {frontmatter, content}
 }
 
 
@@ -101,7 +99,7 @@ export function getSidebarData() {
     return acc
   }, {} as Record<string, { slug: string; title: string; order: number }[]>)
 
-  // Sort each category by order
+
   for (const category in grouped) {
     grouped[category].sort((a, b) => a.order - b.order)
   }

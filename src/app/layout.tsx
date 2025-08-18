@@ -2,8 +2,7 @@ import '../styles/globals.css';
 import Header from '../components/General/Header';
 import Footer from '../components/General/Footer';
 
-// apparently this autogenerates. ok. kill me now
-// AHHHHSHUFHSAUHFUDHUFDHSUFUDSHFUDHSUHFUDSUFUSD UHUHhHHUHHuHUHUhu
+// this isn't the autogenerating one (well it is, but a different one)
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">

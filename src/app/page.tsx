@@ -7,8 +7,6 @@ import styles from './index.module.css';
 import clsx from "clsx";
 
 
-
-
 function HomepageHeader() {
   return (
     <div className="relative w-full h-[60vh] flex justify-center items-center gap-8 bg-white">

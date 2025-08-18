@@ -1,9 +1,10 @@
-/*
-
 'use client'
 
-import { useEffect } from 'react'
+// docs stuff pt 1
+
+
 import dynamic from 'next/dynamic'
+import { MDXRemote } from 'next-mdx-remote'
 import { components as baseComponents } from '@/mdx-components'
 
 // Dynamically import client-only MDX components here UGHGHEOIGHOEIGHIEHGOHEWIG
@@ -22,20 +23,7 @@ const mergedComponents = {
 }
 
 export default function ClientMDXContent({ source }: { source: any }) {
-
-  useEffect(() => {
-    console.log(source);
-    console.log('CLIENT: MDX component mounted AUGH WHY DOESNT THIS PRINT ANYTHINGGGs')
-  }, [])
-
-  return <div style={{ background: 'red', color: 'white' }}>driving in my car right after a beer</div>;
-
-  
   return (
-    <>
     <MDXRemote {...source} components={mergedComponents} />
-    </>
   )
 }
-
-*/

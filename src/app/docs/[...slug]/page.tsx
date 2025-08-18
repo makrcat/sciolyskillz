@@ -1,12 +1,14 @@
-
-/*
 import { getDocBySlug, getAllDocs } from '@/lib/docs'
 import { serialize } from 'next-mdx-remote/serialize'
 import Link from 'next/link';
 import remarkGfm from 'remark-gfm'
 
 
+// docs stuff pt 3
+
+
 import ClientMDXContent from '@/components/ClientMDXContent'
+
 
 export async function generateStaticParams() {
   const docs = getAllDocs();
@@ -43,14 +45,6 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
     parseFrontmatter: true,
   })
 
-  return (
-    <div className="ml-4">
-
-      WHAT WHAT WHAT
-
-    </div>
-  )
-
     return (
     <div className="ml-4">
 
@@ -85,4 +79,3 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
 
 
 
-*/

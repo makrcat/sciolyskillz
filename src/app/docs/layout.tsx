@@ -2,6 +2,9 @@ import React from 'react'
 import { getSidebarTree } from '@/lib/docs'
 import Sidebar from '@/components/Sidebar'
 
+// docs stuff pt 4
+
+// layout for docs pages
 export default async function DocsLayout({ children }: { children: React.ReactNode }) {
   const sidebarItems = getSidebarTree() // await here if async
 
