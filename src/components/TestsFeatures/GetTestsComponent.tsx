@@ -50,18 +50,18 @@ interface Props {
 }
 
 function GroupedTestsList({ tests, onPlayTest }: Props) {
-    // Step 1: Sort tests by dateCreated descending
-    const sortedTests = tests.slice(); // make a shallow copy
+
+    const sortedTests = tests.slice(); 
     sortedTests.sort((a, b) => {
         const dateA = new Date(a.metaData.dateCreated).getTime();
         const dateB = new Date(b.metaData.dateCreated).getTime();
-        // Newest first:
+
         if (dateA > dateB) return -1;
         if (dateA < dateB) return 1;
         return 0;
     });
 
-    // Step 2: Group tests by day string "YYYY-MM-DD"
+    // group tests by day string "YYYY-MM-DD"
     type GroupedTests = { [day: string]: TestCardInfo[] };
     const groupedTests: GroupedTests = {};
 
@@ -78,7 +78,6 @@ function GroupedTestsList({ tests, onPlayTest }: Props) {
         groupedTests[dayKey].push(test);
     }
 
-    // Helper to format date nicely
     function formatDate(dayKey: string) {
         const date = new Date(dayKey);
         return date.toLocaleDateString(undefined, {
@@ -95,7 +94,7 @@ function GroupedTestsList({ tests, onPlayTest }: Props) {
                 <div key={dayKey} className="mb-8">
                     {/* Date header */}
                     <div className="flex flex-row w-full mb-2 items-center gap-2">
-                        <h3 className="text-xl font-semibold">{formatDate(dayKey)}</h3>
+                        <span className="text-md text-gray-500">{formatDate(dayKey)}</span>
                         <hr className="border-gray-300 border-1  flex-1" />
                     </div>
 
@@ -119,9 +118,9 @@ function GroupedTestsList({ tests, onPlayTest }: Props) {
                                         </div>
                                     </div>
 
-                                    <h2 className="text-lg font-bold text-gray-800 dark:text-white">
+                                    <h3 className=" text-gray-800 dark:text-white" style={{'width':'60%'}}>
                                         {testCard.config.category || "Untitled"}
-                                    </h2>
+                                    </h3>
 
                                     {/* Systems */}
                                     <div className="flex flex-wrap gap-2 text-sm items-center">

@@ -10,7 +10,7 @@ export default function Docs() {
             <div >
                 <div className={clsx(styles.dots, "flex flex-col items-center justify-center h-72")}>
 
-                    <h1 className="text-gray-800 ">
+                    <h1 className="text-gray-800 text-5xl font-semibold mb-4">
 
                         Privacy Policy
                     </h1>

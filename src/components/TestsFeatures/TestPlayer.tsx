@@ -5,6 +5,8 @@ import { auth, db } from '../../firebase-config';
 import { TestDocument } from '@/utils/CreateTest';
 import { onAuthStateChanged, User } from 'firebase/auth';
 
+import Spinner from "../Misc/Spinner";
+
 interface Question {
     "id": string,
     "competition": string,
@@ -105,9 +107,8 @@ export default function TestReviewer({ testID }: { testID: string }) {
     }, []);
 
     // when data 
-
+    if (loading) return <div><Spinner /></div>;
     if (!user) return <div>Not logged in</div>;
-    if (loading) return <div>Loading test history...</div>;
     if (!history) return <div>No history found for test ID: {testID}</div>;
 
     const qid = questionOrder[currentIndex];
@@ -123,7 +124,7 @@ export default function TestReviewer({ testID }: { testID: string }) {
     return (
 
 
-        <div className="mx-16 w-4xl my-6">
+        <div className="mx-auto w-4xl mt-8">
             <div className="collapse bg-base-100 border-base-300 border">
                 <input type="checkbox" />
 
@@ -149,7 +150,7 @@ export default function TestReviewer({ testID }: { testID: string }) {
                 {question ? (
                     <div
                         key={qid}
-                        className="border border-gray-300 rounded-xl p-4 mb-4 shadow-sm bg-white dark:bg-gray-800 "
+                        className="border border-gray-300 rounded-lg p-4 mb-4 shadow-sm bg-white dark:bg-gray-800 "
                     >
                         <div className="flex flex-row mb-4">
                             <span className="text-gray-500 text-sm flex-1">
@@ -181,7 +182,14 @@ export default function TestReviewer({ testID }: { testID: string }) {
                                 return (
                                     <div
                                         key={index}
-                                        className={`cursor-pointer border rounded px-3 py-1 ${isSelected ? 'bg-blue-200' : 'bg-gray-100'} hover:bg-blue-100`}
+                                        className={
+                                            `cursor-pointer rounded px-3 py-1 transition-colors duration-200 ease-in-out
+                                            
+                                            ${isSelected ? 'bg-yellow-100 bg-opacity-50 border border-yellow-600'
+                                                :
+                                            'bg-gray-100 border border-gray-300'}`
+                                        }
+
                                         onClick={() => setAnswers(prev => ({ ...prev, [question.id]: index }))}
                                     >
                                         <strong className="mr-2">{String.fromCharCode(index + 65)}.</strong> {choice}
@@ -204,9 +212,9 @@ export default function TestReviewer({ testID }: { testID: string }) {
                 <button
                     onClick={() => setCurrentIndex((i) => Math.max(i - 1, 0))}
                     disabled={currentIndex === 0}
-                    className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+                    className="px-4 py-2 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 disabled:opacity-50"
                 >
-                    ⬅ Previous
+                    ← Previous
                 </button>
 
                 <span className="text-sm text-gray-600">
@@ -216,7 +224,7 @@ export default function TestReviewer({ testID }: { testID: string }) {
                 <button
                     onClick={() => setCurrentIndex((i) => Math.min(i + 1, questionOrder.length - 1))}
                     disabled={currentIndex === questionOrder.length - 1}
-                    className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+                    className="px-4 py-2 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 disabled:opacity-50 "
                 >
                     Next ➡
                 </button>

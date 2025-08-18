@@ -66,8 +66,8 @@ export default function Day() {
       style={{ border: "1px solid goldenrod" }}
     >
       <div className="text-base font-normal">
-        <div className="p-0 m-0 text-xl">Today is</div>
-        <div className="p-0 m-0 text-4xl">{formattedDate}</div>—<br />
+        <div className="p-0 m-0 text-lg">Today is</div>
+        <div className="p-0 m-0 text-3xl">{formattedDate}</div>—<br />
         <span className="italic">{holiday}</span>
         <br />
         {googleLink && (

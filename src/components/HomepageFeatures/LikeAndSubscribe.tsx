@@ -75,7 +75,7 @@ const LikeAndSubscribe = () => {
         {status === 'error' && <p className="text-red-600 mt-2">Please enter a valid email or try again.</p>}
 
         <div className="mx-auto max-w-screen-sm text-sm text-left text-gray-500 mt-2">
-          Data exists lol. <a href="#" className="font-medium text-primary-600 dark:text-primary-500 hover:underline">There is a Privacy Policy, yay.</a>
+          Data exists lol. <a href="/privacy" className="font-medium text-primary-600 dark:text-primary-500 hover:underline">There is a Privacy Policy, yay.</a>
         </div>
       </div>
     </div>

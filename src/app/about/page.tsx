@@ -17,7 +17,8 @@ export default function About() {
 
                     <div className="h-[30vh] flex flex-col items-center justify-center">
 
-                        <h1 className="text-5xl mb-4">
+                        <h1 className="text-4xl mb-4
+                        text-gray-800 font-semibold">
                             So. Why did I make this
                         </h1>
                         <p className="subtitle text-gray-400"><em>ummmmmmmmmmm</em></p>

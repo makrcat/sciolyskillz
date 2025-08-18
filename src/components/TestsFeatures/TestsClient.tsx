@@ -5,7 +5,24 @@ import TestsHome from '../../components/TestsFeatures/TestsHome';
 import TestReviewer from '../../components/TestsFeatures/TestReviewer';
 import TestPlayer from '../../components/TestsFeatures/TestPlayer';
 
+
 export default function TestsClient() {
+
+  function Bar() {
+    return (
+      <div className="w-full bg-gray-100 border-b border-gray-300">
+        <button
+          onClick={() => router.push('/tests')}
+          className="px-4 py-2 bg-gray-100 border-r border-gray-300 hover:bg-gray-200"
+        >
+          ← Back
+        </button>
+      </div>
+
+
+    )
+  }
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const reviewTest = searchParams.get('reviewTest');
@@ -30,24 +47,15 @@ export default function TestsClient() {
 
       {typeof reviewTest === "string" && (
         <>
-          <button
-            onClick={() => router.push('/tests')}
-            className="mb-4 px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
-          >
-            ← Back
-          </button>
+          <Bar />
           <TestReviewer testID={reviewTest} />
         </>
       )}
 
       {typeof practiceTest === "string" && (
         <>
-          <button
-            onClick={() => router.push('/tests')}
-            className="mb-4 px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
-          >
-            ← Back
-          </button>
+          <Bar />
+
           <TestPlayer testID={practiceTest} />
         </>
       )}

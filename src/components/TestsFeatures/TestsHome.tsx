@@ -11,7 +11,7 @@ export default function TestsHome({ onReviewTest, onPlayTest }: { onReviewTest: 
         <div className="relative p-8 w-full overflow-clip">
 
 
-{/*
+            {/*
             <div className="absolute inset-0">
                 <div className="top-15 left-0 absolute h-15 w-15 rounded-full
             bg-gradient-to-br bg-blue-200
@@ -37,11 +37,17 @@ export default function TestsHome({ onReviewTest, onPlayTest }: { onReviewTest: 
                 </div>
 
                 <div className="relative inline-block">
-                    {/* the blur */}
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-teal-600 to-blue-700 blur-lg opacity-80 h-10"></div>
 
-                    {/* Actual button */}
-                    <button className="relative z-10 shadow text-white font-semibold rounded-lg px-5 py-1.5 h-min border border-white bg-[rgba(255,255,255,0.3)] hover: cursor-pointer hover:bg-[rgba(255,255,255,0.4)] hover:shadow-lg transition transition-300"
+                    <img className="absolute top-[-30] left-[-50] w-150" src='/static/img/splat.png'></img>
+
+
+                    <button
+                        className="relative z-10 rounded-lg px-5 py-1.5 h-min 
+             border border-black/10 shadow 
+             bg-white/20 backdrop-blur-sm 
+             hover:cursor-pointer hover:bg-white/30 hover:shadow-lg 
+             transition duration-300"
+
                         onClick={() => setShowCreate(!showCreate)}
                     >
                         New Test

@@ -74,37 +74,46 @@ em.ais-Highlight-highlighted {
 
 h1 {
   font-family: "Poppins", Helvetica, sans-serif;
-  font-size: 40px;
-  font-weight: 600;
   display: block;
 }
 
 
 h2 {
-  font-weight: 600;
-  font-size: 30px;
-
   margin-bottom: 10px;
   font-family: "Poppins", Helvetica, sans-serif;
   display: block;
 }
 
 h3 {
-  font-weight: 600;
   font-family: "Poppins", Helvetica, sans-serif;
-  font-size: 25px;
-  font-weight: 400;
 }
 
 h4 {
   font-family: "Poppins", Helvetica, sans-serif;
-  font-weight: 600;
 }
 
 h1.doc, h2.doc, h3.doc, h4.doc {
   margin-bottom: 1rem;
   margin-top: 0.5rem;
 }
+
+h1.doc {
+  font-size: 2rem;
+  font-weight: semibold;
+
+  text-decoration: underline wavy rgba(47, 179, 179, 0.5);
+  text-underline-offset: 4px;
+  text-decoration-skip-ink: none;
+}
+
+h2.doc {
+  font-size: 1.5rem;
+  font-weight: semibold;
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+}
+
+
 
 
 a {
@@ -113,6 +122,7 @@ a {
 
 p {
   margin: 0;
+  font-family: Helvetica;
   line-height: 1.5;
 }
 
