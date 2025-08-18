@@ -1,4 +1,5 @@
 
+/*
 import { getDocBySlug, getAllDocs } from '@/lib/docs'
 import { serialize } from 'next-mdx-remote/serialize'
 import Link from 'next/link';
@@ -9,6 +10,8 @@ import ClientMDXContent from '@/components/ClientMDXContent'
 
 export async function generateStaticParams() {
   const docs = getAllDocs();
+
+  console.log("AAAAA");
 
   return docs
     .filter(doc => doc.slug !== 'page')
@@ -24,15 +27,31 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
   const awaitedParams = await params;
   const slugPath = awaitedParams.slug.join('/');
 
-  const { frontmatter, content } = await getDocBySlug(slugPath);
+  const { frontmatter, content } = getDocBySlug(slugPath);
+
+  console.log('FRONTMATTER:', frontmatter);
+  console.log('CONTENT:', content.split('\n').slice(0, 5));
+
+  // YOUVE GOT TO BE SHITTING ME
+  // WHY ISNT IT STRIPPING THE FRONTMATTER
+
   const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
       rehypePlugins: [],
     },
+    parseFrontmatter: true,
   })
 
   return (
+    <div className="ml-4">
+
+      WHAT WHAT WHAT
+
+    </div>
+  )
+
+    return (
     <div className="ml-4">
 
       <div className="text-sm breadcrumbs">
@@ -56,7 +75,6 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
         </ul>
       </div>
 
-      {/* Pass serialized source to client component */}
       <ClientMDXContent source={mdxSource} />
     </div>
   )
@@ -66,3 +84,5 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
 
 
 
+
+*/

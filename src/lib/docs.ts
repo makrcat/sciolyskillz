@@ -1,11 +1,9 @@
+
+
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-// OK TODO is: the slug thing? the frontmatter thing bug 
-
-
-/// GPT helped with this file
 
 type SidebarItem = {
   type: 'folder' | 'file'
@@ -55,26 +53,31 @@ const docsPath = path.join(process.cwd(), 'src', 'app', 'docs')
 
 
 export function getDocBySlug(slug: string) {
-  const docsPath = path.join(process.cwd(), 'src', 'app', 'docs')
-  let fullPath = path.join(docsPath, `${slug}.mdx`)
+  //const docsPath = path.join(process.cwd(), 'src', 'app', 'docs')
+  //let fullPath = path.join(docsPath, `${slug}.mdx`)
 
-  if (!fs.existsSync(fullPath)) {
-    fullPath = path.join(docsPath, slug, 'page.mdx')
-    if (!fs.existsSync(fullPath)) {
-      throw new Error(`Doc not found for slug: ${slug}`)
-    }
+  //if (!fs.existsSync(fullPath)) {
+  //  fullPath = path.join(docsPath, slug, 'page.mdx')
+  //  if (!fs.existsSync(fullPath)) {
+  //    throw new Error(`Doc not found for slug: ${slug}`)
+  //  }
+  //}
+
+
+  //const fileContents = fs.readFileSync(fullPath, 'utf8').trimStart();
+  
+  //const { data: frontmatter, content: content } = matter(fileContents)
+
+  return { 
+    frontmatter: "what the fuck", 
+    content: "AAAAAAAGGGGGGGGGGGHHHHHHHHH"
   }
-
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data: frontmatter, content } = matter(fileContents)
-  return { frontmatter, content }
 }
 
 
 export function getAllDocs() {
   const entries = fs.readdirSync(docsPath, { withFileTypes: true })
 
-  // Only keep files with .mdx extension
   const mdxFiles = entries
     .filter((entry) => entry.isFile() && entry.name.endsWith('.mdx'))
     .map((file) => {
@@ -82,6 +85,7 @@ export function getAllDocs() {
       const fullPath = path.join(docsPath, file.name)
       const fileContents = fs.readFileSync(fullPath, 'utf8')
       const { data: frontmatter } = matter(fileContents)
+      
       return { slug, frontmatter }
     })
 

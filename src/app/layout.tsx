@@ -1,9 +1,9 @@
-// app/layout.tsx — Server Component (no 'use client')
-
 import '../styles/globals.css';
 import Header from '../components/General/Header';
 import Footer from '../components/General/Footer';
 
+// apparently this autogenerates. ok. kill me now
+// AHHHHSHUFHSAUHFUDHUFDHSUFUDSHFUDHSUHFUDSUFUSD UHUHhHHUHHuHUHUhu
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">

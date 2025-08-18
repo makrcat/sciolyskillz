@@ -3,11 +3,11 @@ import { getSidebarTree } from '@/lib/docs'
 import Sidebar from '@/components/Sidebar'
 
 export default async function DocsLayout({ children }: { children: React.ReactNode }) {
-  const sidebarItems = await getSidebarTree() // await here if async
+  const sidebarItems = getSidebarTree() // await here if async
 
   return (
     <div style={{ display: 'flex' }}>
-      {/* Left Sidebar */}
+
       <aside
         style={{
           width: 250,
@@ -23,10 +23,9 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         <Sidebar items={sidebarItems} />
       </aside>
 
-      {/* Main Content */}
+
       <main style={{ flex: 1, padding: '1rem' }}>{children}</main>
 
-      {/* Right Sidebar (Heading navigation placeholder) */}
       <aside
         style={{
           width: 250,
