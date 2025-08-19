@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import "./CheckYoWork.module.css";
+import styles from "./CheckYoWork.module.css";
 
 type ChoiceProps = {
   label: string;
@@ -26,8 +26,8 @@ function Choice({ label, text, selected, onClick }: ChoiceProps) {
           width: 16,
           height: 16,
           borderRadius: "50%",
-          border: selected?"2px solid oklch(60% 0.118 184.704)": 
-          "2px solid oklch(70.4% 0.04 256.788)",
+          border: selected ? "2px solid oklch(60% 0.118 184.704)" :
+            "2px solid oklch(70.4% 0.04 256.788)",
           backgroundColor: "white",
         }}
       ></div>
@@ -48,9 +48,8 @@ function Choice({ label, text, selected, onClick }: ChoiceProps) {
 
       {/* Choices */}
       <div
-        className={`checkyo-answer ${selected ? "selected-answer" : ""}`}
+        className={`${styles["checkyo-answer"]} ${selected ? styles["selected-answer"] : ""}`}
       >
-
         <strong>{label}.</strong> {text}
       </div>
     </div>
@@ -93,9 +92,9 @@ export default function CheckYoWork({
   };
 
   return (
-    <div className="checkyo-box">
+    <div className={styles["checkyo-box"]}>
       {title && <h3 className="font-bold text-lg mb-1">{title}</h3>}
-      {subtext && <p className="mb-3">{subtext}</p>}
+      {subtext && <p><span className="my-3">{subtext}</span></p>}
 
       {choices.map((c, idx) => (
         <Choice

@@ -10,6 +10,7 @@ type SidebarItem = {
 }
 
 function SidebarItemComponent({ item, level = 0 }: { item: SidebarItem; level?: number }) {
+  
   const [open, setOpen] = useState(false)
 
   

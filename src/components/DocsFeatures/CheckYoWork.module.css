@@ -14,7 +14,6 @@
   margin-bottom: 0.25rem; /* mb-1 */
 }
 
-/* convert */
 .checkyo-answer {
   margin-left: 60px;
   cursor: pointer;
@@ -42,7 +41,6 @@
 }
 
 
-/* The container div for each choice */
 .choice-container {
   position: relative;
   width: 100%;
@@ -52,7 +50,7 @@
   margin-bottom: 0.5rem; /* mb-2 */
 }
 
-/* Outer circle */
+
 .choice-circle-outer {
   position: absolute;
   left: 30px;
@@ -88,13 +86,11 @@
   transition: background-color 0.3s ease, border 0.3s ease;
 }
 
-/* Inner circle when selected */
 .choice-container.selected .choice-circle-inner {
   background-color: oklch(60% 0.118 184.704);
   border: 2px solid oklch(60% 0.118 184.704);
 }
 
-/* Button styling */
 .checkyo-box button {
   margin-top: 0.75rem; /* mt-3 */
   padding: 0.25rem 0.75rem; /* px-3 py-1 */
@@ -111,7 +107,6 @@
   background-color: #285e61; /* teal-700 */
 }
 
-/* Result text */
 .checkyo-box p.font-semibold {
   font-weight: 600;
   margin-bottom: 0;

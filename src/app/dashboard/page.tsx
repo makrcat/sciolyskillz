@@ -8,14 +8,20 @@ import Day from "../../components/DashboardFeatures/Day";
 import LeftOff from "../../components/DashboardFeatures/LeftOff";
 import ButtonCard from "../../components/DashboardFeatures/ButtonCard";
 
+import { auth } from "@/firebase-config";
+
 export default function Dashboard() {
   return (
-     <div>
+    <div>
 
       <div className="flex flex-row">
         <Sidebar />
         <div className="bg-top bg-contain bg-no-repeat p-8 pt-8">
-          <center><h1 className="font-semibold text-4xl mb-8">Hi! You're logged in.</h1></center>
+          <center>
+            <h1 className="font-semibold text-4xl mb-8">
+              {auth.currentUser ? "Hi! You're logged in." : "Please log in."}
+            </h1>
+          </center>
           <LeftOff></LeftOff>
 
           <div className="grid grid-cols-5 [grid-template-rows:repeat(3,clamp(200px,20vh,300px))] gap-4 max-w-6xl mt-4">

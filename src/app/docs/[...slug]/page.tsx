@@ -24,7 +24,6 @@ export async function generateStaticParams() {
   // array
 }
 
-
 export default async function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const awaitedParams = await params;
   const slugPath = awaitedParams.slug.join('/');

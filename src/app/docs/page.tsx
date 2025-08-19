@@ -8,11 +8,15 @@ import remarkGfm from 'remark-gfm'
 // docs stuff part 5
 
 interface Props {
-  params: { slug?: string[] } // optional, empty array for /docs
+  params: Promise<{ slug?: string[] }> // optional, empty array for /docs
 }
 
+
+
 export default async function DocCatchAllPage({ params }: Props) {
-  const slugPath = params.slug?.join('/') || 'page' // fallback to index.mdx
+  const { slug } = await params;
+  const slugPath = slug?.join('/') || 'page'; // fallback
+
   let doc
   try {
     doc = getDocBySlug(slugPath)
