@@ -19,35 +19,56 @@ export function getSidebarTree(
   rootDir: string = path.join(process.cwd(), 'src', 'content', 'docs'),
   baseSlug = ''
 ): SidebarItem[] {
-  const entries = fs.readdirSync(rootDir, { withFileTypes: true })
+  if (!fs.existsSync(rootDir)) return []
 
-  return entries.map((entry) => {
+  const entries = fs.readdirSync(rootDir, { withFileTypes: true }).sort((a, b) =>
+    a.name.localeCompare(b.name)
+  )
 
+  const items: SidebarItem[] = []
+
+  for (const entry of entries) {
     if (entry.isDirectory()) {
-
-      return {
+      const children = getSidebarTree(path.join(rootDir, entry.name), baseSlug + entry.name + '/')
+      items.push({
         type: 'folder',
         name: entry.name,
-        children: getSidebarTree(path.join(rootDir, entry.name), baseSlug + entry.name + '/'),
-      }
-    } else if (entry.isFile() && entry.name.endsWith('.mdx')) {
+        children,
+      })
+      continue
+    }
+
+    if (entry.isFile() && entry.name.endsWith('.mdx')) {
       const fullPath = path.join(rootDir, entry.name)
       const fileContents = fs.readFileSync(fullPath, 'utf8')
       const { data: frontmatter } = matter(fileContents)
 
+      // Default slug/name
+      let slug = baseSlug + entry.name.replace(/\.mdx$/, '')
+      let displayName = frontmatter?.title || entry.name.replace(/\.mdx$/, '')
 
-      const slug = baseSlug + entry.name.replace(/\.mdx$/, '')
+      // Special-case: treat page.mdx as the folder's canonical page.
+      if (entry.name.toLowerCase() === 'page.mdx') {
+        // map folder/page.mdx -> folder slug (without trailing slash)
+        slug = baseSlug.replace(/\/$/, '')
+        // display name: frontmatter.title || last segment of baseSlug || 'Home'
+        displayName =
+          frontmatter?.title ||
+          (baseSlug ? baseSlug.replace(/\/$/, '').split('/').filter(Boolean).slice(-1)[0] : 'Home')
+      }
 
-      return {
+      items.push({
         type: 'file',
-        name: frontmatter.title || entry.name.replace(/\.mdx$/, ''),
+        name: displayName,
         slug,
         frontmatter,
-      }
+      })
     }
-    return null
-  }).filter(Boolean) as SidebarItem[]
+  }
+
+  return items
 }
+
 
 
 const docsPath = path.join(process.cwd(), 'src', 'content', 'docs')
