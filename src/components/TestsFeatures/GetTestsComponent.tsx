@@ -18,7 +18,6 @@ export interface TestCardInfo {
 
     completed: number;
 
-    submitted: boolean;
     timeLeft: string;
     metaData: MetaData;
     id: string;
@@ -29,7 +28,6 @@ export function TestDoc_to_Card(doc: TestDocument, id_: string) {
     const a: TestCardInfo = {
         config: doc.config,
         score: doc.score,
-        submitted: doc.submitted,
 
         completed: Object.values(doc.history).filter(v => v !== -1).length,
 
