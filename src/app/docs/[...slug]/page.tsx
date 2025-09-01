@@ -10,7 +10,7 @@ import remarkGfm from 'remark-gfm'
 import ClientMDXContent from '@/components/ClientMDXContent'
 
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const docs = getAllDocs();
 
   console.log("AAAAA");
