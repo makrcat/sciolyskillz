@@ -29,9 +29,10 @@ export default function TestReviewer({ testID }: { testID: string }) {
     const [user, setUser] = useState<User | null>(null);
     const [authChecked, setAuthChecked] = useState(false);
 
+    //todo: maybe modularize this too
 
 
-    // Listen for Firebase auth state changes to get the user reliably
+    // Listen for Firebase auth state changes 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);

@@ -224,7 +224,7 @@ export default function GetTests({
   const [tests, setTests] = useState<TestCardInfo[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // 1️⃣ Listen for auth changes
+  // Listen for auth changes
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -233,7 +233,7 @@ export default function GetTests({
     return () => unsubscribe();
   }, []);
 
-  // 2️⃣ Fetch tests whenever user changes
+  // Fetch tests whenever user changes
   useEffect(() => {
     if (!user) {
       setTests([]);
