@@ -1,14 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getAuth, User } from "firebase/auth";
 
 import { onAuthStateChanged } from "firebase/auth";
 
 import { TestConfig, MetaData, TestDocument } from "../../utils/CreateTest";
 import Spinner from "../Misc/Spinner";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { Clock01FreeIcons } from "@hugeicons/core-free-icons";
 
 
 
@@ -215,62 +213,66 @@ function GroupedTestsList({ tests, onPlayTest }: Props) {
     );
 }
 
+export default function GetTests({
+  onReviewTest,
+  onPlayTest,
+}: {
+  onReviewTest: (id: string) => void;
+  onPlayTest: (id: string) => void;
+}) {
+  const [user, setUser] = useState<User | null>(null); // track auth user
+  const [tests, setTests] = useState<TestCardInfo[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default function GetTests({ onReviewTest, onPlayTest }: { onReviewTest: (id: string) => void, onPlayTest: (id: string) => void }) {
-    const [tests, setTests] = useState<TestCardInfo[]>([]);
-    const [loading, setLoading] = useState(true);
+  // 1️⃣ Listen for auth changes
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
+  // 2️⃣ Fetch tests whenever user changes
+  useEffect(() => {
+    if (!user) {
+      setTests([]);
+      setLoading(false);
+      return;
+    }
 
-    useEffect(() => {
-        const auth = getAuth();
+    const fetchTests = async () => {
+      setLoading(true);
+      const db = getFirestore();
+      const summaryDoc = doc(db, "users", user.uid, "practiceTests", "ongoing_tests");
 
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-            if (!user) {
-                console.warn("User not logged in.");
-                setTests([]);
-                setLoading(false);
-                return;
-            }
+      try {
+        const docSnap = await getDoc(summaryDoc);
+        const data = docSnap.data() || {};
 
-            const db = getFirestore();
-            const summaryDoc = doc(db, "users", user.uid, "practiceTests", "ongoing_tests");
-
-            try {
-
-                const docSnap = await getDoc(summaryDoc);
-
-                const data = docSnap.data() || {};
-
-                const testCards: TestCardInfo[] = Object.entries(data).map(([id, info]) => {
-                    // info is a string of JSON, so parse it first:
-                    const parsedInfo = JSON.parse(info as string);
-                    return { ...parsedInfo, id };
-                });
-
-                setTests(testCards);
-
-
-
-            } catch (err) {
-                console.error("Error fetching tests:", err);
-            } finally {
-                setLoading(false);
-            }
+        const testCards: TestCardInfo[] = Object.entries(data).map(([id, info]) => {
+          const parsedInfo = JSON.parse(info as string);
+          return { ...parsedInfo, id };
         });
 
-        return () => unsubscribe();
-    }, []);
+        setTests(testCards);
+      } catch (err) {
+        console.error("Error fetching tests:", err);
+        setTests([]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchTests();
+  }, [user]);
 
-    if (loading) return (
-        <div className="text-black">
-
-            <Spinner />
-
-        </div>
+  if (loading)
+    return (
+      <div className="text-black">
+        <Spinner />
+      </div>
     );
 
-    return (
-        <GroupedTestsList tests={tests} onPlayTest={onPlayTest} />
-    )
+  return <GroupedTestsList tests={tests} onPlayTest={onPlayTest} />;
 }

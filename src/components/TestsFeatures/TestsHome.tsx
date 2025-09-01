@@ -11,23 +11,6 @@ export default function TestsHome({ onReviewTest, onPlayTest }: { onReviewTest: 
         <div className="relative p-8 w-full overflow-clip">
 
 
-            {/*
-            <div className="absolute inset-0">
-                <div className="top-15 left-0 absolute h-15 w-15 rounded-full
-            bg-gradient-to-br bg-blue-200
-            bg-opacity-30 blur-2xl"></div>
-                <div className="top-0 left-15 absolute h-15 w-15 rounded-full
-            bg-gradient-to-br bg-pink-200
-            bg-opacity-30 blur-2xl"></div>
-
-                <div className="-top-5 -left-5 absolute h-15 w-15 rounded-full
-            bg-gradient-to-br bg-purple-200
-            bg-opacity-30 blur-2xl"></div>
-            </div>
-
-*/}
-
-
             <div className="flex flex-row gap-4 mb-4">
                 <div className="flex-1">
                     <h1 className="text-2xl m-0 mb-2">Practice Tests</h1>
@@ -55,19 +38,6 @@ export default function TestsHome({ onReviewTest, onPlayTest }: { onReviewTest: 
 
 
                 </div>
-
-
-
-
-                {/*just for testing*/}
-                <button className="relative z-10 shadow text-black font-semibold rounded-lg px-5 py-1.5 h-min border border-black hover: cursor-pointer transition transition-300"
-                >
-                    uh
-                </button>
-
-
-
-
             </div>
 
             <TestStats />

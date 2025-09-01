@@ -11,9 +11,6 @@ interface Props {
 // Example categories/events
 const categories = [
     "Anatomy & Physiology",
-]
-
-/*
     "Astronomy",
     "Chemistry Lab",
     "Codebusters",
@@ -34,7 +31,7 @@ const categories = [
     "Tower",
     "Wright Stuff",
     "Write It Do It",
-*/
+]
 
 const anatomy_by_year: Record<number, string[]> = {
     2024: ["Cardiovascular", "Lymphatic", "Excretory"],
