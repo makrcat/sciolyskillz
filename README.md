@@ -5,6 +5,10 @@ migrating to next.js
 might take a while
 
 sorry guys 
+# Update 
+I did KIND OF figure out what the error was! It was about hooks.
+All in all, good experience of learning, although I got into it too fast. Ah, well.
+I don't think the original *concept* was very useful, but I'm glad to have done some full-stack!
 
 # sciolyskillz
 
